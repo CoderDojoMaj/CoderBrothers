@@ -1,4 +1,7 @@
 from flask import Flask, escape, request, redirect, send_from_directory
+import python.setup as setup
+setup.setup() # Load config before other modules
+import python.crypto
 
 app = Flask(__name__)
 
