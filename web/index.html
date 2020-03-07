@@ -6,15 +6,45 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+<img src="img/logo.svg" id="logo" alt="">
 <body>
-    <div id="header">
-        <img src="img/logo.svg" id="logo">
-        <a href=""> <h1>¿Qué es Coder Dojo?</h1></a>
-        <a href=""> <h1>¿Dónde estamos?</h1></a>
-        <a href=""> <h1>Blog y eventos</h1></a>
-        
-
+    <div id="menu" style="width:200px;right:0" id="mySidebar">
+        <button onclick="w3_close()">Close &times;</button><br> 
+        <div id="nav-icon2" onclick="w3_close()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <a class="modificar" href="#" class="w3-bar-item w3-button">¿Qué es Coderdojo?</a><br>
+        <a class="modificar" href="#" class="w3-bar-item w3-button">¿Qué hacemos?</a><br>
+        <a class="modificar" href="#" class="w3-bar-item w3-button">¿Donde estamos?</a><br>
     </div>
+      
+      <div class="w3-main" style="margin-right:200px">
+        <div class="w3-teal">
+            <button id="open" onclick="w3_open()">&#9776;</button>
+        </div>
+      </div>
+      <script>
+      function w3_open() {
+        document.getElementById("menu").style.display= "block";
+        document.getElementById("menu").style.width = "150px";
+        document.getElementById("open").style.display= "none";
+      }
+      function w3_close() {
+        document.getElementById("menu").style.width = "0";
+        document.getElementById("menu").style.display= "none";
+        document.getElementById("open").style.display= "block";
+      }
+      $(document).ready(function(){
+        $('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function(){
+            $(this).toggleClass('open');
+        });
+    });
+      </script>
     <div id="main">
 
     </div>
