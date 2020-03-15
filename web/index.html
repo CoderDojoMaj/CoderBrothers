@@ -5,52 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
 </head>
-<img src="img/logo.svg" id="logo" alt="">
 <body>
-    <div id="menu" style="width:200px;right:0" id="mySidebar">
-        <button onclick="w3_close()">Close &times;</button><br> 
-        <div id="nav-icon2" onclick="w3_close()">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <a class="modificar" href="#" class="w3-bar-item w3-button">¿Qué es Coderdojo?</a><br>
-        <a class="modificar" href="#" class="w3-bar-item w3-button">¿Qué hacemos?</a><br>
-        <a class="modificar" href="#" class="w3-bar-item w3-button">¿Donde estamos?</a><br>
-    </div>
-      
-      <div class="w3-main" style="margin-right:200px">
-        <div class="w3-teal">
-            <button id="open" onclick="w3_open()">&#9776;</button>
-        </div>
-      </div>
-      <script>
-      function w3_open() {
-        document.getElementById("menu").style.display= "block";
-        document.getElementById("menu").style.width = "150px";
-        document.getElementById("open").style.display= "none";
-      }
-      function w3_close() {
-        document.getElementById("menu").style.width = "0";
-        document.getElementById("menu").style.display= "none";
-        document.getElementById("open").style.display= "block";
-      }
-      $(document).ready(function(){
-        $('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function(){
-            $(this).toggleClass('open');
-        });
-    });
-      </script>
-    <div id="main">
 
+  <div class="header">
+    <div>
+      <a class="nav" onclick="_open()">
+        <div id="one"></div>
+        <div id="two"></div>
+        <div id="three"></div>
+      </a>
+      <img src="img/logo.svg" id="logo">
     </div>
-    <div id="footer">
-        
+  </div>
 
-    </div>
+
+  <div id="menu">
+    <button id="exit" onclick="_close()">Close &times;</button>
+    <a class="enlace" href="#" class="w3-bar-item w3-button">¿Qué es Coderdojo?</a>
+    <a class="enlace" href="#" class="w3-bar-item w3-button">¿Qué hacemos?</a>
+    <a class="enlace" href="#" class="w3-bar-item w3-button">¿Donde estamos?</a>
+  </div>
+<div id="test"></div>
 </body>
 </html>
