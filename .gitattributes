@@ -1,0 +1,4 @@
+* text eol=lf
+# Make line endings lf only
+web/img/* -text
+# ignore images
