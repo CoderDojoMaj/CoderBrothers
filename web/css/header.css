@@ -1,0 +1,22 @@
+.header {
+    background: #478390;
+    padding: 1vw;
+    position: sticky;
+}
+
+.header #logo {
+    max-height: 80px;
+    height: 6vw;
+}
+
+.header div,.header img {
+    display: inline-block;
+}
+
+.header .links a {
+    color: white;
+    font-weight: bold;
+    font-size: min(3vw, 40px);
+    text-decoration: none;
+    margin: 0 min(1.125vw, 15px);
+}

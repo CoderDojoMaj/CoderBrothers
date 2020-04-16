@@ -13,7 +13,29 @@ python3.8 -m pip install -r requirements.txt
 ```
 
 # Run
-```sh
-python3.8 server.py
+
+First, set up the environvemnt variable in your terminal
+## Loading the environment variables
+### Linux / MacOS (Bash / Zsh / Fish)
+```bash
+export FLASK_APP=server.py
 ```
+
+### Windows (CMD)
+
+```batchfile
+set FLASK_APP=server.py
+```
+
+### Windows (Powershell)
+
+```powershell
+$env:FLASK_APP = "server.py"
+```
+
+## Actually running the server
+```sh
+flask run -p 8080
+```
+
 Go to http://localhost:8080 to see the page
