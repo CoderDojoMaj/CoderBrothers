@@ -24,8 +24,6 @@
 }
 
 #desplegable{
-  display: flex;
-  flex-direction: column;
 }
 
 #logo{
@@ -47,27 +45,6 @@
   display: inline-block;
 }
 
-/* CSS for the menu butoon*/
-.nav div{
-  height: 5px;
-  width: 5vw;
-  background-color: #fff;
-  margin: 5px 0;
-  border-radius: 24px;
-  transition: .3s;
-}
-
-.nav{
-  display: block;
-  padding-left: 3vw;
-  width: 50px;
-  background-color: #101010;
-}
-/*End of the CSS for the menu butoon*/
-
-#test{
-  height: 10000px;
-}
 
 @media only screen and (min-with:768px){
   
