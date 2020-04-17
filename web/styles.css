@@ -1,9 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    background-color: #8f8f8f;
-}
-
 .header{
   position: fixed;
   width: 100vw;
@@ -29,12 +23,18 @@
     flex-direction: column;
 }
 
+#desplegable{
+  display: flex;
+  flex-direction: column;
+}
+
 #logo{
-  height: 8vh;
+  height: 7vh;
   background-color: #101010;
   padding-top: 1vh;
   position: fixed;
 }
+
 .enlace{
     text-decoration: none;
     color: white;
