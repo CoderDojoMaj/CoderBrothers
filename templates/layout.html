@@ -2,28 +2,24 @@
 <html lang="en">
 
 <head>
-    {% block head %}
-    <title>{% block title %}{% endblock %} | CoderBrothers</title>
+    
+    <title>{% block custom_start %}{% endblock %}{% block title %}{% endblock %}{% block custom_ending %} | CoderBrothers{% endblock %}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/general.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
-    {% endblock %}
+    {% block head %}{% endblock %}
 </head>
 
 <body>
     <div class="header">
-        {% block header %}
         {% include 'header.html' %}
-        {% endblock %}
     </div>
     <div class="content">
         {% block content %}{% endblock %}
     </div>
     <div class="footer">
-        {% block footer %}
         {% include 'footer.html' %}
-        {% endblock %}
     </div>
 </body>

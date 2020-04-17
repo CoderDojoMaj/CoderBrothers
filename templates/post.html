@@ -1,7 +1,20 @@
 {% extends "layout.html" %}
-{% block title %}Blog{% endblock %}
+{% block custom_start %}CoderBrothers Blog | {% endblock %}
+{% block custom_ending %}{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/css/post.css">
+{% endblock %}
 {% block content %}
-    {% filter markdown %}
-    {{ md }}
-    {% endfilter %}
+<div class="title_block">
+    <h1 id="post_title">{{self.title()}}</h1>
+    {% if self.author() %}
+    <h3 id="author">{% block author %}{% endblock %}</h3>
+    {% endif %}
+    {% if self.date() %}
+    <h3 id="date">{% block date %}{% endblock %}</h3>
+    {% endif %}
+</div>
+{% filter markdown %}
+{% block markdown %}{% endblock %}
+{% endfilter %}
 {% endblock %}

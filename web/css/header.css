@@ -1,12 +1,12 @@
 .header {
     background: #478390;
-    padding: 1vw;
+    padding: min(1vw, 13.3px);
     position: sticky;
 }
 
 .header #logo {
     max-height: 80px;
-    height: 6vw;
+    height: min(6vw, 40px);
 }
 
 .header div,.header img {
@@ -16,7 +16,7 @@
 .header .links a {
     color: white;
     font-weight: bold;
-    font-size: min(3vw, 40px);
+    font-size: min(3vw, 30px);
     text-decoration: none;
     margin: 0 min(1.125vw, 15px);
 }

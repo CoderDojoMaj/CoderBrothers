@@ -18,16 +18,12 @@ Markdown(app)
 @app.before_first_request
 def startup():
     setup.setup() # Load config before other modules
-    #update_posts(app)
 
 @app.route('/post/<path:page>')
 def post(page):
     print(f'Loading post {page}')
-    if(path.exists(f'posts/{page}.md')):
-        contents = None
-        with open(f'posts/{page}.md') as f:
-            contents = '\n' + f.read()
-        return render_template('post.html', md=contents)
+    if(path.exists(f'templates/posts/{page}.md')):
+        return render_template(f'posts/{page}.md')
     else:
         abort(404, f'post/{page}')
 

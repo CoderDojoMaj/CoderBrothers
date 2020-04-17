@@ -19,18 +19,21 @@ First, set up the environvemnt variable in your terminal
 ### Linux / MacOS (Bash / Zsh / Fish)
 ```bash
 export FLASK_APP=server.py
+export FLASK_ENV=development
 ```
 
 ### Windows (CMD)
 
 ```batchfile
 set FLASK_APP=server.py
+set FLASK_ENV=development
 ```
 
 ### Windows (Powershell)
 
 ```powershell
 $env:FLASK_APP = "server.py"
+$env:FLASK_ENV = "development"
 ```
 
 ## Actually running the server
@@ -39,3 +42,18 @@ flask run -p 8080
 ```
 
 Go to http://localhost:8080 to see the page
+
+***
+
+## Sidenote
+### On MacOS & Linux, `start.sh` can be run to do everything
+First give it permissions to run with
+```bash
+chmod +x start.sh
+```
+And then just run it with
+```bash
+./start.sh
+```
+### On Windows, `start.bat` can be run to do everything
+(Not sure) Double click the file and it should open a command prompt with the flask developmeent server
