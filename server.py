@@ -3,10 +3,10 @@ import click
 from flask import Flask, escape, request, redirect, send_from_directory, abort, render_template
 from flaskext.markdown import Markdown
 import python.setup as setup
-import python.crypto
-
+from python import blog as b
 from os import path
 
+setup.setup() # Load config before other modules
 
 app = Flask(__name__)
 
@@ -17,7 +17,7 @@ Markdown(app)
 
 @app.before_first_request
 def startup():
-    setup.setup() # Load config before other modules
+    pass
 
 @app.route('/post/<path:page>')
 def post(page):
@@ -27,6 +27,9 @@ def post(page):
     else:
         abort(404, f'post/{page}')
 
+@app.route('/blog')
+def blog():
+    return render_template('blog.html', posts=b.get_posts())
 
 
 
@@ -40,6 +43,13 @@ def page(page):
 def page_not_found(error):
     print(error)
     return render_template('404.html'), 404
+
+@app.context_processor
+def utility_functions():
+    def printconsole(message):
+        print(str(message))
+
+    return dict(console=printconsole)
 
 if __name__ == "__main__":
     app.run(host='localhost', port=8080)

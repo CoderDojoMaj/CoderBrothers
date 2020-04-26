@@ -4,6 +4,7 @@
 {% block head %}
 <link rel="stylesheet" href="/css/post.css">
 {% endblock %}
+{% set test = 'DO NOT SEE THIS' %}
 {% block content %}
 <div class="title_block">
     <h1 id="post_title">{{self.title()}}</h1>
@@ -14,6 +15,7 @@
     <h3 id="date">{% block date %}{% endblock %}</h3>
     {% endif %}
 </div>
+{{test}}
 {% filter markdown %}
 {% block markdown %}{% endblock %}
 {% endfilter %}

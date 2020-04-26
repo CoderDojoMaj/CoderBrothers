@@ -2,11 +2,16 @@ import json, os
 from base64 import b64encode, b64decode
 
 config = { # Default config
-	'salt': os.urandom(20)
+	'salt': os.urandom(20),
+	'db': {
+		'user': 'coderbrothers',
+		'password': 'coderbrothers' # Change this
+	}
 }
 
 def setup():
 	global config
+	print('Setting up')
 	try:
 		with open('config.json') as f:
 			print('Loading config')
