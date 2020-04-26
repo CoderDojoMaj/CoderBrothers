@@ -12,6 +12,22 @@
 python3.8 -m pip install -r requirements.txt
 ```
 
+## Install MySQL
+- **Windows**: [Installer](https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-8.0.19.0.msi)
+- **Mac OS X**: [Installer](https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.19-macos10.15-x86_64.dmg)
+- **Linux**: Install MySQL with the package manager
+    - Debian based (Ubuntu / Mint): `sudo apt-get install mysql-server`
+    `mysql_secure_installation` To configure root password
+
+## Setup the database
+execute this command on the project directory  
+`mysql -uroot -p` then put your root password  
+`source setup.sql;` to setup everything  
+
+### Sidenote
+Changing the coderbrothers user password is highly recomended, but for just testing it isn't necessary.
+To do it, the password on the mysql user has to be updated, as well as the password on the `config.json` file
+
 # Run
 
 First, set up the environvemnt variable in your terminal
