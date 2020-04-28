@@ -3,31 +3,33 @@ DROP DATABASE IF EXISTS coderbrothers;
 CREATE DATABASE coderbrothers;
 
 CREATE TABLE coderbrothers.users(
-   id INT NOT NULL AUTO_INCREMENT,
-   passwd INT NOT NULL,
-   nombre VARCHAR(40) NOT NULL,
-   foto LONGBLOB,
+   uuid CHAR(36) NOT NULL UNIQUE,
+   passwd BINARY(32) NOT NULL,
+   name VARCHAR(40) NOT NULL UNIQUE,
+   name_low VARCHAR(40) NOT NULL UNIQUE,
+   img LONGBLOB,
    perms INT NOT NULL DEFAULT 0,
-   PRIMARY KEY ( id )
+   PRIMARY KEY ( uuid )
 );
 
 CREATE TABLE coderbrothers.posts(
-   id INT NOT NULL AUTO_INCREMENT,
-   file VARCHAR(100) NOT NULL,
-   author INT NOT NULL,
-   PRIMARY KEY ( id ),
-   FOREIGN KEY ( author ) REFERENCES coderbrothers.users(id) 
+   uuid CHAR(36) NOT NULL UNIQUE,
+   author CHAR(36) NOT NULL,
+   title TEXT NOT NULL,
+   timestamp TIMESTAMP NOT NULL,
+   PRIMARY KEY ( uuid ),
+   FOREIGN KEY ( author ) REFERENCES coderbrothers.users(uuid) 
 );
 
 CREATE TABLE coderbrothers.comments(
-   id INT NOT NULL AUTO_INCREMENT,
-   userid INT NOT NULL,
-   postid INT NOT NULL,
+   uuid CHAR(36) NOT NULL UNIQUE,
+   userid CHAR(36) NOT NULL,
+   postid CHAR(36) NOT NULL,
    content TEXT NOT NULL,
    timestamp TIMESTAMP NOT NULL,
-   PRIMARY KEY ( id ),
-   FOREIGN KEY ( userid ) REFERENCES coderbrothers.users(id),
-   FOREIGN KEY ( postid ) REFERENCES coderbrothers.posts(id)
+   PRIMARY KEY ( uuid ),
+   FOREIGN KEY ( userid ) REFERENCES coderbrothers.users(uuid),
+   FOREIGN KEY ( postid ) REFERENCES coderbrothers.posts(uuid)
 );
 
 GRANT ALL PRIVILEGES ON coderbrothers.* TO 'coderbrothers'@'localhost' WITH GRANT OPTION;

@@ -1,4 +1,7 @@
 import os, jinja2
+from python import logger
+
+l = logger.get('BLOG')
 
 def get_posts():
     posts = []
@@ -18,5 +21,5 @@ def get_posts():
                 post = {'title': title, 'author': author, 'date': date}
                 posts.append(post)
             except:
-                print(f'ERROR WHILE LOADING POST {post_file}')
+                l.error(f'ERROR WHILE LOADING POST {post_file}')
     return posts

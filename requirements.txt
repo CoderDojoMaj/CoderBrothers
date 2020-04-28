@@ -1,2 +1,4 @@
 Flask==1.1.1
 Flask-Markdown==0.3
+mysql-connector-python==8.0.19
+colorlog==4.1.0
