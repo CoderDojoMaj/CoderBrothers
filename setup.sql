@@ -16,6 +16,7 @@ CREATE TABLE coderbrothers.posts(
    uuid CHAR(36) NOT NULL UNIQUE,
    author CHAR(36) NOT NULL,
    title TEXT NOT NULL,
+   content TEXT NOT NULL,
    timestamp TIMESTAMP NOT NULL,
    PRIMARY KEY ( uuid ),
    FOREIGN KEY ( author ) REFERENCES coderbrothers.users(uuid) 

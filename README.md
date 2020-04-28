@@ -17,10 +17,28 @@ python3.8 -m pip install -r requirements.txt
 - **Mac OS X**: [Installer](https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.19-macos10.15-x86_64.dmg)
 - **Linux**: Install MySQL with the package manager
     - Debian based (Ubuntu / Mint): `sudo apt-get install mysql-server`
-    `mysql_secure_installation` To configure root password
+
+`mysql_secure_installation` To configure root password (Maybe not needed on windows/MacOS, if the root password has been setup on the installation)
 
 ## Setup the database
-execute this command on the project directory  
+### Linux / MacOS (Bash / Zsh / Fish)
+```bash
+cat setup.sql | mysql -uroot -p
+```
+
+### Windows (CMD)
+
+```batchfile
+PowerShell -Command "cat setup.sql | mysql -uroot -p"
+```
+
+### Windows (Powershell)
+
+```powershell
+cat setup.sql | mysql -uroot -p
+```
+
+If none of that works, then execute this command on the project directory  
 `mysql -uroot -p` then put your root password  
 `source setup.sql;` to setup everything  
 
