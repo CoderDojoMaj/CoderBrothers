@@ -1,25 +1,25 @@
 import os, jinja2
-from python import logger
+from python import logger, utils
+from python.db import getDB
 
 l = logger.get('BLOG')
 
 def get_posts():
     posts = []
-    for post_file in os.listdir('templates/posts'):
-        with open(f'templates/posts/{post_file}') as f:
-            try:
-                t = jinja2.Template(f.read())
-                ctx = t.new_context()
-                title = next(t.blocks['title'](ctx)).strip()
-                date = None
-                author = None
-                if 'author' in t.blocks:
-                    author = next(t.blocks['author'](ctx)).strip()
-                if 'date' in t.blocks:
-                    date = next(t.blocks['date'](ctx)).strip()
-
-                post = {'title': title, 'author': author, 'date': date}
-                posts.append(post)
-            except:
-                l.error(f'ERROR WHILE LOADING POST {post_file}')
+    for post in getDB().getPosts():
+        date = post['date']
+        post['date'] = utils.formatPostDate(date)
+        posts.append(post)
     return posts
+
+def getPostTemplate(uuid):
+    post = getDB().getPost(uuid)
+    # l.info((post['title'], post['author'], post['date'], post['content']))
+    # l.info('''[%s %s %s %s]''' % (post['title'], post['author'], post['date'], post['content']))
+    template = '''{%% extends "post.html" %%}
+    {%% block title %%} %s {%% endblock %%}
+    {%% block author %%} %s {%% endblock %%}
+    {%% block date %%} %s {%% endblock %%}
+    {%% block markdown %%} %s {%% endblock %%}''' % (post['title'], post['author'], post['date'], post['content'])
+    # l.info(template)
+    return template

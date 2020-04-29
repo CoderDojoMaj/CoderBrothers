@@ -33,4 +33,12 @@ CREATE TABLE coderbrothers.comments(
    FOREIGN KEY ( postid ) REFERENCES coderbrothers.posts(uuid)
 );
 
+CREATE TABLE coderbrothers.sessions(
+   uuid CHAR(36) NOT NULL UNIQUE,
+   userid CHAR(36) NOT NULL,
+   expiry TIMESTAMP NOT NULL,
+   PRIMARY KEY ( uuid ),
+   FOREIGN KEY ( userid ) REFERENCES coderbrothers.users(uuid)
+);
+
 GRANT ALL PRIVILEGES ON coderbrothers.* TO 'coderbrothers'@'localhost' WITH GRANT OPTION;

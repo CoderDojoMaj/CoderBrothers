@@ -1,13 +1,17 @@
 from mysql import connector as mysql
 from mysql.connector import errorcode as mysql_errorcode
-from python import setup, logger, crypto
+from python import setup, logger, crypto, utils
 import atexit
 
 db = None
+db_started = False
 
 def getDB(): # Only get a single DB object (singleton)
     global db
-    if db is None:
+    global db_started
+    
+    if db is None or db_started == False:
+        db_started = True
         db = DB()
     return db
 
@@ -57,6 +61,7 @@ class DB:
         self.connection.commit()
         self.connection.close()
     
+    # "Public" functions
     def addUser(self, name, password, perms, img=None):
         try:
             self.run('INSERT INTO users(uuid, name, name_low, passwd, perms, img) values(UUID(), %s, %s, %s, %s, %s)', name, name.lower(), crypto.encrypt(password), perms, img).close()
@@ -64,9 +69,11 @@ class DB:
             self.l.error('Duplicate username "%s"', name)
             raise UserDuplicateError('Duplicate username "%s"' % name)
     
-    def getUsers(self): # Testing function
-        for (uuid, name, perms, passwd, img) in self.run('SELECT uuid, name, perms, hex(passwd), hex(img) FROM users'):
-            print(uuid, name, perms, passwd, img)
+    def deleteUsers(self):
+        self.l.warning('DELETING USERS')
+        
+        self.run('DELETE comments, posts FROM users LEFT JOIN posts on users.uuid = posts.author LEFT JOIN comments on posts.uuid = comments.postid').close()
+        self.run('DELETE users, comments FROM users LEFT JOIN comments on users.uuid = comments.userid').close()
     
     def checkPassword(self, username, password):
         cursor = self.run('SELECT hex(passwd) FROM users WHERE name_low = %s', username.lower())
@@ -77,9 +84,37 @@ class DB:
         else:
             self.l.error('User %s is not present' % username)
             raise UserNotFoundError('User %s is not present' % username)
+    
+    def createPost(self, title, authorid, content):
+        self.run('INSERT INTO posts(uuid, title, author, content, timestamp) values(UUID(), %s, %s, %s, NOW())', title, authorid, content).close()
+    
+    def getPosts(self):
+        cursor = self.run('SELECT posts.uuid, posts.title, users.name AS author, posts.timestamp FROM posts INNER JOIN(users) ON posts.author = users.uuid ORDER BY posts.timestamp DESC')
+        posts = []
+        for (uuid, title, author, timestamp) in cursor:
+            post = {'uuid': uuid, 'title': title, 'author': author, 'date': timestamp}
+            posts.append(post)
+        cursor.close()
+        
+        return posts
+    
+    def getPost(self, uuid):
+        cursor = self.run('SELECT posts.title, users.name AS author, posts.timestamp, posts.content FROM posts INNER JOIN(users) ON posts.author = users.uuid WHERE posts.uuid = %s', uuid)
+        res = cursor.fetchall()
+        cursor.close()
+        if len(res) == 1:
+            post = res[0]
+            return {'title': post[0], 'author': post[1], 'date': utils.formatPostDate(post[2]), 'content': post[3]}
+        else:
+            self.l.error('Post %s is non existant' % uuid)
+            raise PostNotFoundError('Post %s is non existant' % uuid)
 
+## DB errors
 class UserDuplicateError(Exception):
     pass
 
 class UserNotFoundError(Exception):
+    pass
+
+class PostNotFoundError(Exception):
     pass

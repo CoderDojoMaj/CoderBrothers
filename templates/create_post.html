@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}Create Post{% endblock %}
+{% block head %}
+{% endblock %}
+{% block content %}
+<form action="/create_post" method="POST">
+    <input name="title" id="title" type="text">
+    <input name="author" id="author" type="text">
+    <textarea name="content" id="content"></textarea>
+    <input type="submit" value="Create">
+</form>
+{% endblock %}

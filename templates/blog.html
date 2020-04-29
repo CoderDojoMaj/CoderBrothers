@@ -8,9 +8,11 @@
     {% for post in posts %}
     <div class="post">
         <hr>
+        <a href="/post/{{ post['uuid'] }}">
         Title: {{ post['title'] }} <br>
         Author: {{ post['author'] }} <br>
         Date: {{ post['date'] }}
+        </a>
         <hr>
     </div>
     {% endfor %}
