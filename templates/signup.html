@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %}Create Post{% endblock %}
+{% block head %}
+{% endblock %}
+{% block content %}
+<!--Temporal login-->
+<form action="/signup" method="POST">
+    <input name="username" id="username" type="text">
+    <input name="password" id="password" type="password">
+    <input type="submit" value="Sign Up">
+</form>
+{% if error %}
+<a id="error">{{ error }}</a>
+{% endif %}
+{% endblock %} 

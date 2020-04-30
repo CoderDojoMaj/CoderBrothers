@@ -3,4 +3,7 @@
     <a href="/#inicio" id="inicio">Inicio</a>
     <a href="/#conocenos" id="conocenos">Conocenos</a>
     <a href="/#contacto" id="contacto">Contacto</a>
+    {% if session.get('user') %}
+    <a id="user">{{ session.get('user')[2] }}</a>
+    {% endif %}
 </div>

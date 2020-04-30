@@ -1,7 +1,7 @@
 from mysql import connector as mysql
 from mysql.connector import errorcode as mysql_errorcode
 from python import setup, logger, crypto, utils
-import atexit
+import atexit, uuid as libUUID
 
 db = None
 db_started = False
@@ -85,6 +85,36 @@ class DB:
             self.l.error('User %s is not present' % username)
             raise UserNotFoundError('User %s is not present' % username)
     
+    def getUserUUID(self, username):
+        cursor = self.run('SELECT uuid FROM users WHERE name_low = %s', username.lower())
+        res = cursor.fetchall()
+        cursor.close()
+        if len(res) == 1:
+            return res[0][0]
+        else:
+            self.l.error('User %s is not present' % username)
+            raise UserNotFoundError('User %s is not present' % username)
+    
+    def getUserFromUUID(self, uuid):
+        cursor = self.run('SELECT name, img FROM users WHERE uuid = %s', uuid)
+        res = cursor.fetchall()
+        cursor.close()
+        if len(res) == 1:
+            return res[0]
+        else:
+            self.l.error('User %s is not present' % uuid)
+            raise UserNotFoundError('User %s is not present' % uuid)
+    
+    def getUserPerms(self, uuid):
+        cursor = self.run('SELECT perms FROM users WHERE uuid = %s', uuid)
+        res = cursor.fetchall()
+        cursor.close()
+        if len(res) == 1:
+            return res[0][0]
+        else:
+            self.l.error('User %s is not present' % uuid)
+            raise UserNotFoundError('User %s is not present' % uuid)
+    
     def createPost(self, title, authorid, content):
         self.run('INSERT INTO posts(uuid, title, author, content, timestamp) values(UUID(), %s, %s, %s, NOW())', title, authorid, content).close()
     
@@ -108,6 +138,48 @@ class DB:
         else:
             self.l.error('Post %s is non existant' % uuid)
             raise PostNotFoundError('Post %s is non existant' % uuid)
+    
+    def postComment(self, post_uuid, user_uuid, content):
+        self.run('INSERT INTO comments(uuid, userid, postid, content, timestamp) values(UUID(), %s, %s, %s, NOW())', user_uuid, post_uuid, content).close()
+    
+    def getComments(self, post_uuid):
+        cursor = self.run('SELECT users.name, comments.userid, comments.content, comments.timestamp FROM comments INNER JOIN(users) ON comments.userid = users.uuid WHERE comments.postid = %s ORDER BY comments.timestamp ASC', post_uuid)
+        comments = []
+        for (username, useruuid, content, timestamp) in cursor:
+            comment = {'username': username, 'useruuid': useruuid, 'content': content, 'timestamp': utils.formatCommentDate(timestamp)}
+            comments.append(comment)
+        cursor.close()
+        
+        return comments
+    
+    def updateSessions(self):
+        self.run('DELETE FROM sessions WHERE sessions.expiry < NOW()').close()
+    
+    def addSession(self, uuid):
+        session_uuid = str(libUUID.uuid4())
+        self.updateSessions()
+        self.run('INSERT INTO sessions(uuid, userid, expiry) VALUES(%s, %s, NOW() + INTERVAL 1 DAY)', session_uuid, uuid).close()
+        return session_uuid
+    
+    def deleteSession(self, uuid):
+        self.updateSessions()
+        self.run('DELETE FROM sessions WHERE uuid = %s', uuid).close()
+    
+    def checkSession(self, session):
+        self.updateSessions()
+        cursor = self.run('SELECT COUNT(uuid) FROM sessions WHERE uuid = %s', session)
+        count = cursor.fetchall()[0][0]
+        cursor.close()
+        return count > 0
+    
+    def getUserUUIDFromSession(self, session):
+        cursor = self.run('SELECT userid FROM sessions WHERE uuid = %s', session)
+        res = cursor.fetchall()
+        cursor.close()
+        if len(res) > 0:
+            return res[0][0]
+        else:
+            raise UserNotFoundError()
 
 ## DB errors
 class UserDuplicateError(Exception):

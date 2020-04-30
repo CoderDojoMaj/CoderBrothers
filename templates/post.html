@@ -5,16 +5,29 @@
 <link rel="stylesheet" href="/css/post.css">
 {% endblock %}
 {% block content %}
-<div class="title_block">
-    <h1 id="post_title">{{self.title()}}</h1>
-    {% if self.author() %}
-    <h3 id="author">{% block author %}{% endblock %}</h3>
+<div class="post">
+    <div class="title_block">
+        <h1 id="post_title">{{self.title()}}</h1>
+        {% if self.author() %}
+        <h3 id="author">{% block author %}{% endblock %}</h3>
+        {% endif %}
+        {% if self.date() %}
+        <h3 id="date">{% block date %}{% endblock %}</h3>
+        {% endif %}
+    </div>
+    {% filter markdown %}
+    {% block markdown %}{% endblock %}
+    {% endfilter %}
+    <br>
+    <br>
+    <hr>
+    Comments<br>
+    {% if session.get('user') %}
+    {{ session.get('user')[2] }}: <form action="/post/{{ post_uuid }}/comment" method="post"><input type="text" name="content"></form>
     {% endif %}
-    {% if self.date() %}
-    <h3 id="date">{% block date %}{% endblock %}</h3>
-    {% endif %}
+    <br><br><br>
+    {% for comment in comments %}
+    <div class="comment">[{{ comment.timestamp }}] {{ comment.username }}: {{ comment.content }}</div>
+    {% endfor %}
 </div>
-{% filter markdown %}
-{% block markdown %}{% endblock %}
-{% endfilter %}
 {% endblock %}
