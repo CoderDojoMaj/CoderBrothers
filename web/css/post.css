@@ -23,3 +23,34 @@
 #author {
     font-size: 1.7rem;
 }
+.reply {
+    margin-left: 1px;
+    border-left: 2px solid lightgray;
+    padding-left: 13px;
+    margin: 10px 0;
+}
+.vote {
+    display: inline-block;
+}
+.vote button{
+    border: none;
+    padding: 3px;
+    margin: 0;
+    background: none;
+    font-size: 1.25rem;
+    color: lightgray;
+}
+.upvote.selected {
+    color: darkorange;
+}
+.downvote.selected {
+    color: CornflowerBlue;
+}
+
+.hidden {
+    display: none;
+}
+
+.comment img{
+    height: 1em;
+}

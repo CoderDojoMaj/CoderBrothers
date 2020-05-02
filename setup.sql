@@ -27,6 +27,7 @@ CREATE TABLE coderbrothers.comments(
    userid CHAR(36) NOT NULL,
    postid CHAR(36) NOT NULL,
    content TEXT NOT NULL,
+   repliesto CHAR(36) REFERENCES coderbrothers.comments(uuid),
    timestamp TIMESTAMP NOT NULL,
    PRIMARY KEY ( uuid ),
    FOREIGN KEY ( userid ) REFERENCES coderbrothers.users(uuid),
@@ -39,6 +40,15 @@ CREATE TABLE coderbrothers.sessions(
    expiry TIMESTAMP NOT NULL,
    PRIMARY KEY ( uuid ),
    FOREIGN KEY ( userid ) REFERENCES coderbrothers.users(uuid)
+);
+
+CREATE TABLE coderbrothers.votes(
+   useruuid CHAR(36) NOT NULL,
+   commentuuid CHAR(36) NOT NULL,
+   vote ENUM('DOWNVOTE', 'UPVOTE') NOT NULL,
+   CONSTRAINT PK_vote PRIMARY KEY (useruuid, commentuuid),
+   FOREIGN KEY ( useruuid ) REFERENCES coderbrothers.users(uuid),
+   FOREIGN KEY ( commentuuid ) REFERENCES coderbrothers.comments(uuid)
 );
 
 GRANT ALL PRIVILEGES ON coderbrothers.* TO 'coderbrothers'@'localhost' WITH GRANT OPTION;

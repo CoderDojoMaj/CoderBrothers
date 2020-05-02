@@ -7,7 +7,7 @@ config = { # Default config
 	'salt': os.urandom(40),
 	'key': b64encode(os.urandom(40)).decode(),
 	'db': {
-		'version': 1,
+		'version': 3,
 		'user': 'coderbrothers',
 		'password': 'coderbrothers' # Change this
 	}

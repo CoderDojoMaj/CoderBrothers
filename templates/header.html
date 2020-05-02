@@ -5,5 +5,6 @@
     <a href="/#contacto" id="contacto">Contacto</a>
     {% if session.get('user') %}
     <a id="user">{{ session.get('user')[2] }}</a>
+    <!--<img src="/u/{{ session.get('user')[1] }}/img">-->
     {% endif %}
 </div>

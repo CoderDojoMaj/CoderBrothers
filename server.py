@@ -1,5 +1,5 @@
 import click
-from flask import Flask, escape, request, redirect, send_from_directory, abort, render_template, render_template_string, make_response, session
+from flask import Flask, escape, request, redirect, send_from_directory, abort, render_template, render_template_string, make_response, session, send_file
 from flaskext.markdown import Markdown
 from python import blog as b
 from python import logger as liblogger
@@ -7,6 +7,7 @@ from python.db import PostNotFoundError, getDB, UserNotFoundError, UserDuplicate
 from python.setup import setup, get_config
 from python.decorators import login_required
 from os import path, environ
+import base64, io
 
 app = Flask('CoderBrothers')
 
@@ -36,7 +37,10 @@ def startup():
 def post(uuid):
     logger.info(f'Loading post {uuid}')
     try:
-        res = make_response(render_template_string(b.getPostTemplate(uuid), post_uuid = uuid, comments = getDB().getComments(uuid)))
+        useruuid = None
+        if session.get('user'):
+            useruuid = session.get('user')[1]
+        res = make_response(render_template_string(b.getPostTemplate(uuid), post_uuid = uuid, comments = getDB().getComments(uuid, useruuid)))
         return res
     except PostNotFoundError:
         abort(404, f'post/{uuid}')
@@ -50,6 +54,30 @@ def comment(user_uuid, uuid):
         return redirect(f'/post/{uuid}')
     except PostNotFoundError:
         abort(404, f'post/{uuid}')
+
+@app.route('/post/<post_uuid>/reply/<comment_uuid>', methods=['POST'])
+@login_required
+def reply(user_uuid, post_uuid, comment_uuid):
+    logger.info(f'Replying {comment_uuid}')
+    try:
+        getDB().postComment(post_uuid, user_uuid, request.form['content'], replyTo=comment_uuid)
+        return redirect(f'/post/{post_uuid}')
+    except PostNotFoundError:
+        abort(404, f'post/{post_uuid}')
+
+@app.route('/post/<post_uuid>/vote/<comment_uuid>', methods=['POST'])
+@login_required
+def vote(user_uuid, post_uuid, comment_uuid):
+    logger.info(f'Replying {comment_uuid}')
+    try:
+        logger.info('VOTING '+request.form['vote'])
+        getDB().vote(user_uuid, comment_uuid, request.form['vote'])
+        return redirect(f'/post/{post_uuid}')
+    except PostNotFoundError:
+        abort(404, f'post/{post_uuid}')
+    except:
+        abort(500, 'Error voting')
+
 
 @app.route('/blog')
 def blog():
@@ -100,6 +128,22 @@ def logout():
     getDB().deleteSession(session['user'][0])
     session['user'] = None
     return 'Done'
+
+@app.route('/img')
+def img():
+    return render_template('image.html')
+
+@app.route('/update_img', methods=['POST'])
+@login_required
+def update_img(uuid):
+    getDB().setUserImage(uuid, request.form['image'])
+    return redirect('/img')
+
+@app.route('/u/<uuid>/img')
+def u_img(uuid):
+    img = getDB().getUserImage(uuid)
+    response = send_file(io.BytesIO(bytes(img)), mimetype='image/png')
+    return response
 
 @app.route('/', defaults={'page': 'index.html'})
 @app.route('/<path:page>')
