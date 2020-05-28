@@ -1,13 +1,26 @@
-import click
-from flask import Flask, escape, request, redirect, send_from_directory, abort, render_template, render_template_string, make_response, session, send_file
-from flaskext.markdown import Markdown
-from python import blog as b
-from python import logger as liblogger
-from python.db import PostNotFoundError, getDB, UserNotFoundError, UserDuplicateError
-from python.setup import setup, get_config
-from python.decorators import login_required
-from os import path, environ
-import base64, io
+# Remove for prod
+# check for dependencies
+
+try:
+    import click
+    from flask import Flask, escape, request, redirect, send_from_directory, abort, render_template, render_template_string, make_response, session, send_file
+    from flaskext.markdown import Markdown
+    from python import blog as b
+    from python import logger as liblogger
+    from python.db import PostNotFoundError, getDB, UserNotFoundError, UserDuplicateError
+    from python.setup import setup, get_config, get_pub_key, get_priv_key
+    from python.decorators import login_required
+    from os import path, environ
+    import base64, io, rsa
+except ImportError as e:
+    import sys
+    print('\n'*10)
+    print('#'*30)
+    print(f'{e.name} missing!!! (Dependency)')
+    print('Please install dependencies using')
+    print(f'    python{sys.version_info[0]}.{sys.version_info[1]} -m pip install -r requirements.txt         # See README.md for more options')
+    print('#'*30)
+    exit(1)
 
 app = Flask('CoderBrothers')
 
@@ -22,9 +35,6 @@ if app.env == 'development' and (not app.debug or environ.get("WERKZEUG_RUN_MAIN
     # For developing. Disable chaching for non html files
     app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-
-
-
 app.secret_key = get_config()['key']
 
 Markdown(app)
@@ -32,6 +42,18 @@ Markdown(app)
 @app.before_first_request
 def startup():
     pass
+
+@app.route('/pubkey')
+def pubkey():
+    pub_key = get_pub_key()
+    return ','.join([hex(pub_key.n), hex(pub_key.e)])
+
+@app.route('/decrypt', methods=['POST']) # test endpoint
+def decrypt():
+    data = bytes.fromhex(request.data.decode('utf8'))
+    decr = rsa.decrypt(data, get_priv_key()).decode('utf8')
+    print(decr)
+    return ('', 200)
 
 @app.route('/post/<uuid>')
 def post(uuid):
