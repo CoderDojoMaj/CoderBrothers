@@ -66,7 +66,7 @@ function Utf8ArrayToStr(array) {
 }
 
 function randomByte() {
-    return Math.round(Math.random() * 255)
+    return crypto.getRandomValues(new Uint8Array(1))[0]
 }
 
 function randomBytes(n) {
@@ -89,7 +89,7 @@ function padRSAPkcs1(msg, target_len) {
         padding = padding.concat(new_padding.slice(0, neededBytes))
     }
     if (padding.length != padding_length) throw Error("Padding doesn't match")
-    return [0, 2].concat(padding).concat([0]).concat(msg)
+    return [0, 2].concat(padding).concat([0]).concat(msg) // 00 02 PADDING 00 MESSAGE
 }
 
 function bytearrayToNum(bytes) {
@@ -122,7 +122,7 @@ function byte_size(n) {
     else return Math.ceil(n.toString(2).length / 8)
 }
 
-function encrypt_with_key(msg_str, key) {
+function encrypt_with_key(msg_str, key) { // Key must be the object generated from parse_key, 
     let msg = toUTF8Array(msg_str)
     let keylength = byte_size(key.n)
     msg = padRSAPkcs1(msg, keylength)
@@ -131,7 +131,7 @@ function encrypt_with_key(msg_str, key) {
     return numToBytearray(encr)
 }
 
-function modpow(x, y, p) {
+function modpow(x, y, p) { // What actually encrypts. Instead of doing pow and then mod, if you do it all at once, it's faster
     let res = 1n
     x = x % p
     if (x === 0n) return 0n
@@ -159,7 +159,7 @@ async function encrypt(msg) {
     return encrypt_with_key(msg, pub_key)
 }
 
-function sendBytes(data) { // test function
+function sendBytes(data) { // test function, make sure input is bytearray
     fetch('/decrypt', {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
