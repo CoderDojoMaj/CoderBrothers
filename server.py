@@ -7,6 +7,7 @@ try:
     from flaskext.markdown import Markdown
     from python import blog as b
     from python import logger as liblogger
+    from python import crypto
     from python.db import PostNotFoundError, getDB, UserNotFoundError, UserDuplicateError
     from python.setup import setup, get_config, get_pub_key, get_priv_key
     from python.decorators import login_required
@@ -50,8 +51,7 @@ def pubkey():
 
 @app.route('/decrypt', methods=['POST']) # test endpoint
 def decrypt():
-    data = bytes.fromhex(request.data.decode('utf8'))
-    decr = rsa.decrypt(data, get_priv_key()).decode('utf8')
+    decr = crypto.decrypt_RSA_from_sendable_bytes(request.data).decode('utf8')
     print(decr)
     return ('', 200)
 
