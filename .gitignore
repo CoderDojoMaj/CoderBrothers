@@ -153,3 +153,4 @@ dmypy.json
 config.json
 certificates/*
 .vscode
+web/post/*

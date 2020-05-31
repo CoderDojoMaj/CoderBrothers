@@ -1,7 +1,7 @@
 import json, os, time
 from python import logger, db
 from base64 import b64encode, b64decode
-import rsa
+import rsa, os
 from pathlib import Path
 
 config = { # Default config
@@ -40,6 +40,8 @@ def setup():
 		logger.setup()
 		log = logger.get('Setup')
 		log.info('setup called')
+		if not os.path.lexists('web/post'):
+			os.mkdir('web/post')
 		# Config loading / writing
 		exiting = False
 		try:
