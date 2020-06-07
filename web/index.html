@@ -5,23 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href=".\css\general.css">
     <script src="script.js"></script>
 </head>
 <body>
 
   <div class="header">
-    <a href="#menu">
-      &#9776; Menu
-    </a>
+    <div class="inerHeader"> 
+      <a class="nav" onclick="_open()">
+        <div id="one"></div>
+        <div id="two"></div>
+        <div id="three"></div>
+      </a>
+      <div><img src="img/logo.svg" id="logo"></div>
+    </div>
   </div>
 
 
   <div id="menu">
-    <button id="exit" onclick="_close()">Close &times;</button>
-    <a class="enlace" href="#">¿Qué es Coderdojo?</a>
-    <a class="enlace" href="#">¿Qué hacemos?</a>
-    <a class="enlace" href="#">¿Donde estamos?</a>
+    <div class="nav" onclick="_close()">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+      
+    </div>
+    <a class="enlace" href="#" class="w3-bar-item w3-button">¿Qué es Coderdojo?</a>
+    <a class="enlace" href="#" class="w3-bar-item w3-button">¿Qué hacemos?</a>
+    <a class="enlace" href="#" class="w3-bar-item w3-button">¿Dónde estamos?</a>
   </div>
+<div id="test"></div>
 </body>
 </html>
