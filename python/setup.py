@@ -1,6 +1,8 @@
 import json, os, time
 from python import logger, db
 from base64 import b64encode, b64decode
+import rsa, os
+from pathlib import Path
 
 config = { # Default config
 	'version': 2,
@@ -12,6 +14,9 @@ config = { # Default config
 		'password': 'coderbrothers' # Change this
 	}
 }
+
+rsa_pub = None
+rsa_priv = None
 
 hasSetUp = False
 settingUp = False
@@ -26,12 +31,17 @@ def setup():
 	global config
 	global settingUp
 	global hasSetUp
+	global rsa_pub
+	global rsa_priv
 	if not settingUp:
+		start_time = time.time()
 		settingUp = True
 		delete_users = False
 		logger.setup()
 		log = logger.get('Setup')
 		log.info('setup called')
+		if not os.path.lexists('web/post'):
+			os.mkdir('web/post')
 		# Config loading / writing
 		exiting = False
 		try:
@@ -86,7 +96,29 @@ def setup():
 		hasSetUp = True
 		if delete_users:
 			db.getDB().deleteUsers()
-		log.info('Setup done')
+
+		log.info("Checking for RSA keys")
+		Path("certificates").mkdir(exist_ok=True)
+		try:
+			with open('certificates/private.pem', 'rb') as f:
+				log.info('Loading private key')
+				b = f.read()
+				rsa_priv = rsa.PrivateKey.load_pkcs1(b)
+				# load certs
+			with open('certificates/public.pem', 'rb') as f:
+				log.info('Loading public key')
+				b = f.read()
+				rsa_pub = rsa.PublicKey.load_pkcs1(b)
+				# load certs
+		except FileNotFoundError: # both certs have to be generated at the same time
+			log.info("RSA keys not found. Generating new ones")
+			(pub_pem, priv_pem) = gen_keys() # gen keys automatically saves them to the global vars
+			with open('certificates/private.pem', 'wb') as f:
+				f.write(priv_pem)
+			with open('certificates/public.pem', 'wb') as f:
+				f.write(pub_pem)
+		elapsed = round(time.time()-start_time,2)
+		log.info(f'Setup done in {elapsed}s')
 		logger.remove(log)
 	else:
 		while not hasSetUp:
@@ -103,3 +135,19 @@ def get_config(): # Only load config when needed
 	if not hasSetUp:
 		setup()
 	return config
+
+def gen_keys():
+	global rsa_pub
+	global rsa_priv
+	(pubkey, privkey) = rsa.newkeys(2048)
+	rsa_pub = pubkey
+	rsa_priv = privkey
+	return (pubkey.save_pkcs1(), privkey.save_pkcs1())
+
+def get_pub_key():
+	global rsa_pub
+	return rsa_pub
+
+def get_priv_key():
+	global rsa_priv
+	return rsa_priv

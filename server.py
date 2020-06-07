@@ -1,13 +1,27 @@
-import click
-from flask import Flask, escape, request, redirect, send_from_directory, abort, render_template, render_template_string, make_response, session, send_file
-from flaskext.markdown import Markdown
-from python import blog as b
-from python import logger as liblogger
-from python.db import PostNotFoundError, getDB, UserNotFoundError, UserDuplicateError
-from python.setup import setup, get_config
-from python.decorators import login_required
-from os import path, environ
-import base64, io
+# Remove for prod
+# check for dependencies
+
+try:
+    import click
+    from flask import Flask, escape, request, redirect, send_from_directory, abort, render_template, render_template_string, make_response, session, send_file
+    from flaskext.markdown import Markdown
+    from python import blog as b
+    from python import logger as liblogger
+    from python import crypto
+    from python.db import PostNotFoundError, getDB, UserNotFoundError, UserDuplicateError
+    from python.setup import setup, get_config, get_pub_key, get_priv_key
+    from python.decorators import login_required
+    from os import path, environ
+    import base64, io, rsa, time, os
+except ImportError as e:
+    import sys
+    print('\n'*10)
+    print('#'*30)
+    print(f'{e.name} missing!!! (Dependency)')
+    print('Please install dependencies using')
+    print(f'    python{sys.version_info[0]}.{sys.version_info[1]} -m pip install -r requirements.txt         # See README.md for more options')
+    print('#'*30)
+    exit(1)
 
 app = Flask('CoderBrothers')
 
@@ -17,21 +31,29 @@ if __name__ == "__main__":
     logger.warning('Setting env to development, but not starting debugger (autoreload)')
     app.env = 'development'
 
-if app.env == 'development' and (not app.debug or environ.get("WERKZEUG_RUN_MAIN") == "true"):
-    setup() # Run this here so that config errors can be seen (don't run in prod)
+if app.env == 'development' and not app.debug:
     # For developing. Disable chaching for non html files
     app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-
-
-
-app.secret_key = get_config()['key']
+if environ.get("WERKZEUG_RUN_MAIN") == "true":
+    setup() # Run this here so that config errors can be seen (don't run in prod)
 
 Markdown(app)
 
 @app.before_first_request
 def startup():
-    pass
+    app.secret_key = get_config()['key'] # If setup hasn't been called, this will call it
+
+@app.route('/pubkey')
+def pubkey():
+    pub_key = get_pub_key()
+    return ','.join([hex(pub_key.n), hex(pub_key.e)])
+
+@app.route('/decrypt', methods=['POST']) # test endpoint
+def decrypt():
+    decr = crypto.decrypt_RSA_from_sendable_bytes(request.data).decode('utf8')
+    print(decr)
+    return ('', 200)
 
 @app.route('/post/<uuid>')
 def post(uuid):
@@ -77,6 +99,32 @@ def vote(user_uuid, post_uuid, comment_uuid):
         abort(404, f'post/{post_uuid}')
     except:
         abort(500, 'Error voting')
+
+@app.route('/post/<post_uuid>/add_file', methods = ['GET'])
+@login_required(perms_level=1)
+def add_file_to_post_GET(user_uuid, post_uuid):
+    return render_template('add_file.html', post_uuid = post_uuid)
+
+@app.route('/post/<post_uuid>/add_file', methods = ['POST'])
+@login_required(perms_level=1)
+def add_file_to_post(user_uuid, post_uuid):
+    if 'file' in request.files:
+        f = request.files['file']
+        print(f.filename)
+        if not os.path.isdir(f'web/post/{post_uuid}'):
+            os.mkdir(f'web/post/{post_uuid}')
+        f.save(os.path.join(f'web/post/{post_uuid}', f.filename))
+    return 'ok'
+
+@app.route('/post/<uuid>/file/<file>', methods = ['GET'])
+def load_file_for_post(uuid, file):
+    if os.path.isdir(f'web/post/{uuid}'):
+        if os.path.isfile(f'web/post/{uuid}/{file}'):
+            return send_file(f'web/post/{uuid}/{file}')
+        else:
+            return abort(404, 'File not found')
+    else:
+        return abort(404, 'Post files not found')
 
 
 @app.route('/blog')

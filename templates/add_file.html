@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block title %}Create Post{% endblock %}
+{% block head %}
+{% endblock %}
+{% block content %}
+Post uuid: {{ post_uuid }}
+<form action="/post/{{ post_uuid }}/add_file" method="POST" id="send" enctype="multipart/form-data">
+    <input name="file" id="file" type="file">
+    <input type="submit" value="Create">
+</form>
+{% endblock %}
