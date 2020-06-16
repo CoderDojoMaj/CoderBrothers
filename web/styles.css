@@ -1,107 +1,86 @@
 .header{
-width: 100vw;
-height: 10vh;
-background-color: #101010;
-display: flex;
-flex-wrap: wrap;
-}
-
-.inerHeader{
+  width: 100vw;
+  height: 10vh;
+  background-color: #101010;
   display: flex;
-  flex-direction: row; 
-  justify-content: center;
-}
-
-#logo{
-  height: 8vh;
-  background-color: #101010;
-  padding-top: 1vh;
-}
-
-#menu{
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  overflow-x: hidden;
-  padding-top: 1vh;
-  padding-left: 1vh;
-  transition: 0.5s;
-  background-color: #101010;
-  display: none;
-  flex-direction: column;
-}
-
-.enlace{
-  text-decoration: none;
-  color: white;
-  padding: 2vmax;
-  padding-bottom: 3vmax;
-  font-size: 3vh;
-}
-
-/* CSS for the colse menu button*/
-.bar1 {
-  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-  transform: rotate(-45deg) translate(-9px, 6px);
-}
-
-.bar2{
-  opacity: 0;
-}
-
-.bar3 {
-  -webkit-transform: rotate(45deg) translate(-8px, -8px);
-  transform: rotate(45deg) translate(-8px, -8px);
-} 
-/* end of CSS for the colse menu button*/
-
-/* CSS for the menu butoon*/
-.nav div{
-  width: 35px;
-  height: 5px;
-  margin: 6px 0;
-  background-color: #fff;
-  margin: 5px 0;
-  border-radius: 24px;
-  transition: .3s;
-}
-
-.nav{
-  display: block;
-  cursor: pointer;
-  padding: 2vh;
-  padding-top: 2vh;
-  padding-left: 3vw;
-  width: 10vw;
-}
-/*End of the CSS for the menu butoon*/
-
-#test{
-  height: 10000px;
-}
-
-@media screen and (min-width: 740px){ /*New CSS for screens larger than 740px. iPads*/
-  /* CSS for the menu butoon*/
-.nav div{
-  width: vw;
-  height: 0.5vh;
-  margin: 6px 0;
-  background-color: #fff;
-  margin: 5px 0;
-  border-radius: 24px;
-  transition: .3s;
-}
-
-.nav{
-  display: block;
-  cursor: pointer;
-  padding: 2vh;
-  padding-top: 2vh;
-  padding-left: 3vw;
-  width: 10vw;
-}
-/*End of the CSS for the menu butoon*/
-}
+  flex-wrap: wrap;
+  }
+  
+  .inerHeader{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  #logo{
+    height: 8vh;
+    background-color: #101010;
+    padding-top: 1vh;
+  }
+  
+  #menu{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 1vh;
+    padding-left: 1vh;
+    transition: 0.5s;
+    background-color: #101010;
+    display: none;
+    flex-direction: column;
+  }
+  
+  .enlace{
+    text-decoration: none;
+    color: white;
+    padding: 2vmax;
+    padding-bottom: 3vmax;
+    font-size: 3vh;
+  }
+  
+  .openMenu{
+    font-size: 5vmax;
+    background-color: #101010;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 2vh;
+    padding-top: 2vh;
+    padding-left: 3vw;
+    width: 15vw;
+  }
+  
+  .otherMenu{
+    display: none;
+  }
+  
+  @media screen and (min-width: 1000px){ /*New CSS for screens larger than 1000px. Desktop screens*/
+    .openMenu{
+      display: none;
+    }
+    
+    .otherMenu{
+      height: 10vh;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+  
+    #logo{
+      height: 9vh;
+      background-color: #101010;
+      padding-top: 0.5vh;
+      padding-left: 25vh;
+    }
+  
+    .inerHeader{
+      display: flex;
+      flex-direction: row; 
+      width: 100%;
+    }
+  }
