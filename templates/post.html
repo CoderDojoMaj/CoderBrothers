@@ -5,6 +5,7 @@
         {% set vote = comment.vote %}
         <div class="comment"><img src="/u/{{ comment.useruuid }}/img"> {{ comment.username }}: {{ comment.content }}</div>
         <div class="comment_bottom"> {{ comment.points }} 
+            {% if session.get('user') %}
             <form class="form-upvote vote" action="/post/{{ post_uuid }}/vote/{{ comment.uuid }}" method="post">
                 <input type="hidden" name="vote" value="UPVOTE">
                 <button class="upvote{% if vote == 'UPVOTE' %} selected{% endif %}" type="submit">▲</button>
@@ -13,6 +14,9 @@
                 <input type="hidden" name="vote" value="DOWNVOTE">
                 <button class="downvote{% if vote == 'DOWNVOTE' %} selected{% endif %}" type="submit">▼</button>
             </form><span>{{ comment.timestamp }}</span> <button class="replybutton" uuid="{{ comment.uuid }}">Reply</button>
+            {% else %}
+            [Log in to vote]
+            {% endif %}
         </div>
         {% if session.get('user') %}
             <form action="/post/{{ post_uuid }}/reply/{{ comment.uuid }}" method="post" class="replyform uuid-{{ comment.uuid }} hidden"><input type="text" name="content"></form>
