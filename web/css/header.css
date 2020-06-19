@@ -1,22 +1,88 @@
 .header {
-    background: #478390;
-    padding: min(1vw, 13.3px);
-    position: sticky;
+	width           : 100vw;
+	height          : 10vh;
+	background-color: #101010;
+	display         : flex;
+	flex-wrap       : wrap;
 }
 
-.header #logo {
-    max-height: 80px;
-    height: min(6vw, 40px);
+.inerHeader {
+	display       : flex;
+	flex-direction: row;
 }
 
-.header div,.header img {
-    display: inline-block;
+#logo {
+	height          : 8vh;
+	background-color: #101010;
+	padding-top     : 1vh;
 }
 
-.header .links a {
-    color: white;
-    font-weight: bold;
-    font-size: min(3vw, 30px);
-    text-decoration: none;
-    margin: 0 min(1.125vw, 15px);
+#menu {
+	height          : 100%;
+	width           : 0;
+	position        : fixed;
+	z-index         : 1;
+	top             : 0;
+	left            : 0;
+	overflow-x      : hidden;
+	padding-top     : 1vh;
+	padding-left    : 1vh;
+	transition      : 0.5s;
+	background-color: #101010;
+	display         : none;
+	flex-direction  : column;
+}
+
+.enlace {
+	text-decoration: none;
+	color          : white;
+	padding        : 2vmax;
+	padding-bottom : 3vmax;
+	font-size      : 3vh;
+}
+
+.openMenu {
+	font-size       : 5vmax;
+	background-color: #101010;
+	color           : #fff;
+	border          : none;
+	cursor          : pointer;
+	font-weight     : bold;
+	padding         : 2vh;
+	padding-top     : 2vh;
+	padding-left    : 3vw;
+	width           : 15vw;
+}
+
+.otherMenu {
+	display: none;
+}
+
+@media screen and (min-width: 1000px) {
+
+	/*New CSS for screens larger than 1000px. Desktop screens*/
+	.openMenu {
+		display: none;
+	}
+
+	.otherMenu {
+		height         : 10vh;
+		width          : 100%;
+		display        : flex;
+		flex-wrap      : wrap;
+		justify-content: flex-end;
+	}
+
+	#logo {
+		height          : 9vh;
+		background-color: #101010;
+		padding-top     : 0.5vh;
+		padding-left    : 25vh;
+	}
+
+	.inerHeader {
+		display       : flex;
+		flex-direction: row;
+		width         : 100%;
+	}
 }

@@ -1,10 +1,25 @@
-<img src="/img/logo.svg" id="logo" alt="">
-<div class="links">
-    <a href="/#inicio" id="inicio">Inicio</a>
-    <a href="/#conocenos" id="conocenos">Conocenos</a>
-    <a href="/#contacto" id="contacto">Contacto</a>
-    {% if session.get('user') %}
-    <a id="user">{{ session.get('user')[2] }}</a>
-    <!--<img src="/u/{{ session.get('user')[1] }}/img">-->
-    {% endif %}
+<script src="js/index.js"></script>
+<div class="header">
+	<div class="inerHeader">
+		<button class="openMenu" onclick="_open()">
+			≡
+		</button>
+		<div><img src="img/logo.svg" id="logo"></div>
+		<div class="otherMenu">
+			<a class="enlace" href="#">Qué es Coderdojo</a>
+			<a class="enlace" href="#">Qué hacemos</a>
+			<a class="enlace" href="#">Dónde estamos</a>
+		</div>
+	</div>
+</div>
+
+
+<div id="menu">
+	<button class="openMenu" onclick="_close()">
+		⨯
+	</button>
+
+	<a class="enlace" href="#">¿Qué es Coderdojo?</a>
+	<a class="enlace" href="#">¿Qué hacemos?</a>
+	<a class="enlace" href="#">¿Dónde estamos?</a>
 </div>

@@ -193,7 +193,11 @@ def u_img(uuid):
     response = send_file(io.BytesIO(bytes(img)), mimetype='image/png')
     return response
 
-@app.route('/', defaults={'page': 'index.html'})
+@app.route('/')
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
 @app.route('/<path:page>')
 def page(page):
     logger.info(f'Loading {page}')
