@@ -7,14 +7,14 @@
 }
 
 .inerHeader {
+	justify-self: center;
 	display       : flex;
 	flex-direction: row;
 }
 
 #logo {
-	height          : 8vh;
-	background-color: #101010;
-	padding-top     : 1vh;
+	height: 80%;
+	padding-top: 1vh;
 }
 
 #menu {
@@ -36,8 +36,6 @@
 .enlace {
 	text-decoration: none;
 	color          : white;
-	padding        : 2vmax;
-	padding-bottom : 3vmax;
 	font-size      : 3vh;
 }
 
@@ -58,26 +56,29 @@
 	display: none;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1000px) {  		/*New CSS for screens larger than 1000px. Desktop screens*/
+	.header{
+		max-height: 150px;
+	}
 
-	/*New CSS for screens larger than 1000px. Desktop screens*/
+	.enlace{
+		width: 100%;
+
+	}
+
+	
 	.openMenu {
 		display: none;
 	}
 
 	.otherMenu {
+		max-width: 1280px;
 		height         : 10vh;
 		width          : 100%;
+		flex: 2;
 		display        : flex;
 		flex-wrap      : wrap;
 		justify-content: flex-end;
-	}
-
-	#logo {
-		height          : 9vh;
-		background-color: #101010;
-		padding-top     : 0.5vh;
-		padding-left    : 25vh;
 	}
 
 	.inerHeader {
