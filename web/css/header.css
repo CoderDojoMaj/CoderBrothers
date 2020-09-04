@@ -1,20 +1,25 @@
 .header {
-	width           : 100vw;
-	height          : 10vh;
+	width           : 100%;
+	height          : 7vh;
 	background-color: #101010;
-	display         : flex;
-	flex-wrap       : wrap;
 }
 
-.inerHeader {
-	justify-self: center;
-	display       : flex;
-	flex-direction: row;
+.innerHeader {
+	height: 100%;
+	display: flex;
+	align-items: center;
 }
 
-#logo {
-	height: 80%;
-	padding-top: 1vh;
+#logo{
+	height: 6vh;
+}
+
+.enlace {
+	padding-bottom: 5vh;
+	padding-left: 1vw;
+	text-decoration: none;
+	color          : white;
+	font-size      : 4vh;
 }
 
 #menu {
@@ -23,32 +28,20 @@
 	position        : fixed;
 	z-index         : 1;
 	top             : 0;
-	left            : 0;
 	overflow-x      : hidden;
-	padding-top     : 1vh;
-	padding-left    : 1vh;
 	transition      : 0.5s;
 	background-color: #101010;
 	display         : none;
 	flex-direction  : column;
 }
 
-.enlace {
-	text-decoration: none;
-	color          : white;
-	font-size      : 3vh;
-}
-
 .openMenu {
-	font-size       : 5vmax;
+	font-size       : 6vmax;
 	background-color: #101010;
 	color           : #fff;
 	border          : none;
 	cursor          : pointer;
 	font-weight     : bold;
-	padding         : 2vh;
-	padding-top     : 2vh;
-	padding-left    : 3vw;
 	width           : 15vw;
 }
 
@@ -58,12 +51,10 @@
 
 @media screen and (min-width: 1000px) {  		/*New CSS for screens larger than 1000px. Desktop screens*/
 	.header{
-		max-height: 150px;
+		height: 22vh;
 	}
-
+	
 	.enlace{
-		width: 100%;
-
 	}
 
 	
@@ -71,6 +62,12 @@
 		display: none;
 	}
 
+	#divLogo{
+		margin-left: 5vw;
+		height: 5vh;
+		margin-top:5vw;
+		
+	}
 	.otherMenu {
 		max-width: 1280px;
 		height         : 10vh;
@@ -81,9 +78,6 @@
 		justify-content: flex-end;
 	}
 
-	.inerHeader {
-		display       : flex;
-		flex-direction: row;
-		width         : 100%;
+	.innerHeader {
 	}
 }

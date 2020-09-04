@@ -1,36 +1,17 @@
-/*.container {
-    position: relative;
-}
-
-.center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 18px;
-}
-
-img { 
-    width: 100%;
-    height: auto;
-    opacity: 0.3;
-
-/*codigo nuevo*/
-body, html {
-    height: 100%;
-    margin: 0;
-    font: 400 15px/1.8 "Lato", sans-serif;
-    color:#777;
+  #quickfix{
+    display: none;
   }
+  #quickfix2{
+    display: inline;
+  }
+  
   .Quienes, .QueEs, .Contacto {
     position: relative;
-    opacity: 0.65;
+    opacity: 0.9;
     background-attachment: fixed;
-    background-position: center;
+    background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    
-  
   }
 
   .caption {
@@ -45,15 +26,23 @@ body, html {
     background-color: #111;
     color: #fff;
     padding: 18px;
-    font-size: 25px;
+    font-size: 3vh;
     letter-spacing: 10px;
   }
   h3 {
     letter-spacing: 5px;
     text-transform: uppercase;
     font: 20px "Lato", sans-serif;
-    color: #111;
-  @media only screen and (max-device-width: 1024px) {
+    color: #111;}
+  @media only screen and (max-device-width: 1024px) { /*Adaptado para movil*/
+    #quickfix2{
+      display:none;{
+        
+      }
+    }
+    #quickfix{ 
+      display:-webkit-inline-flex;
+    }
     .Quienes, .QueEs, .Contacto {
       background-attachment: scroll;
-    }}}
+    }}
