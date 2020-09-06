@@ -14,7 +14,7 @@
 	height: 6vh;
 }
 
-.enlace {
+.enlaceMovil {
 	padding-bottom: 5vh;
 	padding-left: 1vw;
 	text-decoration: none;
@@ -45,39 +45,36 @@
 	width           : 15vw;
 }
 
-.otherMenu {
-	display: none;
-}
+.otherMenu {display: none;}
 
 @media screen and (min-width: 1000px) {  		/*New CSS for screens larger than 1000px. Desktop screens*/
 	.header{
-		height: 22vh;
 	}
 	
 	.enlace{
-	}
-
-	
-	.openMenu {
-		display: none;
+		padding-bottom: none;
+		text-decoration: none;
+		color          : white;
+		font-size      : 4vh;
 	}
 
 	#divLogo{
-		margin-left: 5vw;
-		height: 5vh;
-		margin-top:5vw;
-		
+		width: 25%;
+		padding-left: 2vw;
 	}
+
 	.otherMenu {
-		max-width: 1280px;
-		height         : 10vh;
-		width          : 100%;
-		flex: 2;
-		display        : flex;
-		flex-wrap      : wrap;
-		justify-content: flex-end;
+		display: flex;
+		justify-content: space-between;
+		align-self: center;
+		justify-self: flex-end;
+		width: 70%;
+		flex-wrap: wrap;
 	}
 
 	.innerHeader {
+		
 	}
+
+	.openMenu {display: none;}
 }

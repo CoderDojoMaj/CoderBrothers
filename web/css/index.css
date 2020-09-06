@@ -34,7 +34,7 @@
     text-transform: uppercase;
     font: 20px "Lato", sans-serif;
     color: #111;}
-  @media only screen and (max-device-width: 1024px) { /*Adaptado para movil*/
+  @media only screen and (max-device-width: 1000px) { /*Adaptado para movil*/
     #quickfix2{
       display:none;{
         
