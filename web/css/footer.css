@@ -7,7 +7,3 @@
     bottom    : 0;
     width     : 100%;
 }
-
-@media (max-height: 800px){
-    .footer { position: fixed; }
-}

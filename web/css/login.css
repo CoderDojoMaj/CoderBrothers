@@ -1,0 +1,8 @@
+.main{
+    flex-direction: column;
+    align-content: center;
+}
+
+#formulario{
+    border-style: solid;
+}
