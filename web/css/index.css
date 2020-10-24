@@ -1,7 +1,7 @@
 .fotos {
 
   height: 376px; 
-  max-height: 376px;"
+  max-height: 376px;
   width: 100%;
   position: relative;
   opacity: 0.9;
@@ -13,26 +13,27 @@
 
 #dojoHeader{
   width: 75%;
+  display: flex;
   justify-self: center;
   align-self: center;
 }
 
 .caption {
-  position: absolute;
+  position:relative;
   left: 0;
-  top: 0%;
+  top: 20%;
   width: 100%;
   text-align: center;
   color: #000;
 }
 
-/*.caption span.border {
+.caption span.border {
   background-color: #111;
   color: #fff;
   padding: 18px;
   font-size: 3vh;
   letter-spacing: 10px;
-}*/
+}
 
 h3 {
   letter-spacing: 5px;
@@ -43,6 +44,9 @@ h3 {
 
   #quickfix2{display:none;}
   #quickfix{display:-webkit-inline-flex;}
+
+
+
 @media only screen and (min-device-width: 1000px) { /*Adaptado para movil*/
 
   .Quienes, .QueEs, .Contacto {

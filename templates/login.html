@@ -1,32 +1,26 @@
 {% extends "layout.html" %}
+{% block header %}{% endblock %}
 {% block title %}LogIn{% endblock %}
-{% block head %}
-<link rel="stylesheet" href="/css/login.css">
-{% endblock %}
 {% block content %}
-<!--Temporal login-->
-<!--<div id="main">
-    <div class="container"> <label for="username"><b>Usuario</b></label><input type="text" placeholder="Nombre de usuario:"name="username" required>
-    </div>
-    <div class="container"> <label for="password"><b>Contraseña</b></label><input type="password" placeholder="Contraseña:"name="password" required>
-    </div>
-    <button type="submit">Login</button>
-</div>-->
+
+<link rel="stylesheet" href="/css/login.css">
+<head></head>
+
 
 <div class="main">
-    <img src="/img/CoderDojoLogo.svg" id="logo" alt="Logo">
+    
     <p id="title">LogIn a CoderDojo Majadahonda</p>
     <div id="formulario">
-        <p class="etiqueta">Nombre de Usuarío*</p>
+        <p class="etiqueta">Nombre de Usuario</p>
         <input type="text" placeholder=""name="username" required>
-        <p class="etiqueta">Contraseña*</p>
+        <p class="etiqueta">Contraseña</p>
         </label><input type="password" placeholder=""name="password" required>
     </div>
-    <p id="abajo">No tienes una cuenta? <a href="#">Crear una cuenta</a></p>
+    <p id="abajo">No tienes una cuenta? <a href="/signup">Créate una!</a></p>
 </div>
 
 
-
+{% endblock %}
 <!--<form action="/login" method="POST">
     <input name="username" id="username" type="text">
     <input name="password" id="password" type="password">
@@ -35,4 +29,3 @@
 {% if error %}
 <a id="error">{{ error }}</a>
 {% endif %}-->
-{% endblock %} 

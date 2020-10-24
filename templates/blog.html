@@ -1,7 +1,13 @@
 {% extends "layout.html" %}
 {% block title %}Blog{% endblock %}
 {% block head %}
+<script src="/js/blog.js"></script>
 <link rel="stylesheet" href="/css/blog.css">
+{% endblock %}
+{% block header %}
+<div class="BlogHeader">
+    {% include 'BlogHeader.html' %}
+</div>
 {% endblock %}
 {% block content %}
 <div class="posts">
@@ -17,4 +23,46 @@
     </div>
     {% endfor %}
 </div>
+<!--<button onclick="on()">LogIn</button>
+<div id="overlay" onclick="off()">
+    <div style="backgrouncolor="grey";" id="text"><p id="title">LogIn a CoderDojo Majadahonda</p>
+        <div id="formulario">
+            <p class="etiqueta">Nombre de Usuario</p>
+            <input type="text" placeholder=""name="username" required>
+            <p class="etiqueta">Contraseña</p>
+            </label><input type="password" placeholder=""name="password" required>
+        </div>
+        <p id="abajo">No tienes una cuenta? <a href="/signup">Créate una!</a></p></div>
+  </div>-->
+<div class="formularios" id="logIn" OnLogIn="offLogin()">
+  <div id="text">
+    <div id="formulario">
+    <p class="etiqueta">Nombre de Usuario</p>
+    <input type="text" placeholder=""name="username" required>
+    <p class="etiqueta">Contraseña</p>
+    </label><input type="password" placeholder=""name="password" required>
+    </div>
+    <p id="abajo">No tienes una cuenta? <a href="/signup">Créate una!</a></p>
+  </div>
+</div>
+
+<div class="formularios" id="signUp" OnSignIn="offSignIn()">
+    <div id="text">
+        <p id="title">LogIn a CoderDojo Majadahonda</p>
+        <div id="formulario">
+            <p class="etiqueta">Nombre de Usuario</p>
+            <input name="username" id="username" type="text">
+            
+            <p class="etiqueta">Contraseña</p>
+            </label><input name="password" id="password" type="password">
+    
+            <p class="etiqueta">Repetir Contraseña</p>
+            </label><input name="RpPassword" id="RpPassword" type="password">
+        </div>
+        <input type="submit" value="Sign Up">
+    </div>
+  </div>
+  
+
+
 {% endblock %}

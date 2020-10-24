@@ -13,9 +13,12 @@
 </head>
 
 <body>
+    {% block header %}
     <div class="header">
         {% include 'header.html' %}
     </div>
+    {% endblock %}
+    
     <div class="content">
         {% block content %}{% endblock %}
     </div>

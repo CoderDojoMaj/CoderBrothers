@@ -1,14 +1,34 @@
 {% extends "layout.html" %}
-{% block title %}Create Post{% endblock %}
+{% block title %}Sign Up{% endblock %}
 {% block head %}
 {% endblock %}
 {% block content %}
 <!--Temporal login-->
-<form action="/signup" method="POST">
-    <input name="username" id="username" type="text">
-    <input name="password" id="password" type="password">
+
+<!--<form action="/signup" method="POST">
+    
+    
+    
+
+    
+</form>-->
+
+<div class="main">
+    
+    <p id="title">LogIn a CoderDojo Majadahonda</p>
+    <div id="formulario">
+        <p class="etiqueta">Nombre de Usuario</p>
+        <input name="username" id="username" type="text">
+        
+        <p class="etiqueta">Contraseña</p>
+        </label><input name="password" id="password" type="password">
+
+        <p class="etiqueta">Repetir Contraseña</p>
+        </label><input name="RpPassword" id="RpPassword" type="password">
+    </div>
     <input type="submit" value="Sign Up">
-</form>
+</div>
+
 {% if error %}
 <a id="error">{{ error }}</a>
 {% endif %}
