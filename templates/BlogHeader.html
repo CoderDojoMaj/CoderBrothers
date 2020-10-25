@@ -7,8 +7,8 @@
 		<div id="divLogo"><a href="/"><img src="img/logo.svg" id="logo"></div></a>
 		<div class="otherMenu">
 			<a class="enlace" href="/blog">Blog</a>
-			<a class="enlace" OnLogIn="onLogin()">Login</a>
-			<a class="enlace" OnSignIn="onSignIn()">Sign up</a>
+			<a class="enlace" onclick="onLogin()">Log In</a>
+			<a class="enlace" onclick="onSignIn()">Sign Up</a>
 			
 		</div>
 	</div>
@@ -16,13 +16,8 @@
 
 
 <div id="menu">
-	<button class="openMenu" onclick="_close()">
-		⨯
-	</button>
-
-	<a class="enlaceMovil" href="/#Quienes">Blog</a>
-	<a class="enlaceMovil" href="/#Que">Login</a>
-	<a class="enlaceMovil" href="/#Contacto">Sign up</a>
-	
-
+	<button class="openMenu" onclick="_close()">⨯</button>
+	<a class="enlaceMovil" href="/blog">Blog</a>
+	<a class="enlaceMovil" onclick="onLogin()">Log In</a>
+	<a class="enlaceMovil" onclick="onSignIn()">Sign Up</a>
 </div>

@@ -23,18 +23,9 @@
     </div>
     {% endfor %}
 </div>
-<!--<button onclick="on()">LogIn</button>
-<div id="overlay" onclick="off()">
-    <div style="backgrouncolor="grey";" id="text"><p id="title">LogIn a CoderDojo Majadahonda</p>
-        <div id="formulario">
-            <p class="etiqueta">Nombre de Usuario</p>
-            <input type="text" placeholder=""name="username" required>
-            <p class="etiqueta">Contraseña</p>
-            </label><input type="password" placeholder=""name="password" required>
-        </div>
-        <p id="abajo">No tienes una cuenta? <a href="/signup">Créate una!</a></p></div>
-  </div>-->
-<div class="formularios" id="logIn" OnLogIn="offLogin()">
+
+<!--Codigo para los bottones menus de LogIn y Sign Up-->
+<div class="formularios" id="logIn" onclick="offLogin()">
   <div id="text">
     <div id="formulario">
     <p class="etiqueta">Nombre de Usuario</p>
@@ -46,7 +37,7 @@
   </div>
 </div>
 
-<div class="formularios" id="signUp" OnSignIn="offSignIn()">
+<div class="formularios" id="signUp" onclick="offSignIn()">
     <div id="text">
         <p id="title">LogIn a CoderDojo Majadahonda</p>
         <div id="formulario">
