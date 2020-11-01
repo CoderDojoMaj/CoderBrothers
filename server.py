@@ -217,4 +217,4 @@ def utility_functions():
     return dict(console=printconsole)
 
 if __name__ == "__main__":
-    app.run(host='localhost', port=8080, debug=True) #Quitar el modo debug cuando en producción
+    app.run(host='localhost', port=8080) #Quitar el modo debug cuando en producción
