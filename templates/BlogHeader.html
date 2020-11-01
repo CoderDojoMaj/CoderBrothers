@@ -4,12 +4,17 @@
 		<button class="openMenu" onclick="_open()">
 			≡
 		</button>
-		<div id="divLogo"><a href="/"><img src="img/logo.svg" id="logo"></div></a>
+		<div id="divLogo"><a href="/"><img src="/img/logo.svg" id="logo"></div></a>
 		<div class="otherMenu">
 			<a class="enlace" href="/blog">Blog</a>
+			{% if session.get('user') %}
+			<a class="enlace">{{ session.get('user')[2] }}</a>
+			<img src="/u/{{ session.get('user')[1] }}/img" style="max-height: 3vh;">
+			<a class="enlace" href="/logout">Log out</a>
+			{% else %}
 			<a class="enlace" style="cursor: pointer;" onclick="onLogIn()">Log In</a>
 			<a class="enlace" style="cursor: pointer;" onclick="onSignUp()">Sign Up</a>
-			
+			{% endif %}
 		</div>
 	</div>
 </div>

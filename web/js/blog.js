@@ -26,9 +26,9 @@ function check() {
     let message=document.getElementById('message');
     if (pass.value == confpass.value) {
         message.style.color = 'green';
-        message.innerHTML = 'matching';
+        message.innerText = 'matching';
     } else {
         message.style.color = 'red';
-        message.innerHTML = 'not matching';
+        message.innerText = 'not matching';
     }
 }

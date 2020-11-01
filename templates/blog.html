@@ -27,7 +27,7 @@
 <!--Codigo para los bottones menus de LogIn y Sign Up-->
 
 <!--LogIn-->
-<div id="logIn" class="modal" onclick="offLogIn(event,this)">
+<div id="logIn" class="modal" onclick="offLogIn(event,this)" {% if login_error %}style="display: block"{% endif %}>
   <form action="/login" method="POST">
     <div class="modal-content animate">
       <div class="headForm">
@@ -35,7 +35,7 @@
         <img src="/img/CoderDojoLogo.svg" alt="logo" class="avatar">
         <h1 id="formTitle">Inicia sesión en CoderDojo Majadahonda</h1>
       </div>
-
+      {% if login_error %}<span>{{ login_error }}</span>{% endif %}
       <div class="container">
         <label for="uname"><b>Nombre de usuario</b></label>
         <input type="text" placeholder="Escribe tu nombre de usuario" name="username" required>
@@ -53,7 +53,7 @@
 </div>
 
 <!--SignUp-->
-<div id="signUp" class="modal" onclick="offSignUp(event,this)">
+<div id="signUp" class="modal" onclick="offSignUp(event,this)" {% if signup_error %}style="display: block"{% endif %}>
   <form action="/signup" method="POST">
     <div class="modal-content animate">
       <div class="headForm">
@@ -61,9 +61,9 @@
         <img src="/img/CoderDojoLogo.svg" alt="logo" class="avatar">
         <h1 id="formTitle">Crea una cuenta en CoderDojo Majadahonda</h1>
       </div>
-
+      {% if signup_error %}<span>{{ signup_error }}</span>{% endif %}
       <div class="container">
-        <label for="uname"><b>Numbre de usuario</b></label>
+        <label for="uname"><b>Nombre de usuario</b></label>
         <input type="text" placeholder="Escribe un nobre de usuario" name="username" required>
 
         <label for="psw"><b>Contraseña</b></label>

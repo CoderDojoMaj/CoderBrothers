@@ -152,11 +152,11 @@ def login():
                 session['user'] = (getDB().addSession(user_uuid), user_uuid, getDB().getUserFromUUID(user_uuid)[0])
                 return redirect('/blog')
             else:
-                return render_template('login.html', error='Invalid credentials')
+                return render_template('blog.html', posts=b.get_posts(), login_error='Invalid credentials')
         except UserNotFoundError:
-            return render_template('login.html', error='User not found')
+            return render_template('blog.html', posts=b.get_posts(), login_error='User not found')
     else:
-        return render_template('login.html')
+        return redirect('/blog')
 
 @app.route('/signup', methods = ['GET', 'POST'])
 def signup():
@@ -167,15 +167,15 @@ def signup():
             session['user'] = (getDB().addSession(user_uuid), user_uuid, getDB().getUserFromUUID(user_uuid)[0])
             return redirect('/blog')
         except UserDuplicateError:
-            return render_template('signup.html', error='Username not available')
+            return render_template('blog.html', posts=b.get_posts(), signup_error='Username not available')
     else:
-        return render_template('signup.html')
+        return redirect('/blog')
 
 @app.route('/logout')
 def logout():
     getDB().deleteSession(session['user'][0])
     session['user'] = None
-    return 'Done'
+    return redirect('/blog')
 
 @app.route('/img')
 def img():
