@@ -1,9 +1,8 @@
 .footer {
-    background: lightgrey;
-    padding   : 10px 0;
-    text-align: center;
-    position  : static;
-    right     : 0;
-    bottom    : 0;
-    width     : 100%;
-}
+  background: lightgrey;
+  padding: 10px 0;
+  text-align: center;
+  position: static;
+  right: 0;
+  bottom: 0;
+  width: 100%; }
