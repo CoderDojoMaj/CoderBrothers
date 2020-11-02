@@ -8,7 +8,7 @@ try:
     from python import blog as b
     from python import logger as liblogger
     from python import crypto
-    from python import scss
+    from python import scsscompiler
     from python.db import PostNotFoundError, getDB, UserNotFoundError, UserDuplicateError
     from python.setup import setup, get_config, get_pub_key, get_priv_key
     from python.decorators import login_required
@@ -201,7 +201,7 @@ def index():
 
 @app.route('/css/<path:file>')
 def css(file):
-    scss.compile(file)
+    scsscompiler.compile(file)
     logger.info(f'Loading css {file}')
     return send_from_directory('web/css/', file)
 
