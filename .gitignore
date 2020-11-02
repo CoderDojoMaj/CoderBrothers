@@ -154,3 +154,4 @@ config.json
 certificates/*
 .vscode
 web/post/*
+web/css/*
