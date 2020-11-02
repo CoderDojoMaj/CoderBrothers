@@ -60,7 +60,7 @@ input[type=text], input[type=password] {
 
                     .close {
                       position: absolute;
-                      right: 25px;
+                      right: 20px;
                       top: 0;
                       color: #000;
                       font-size: 35px;
