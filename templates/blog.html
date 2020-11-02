@@ -24,11 +24,11 @@
   {% endfor %}
 </div>
 
-<!--Codigo para los bottones menus de LogIn y Sign Up-->
+<!--Codigo para los botones menus de LogIn y Sign Up-->
 
 <!--LogIn-->
-<div id="logIn" class="modal" onclick="offLogIn(event,this)" {% if login_error %}style="display: block"{% endif %}>
-  <form action="/login" method="POST">
+<div id="logIn" class="modal" onclick="offLogIn(event,this)" {% if login_error %}style="display: block" {% endif %}>
+  <form class="popups" action="/login" method="POST">
     <div class="modal-content animate">
       <div class="headForm">
         <span onclick="offLogIn(event,this)" class="close" title="Close Modal">&times;</span>
@@ -53,8 +53,8 @@
 </div>
 
 <!--SignUp-->
-<div id="signUp" class="modal" onclick="offSignUp(event,this)" {% if signup_error %}style="display: block"{% endif %}>
-  <form action="/signup" method="POST">
+<div id="signUp" class="modal" onclick="offSignUp(event,this)" {% if signup_error %}style="display: block" {% endif %}>
+  <form class="popups" action="/signup" method="POST">
     <div class="modal-content animate">
       <div class="headForm">
         <span onclick="offSignUp(event,this)" class="close" title="Close Modal">&times;</span>
@@ -73,7 +73,8 @@
         <input id="rp" type="password" placeholder="Repite tu contraseña" onkeyup="check();" required>
 
         <button id="formButton" type="submit">Login</button>
-        <span class="psw">No tienes una cuenta?<a style="color: blue;text-decoration: underline"onclick="offSignUp();onLogIn()">Créate una!</a></span>
+        <span class="psw">Ya tienes cuenta? <a style="color: blue;text-decoration: underline"
+            onclick="offSignUp();onLogIn()">Inicia sesión!</a></span>
         <span id='message'></span>
       </div>
     </div>

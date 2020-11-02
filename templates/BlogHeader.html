@@ -23,6 +23,12 @@
 <div id="menu">
 	<button class="openMenu" onclick="_close()">⨯</button>
 	<a class="enlaceMovil" href="/blog">Blog</a>
-	<a class="enlaceMovil" onclick="onLogin()">Log In</a>
-	<a class="enlaceMovil" onclick="onSignIn()">Sign Up</a>
+	{% if session.get('user') %}
+	<a class="enlace">{{ session.get('user')[2] }}</a>
+	<img src="/u/{{ session.get('user')[1] }}/img" style="max-height: 3vh;">
+	<a class="enlace" href="/logout">Log out</a>
+	{% else %}
+	<a class="enlaceMovil" style="cursor: pointer;" onclick="onLogIn()">Log In</a>
+	<a class="enlaceMovil" style="cursor: pointer;" onclick="onSignUp()">Sign Up</a>
+	{% endif %}
 </div>
