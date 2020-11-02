@@ -45,7 +45,7 @@
 
         <button id="formButton" type="submit">Login</button>
         <span class="psw">No tienes una cuenta?
-          <a style="color: blue;text-decoration: underline" onclick="offLogIn();onSignUp()">Créate una!</a>
+          <a style="color: blue;text-decoration: underline" onclick="offLogIn(event,this);onSignUp()">Créate una!</a>
         </span>
       </div>
     </div>
@@ -73,8 +73,9 @@
         <input id="rp" type="password" placeholder="Repite tu contraseña" onkeyup="check();" required>
 
         <button id="formButton" type="submit">Login</button>
-        <span class="psw">Ya tienes cuenta? <a style="color: blue;text-decoration: underline"
-            onclick="offSignUp();onLogIn()">Inicia sesión!</a></span>
+        <span class="psw">Ya tienes cuenta? 
+          <a style="color: blue;text-decoration: underline"onclick="offSignUp(event,this);onLogIn()">Inicia sesión!</a>
+        </span>
         <span id='message'></span>
       </div>
     </div>

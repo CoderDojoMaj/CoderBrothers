@@ -1,9 +1,9 @@
 function onLogIn() {
-    document.getElementById("logIn").style.display = "block";
+    document.getElementById("logIn").style.display = "flex";
 }
 
 function onSignUp() {
-    document.getElementById("signUp").style.display = "block";
+    document.getElementById("signUp").style.display = "flex";
 }
 
 function offLogIn(event, cliked) {
