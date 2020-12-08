@@ -2,19 +2,20 @@
 {% block title %}404{% endblock %}
 {% block content %}
 <style>
-    p {
-        margin: 20px;
-    }
-    .content  {
-        margin: 20px;
-    }
+	p {
+		margin: 20px;
+	}
+
+	.content {
+		margin: 20px;
+	}
 </style>
-    <p>404 - Page not found</p>
-    <img id="image" src="/img/harold.jpg">
-    <script>
-        setTimeout(()=>{
-            document.getElementById('image').src = '/img/rickroll.webp'
-        },2*1000)
-        
-    </script>
+<p>404 - Page not found</p>
+<img id="image" src="/img/harold.jpg">
+<script>
+	setTimeout(() => {
+		document.getElementById('image').src = '/img/rickroll.webp'
+	}, 2 * 1000)
+
+</script>
 {% endblock %}

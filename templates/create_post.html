@@ -6,17 +6,17 @@
 {% endblock %}
 {% block header %}
 <div class="BlogHeader">
-  {% include 'BlogHeader.html' %}
+	{% include 'BlogHeader.html' %}
 </div>
 {% endblock %}
 {% block content %}
 <h4>Autor: <b>{{ session.get('user')[2] }}</b></h4>
 <form action="/create_post" method="POST">
-    <div id="titlediv" >
-    <label for="title"><b>Título</b></label>
-    <input name="title" id="title" type="text"></div>
-    <div id="contentdiv">
-    <textarea name="content" id="content">Escribe aquí tu texto</textarea>
-    <input type="submit" value="Create"></div>
+	<div id="titlediv">
+		<label for="title"><b>Título</b></label>
+		<input name="title" id="title" type="text"></div>
+	<div id="contentdiv">
+		<textarea name="content" id="content">Escribe aquí tu texto</textarea>
+		<input type="submit" value="Create"></div>
 </form>
 {% endblock %}

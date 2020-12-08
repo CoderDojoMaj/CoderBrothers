@@ -5,7 +5,7 @@
 {% block content %}
 Post uuid: {{ post_uuid }}
 <form action="/post/{{ post_uuid }}/add_file" method="POST" id="send" enctype="multipart/form-data">
-    <input name="file" id="file" type="file">
-    <input type="submit" value="Create">
+	<input name="file" id="file" type="file">
+	<input type="submit" value="Create">
 </form>
 {% endblock %}

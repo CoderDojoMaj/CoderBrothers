@@ -1,129 +1,129 @@
 /* Full-width input fields */
 input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
 }
 
 /* Set a style for all buttons */
 #formButton {
-  background-color: #101010;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  border-bottom: grey 5px outset;
-  border-right:  grey 5px outset;
+	background-color: #101010;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	border-bottom: grey 5px outset;
+	border-right:  grey 5px outset;
 
 }
 
 button:hover {
-  opacity: 0.8;
+	opacity: 0.8;
 }
 
 /* Extra styles for the cancel button */
 .cancelbtn {
-  width: auto;
-  padding: 10px 10px;
-  background-color: #f44336;
+	width: auto;
+	padding: 10px 10px;
+	background-color: #f44336;
 }
 
 /* Center the image and position the close button */
 .formDivs {
-  padding: 2vh;
-  text-align: center;
-  position: relative;
+	padding: 2vh;
+	text-align: center;
+	position: relative;
 }
 
 img.avatar {
-  width: 15vw;
+	width: 15vw;
 }
 
 span.psw {
-  float: right;
+	float: right;
 }
 
 /* The Modal (background) */
 .modal {
-  display: none;
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4);
+	display: none;
+	position: fixed;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0,0,0); 
+	background-color: rgba(0,0,0,0.4);
 }
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
-  border: 2 px solid #888;
-  width: 40vw;
+	background-color: #fefefe;
+	border: 2 px solid #888;
+	width: 40vw;
 }
 
 /* The Close Button (x) */
 .close {
-  position: absolute;
-  right: 20px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
+	position: absolute;
+	right: 20px;
+	top: 0;
+	color: #000;
+	font-size: 35px;
+	font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: red;
-  cursor: pointer;
+	color: red;
+	cursor: pointer;
 }
 
 /* Add Zoom Animation */
 .animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
+	-webkit-animation: animatezoom 0.6s;
+	animation: animatezoom 0.6s
 }
-  
+	
 @keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
+	from {transform: scale(0)} 
+	to {transform: scale(1)}
 }
 
 @keyframes closezoom {
-  from {transform: scale(1)} 
-  to {transform: scale(0)}
+	from {transform: scale(1)} 
+	to {transform: scale(0)}
 }
 //giving form tag same width as the form so it woulden't clip over the sides
 
 .popups{
-  width: 40vw;
+	width: 40vw;
 }
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 700px) {
-  span.psw {
-    display: block;
-    float: none;
-    font-size: medium;
-  }
-  .modal-content {
-    background-color: #fefefe;
-    border: 2 px solid #888;
-    width: 70vw;
-  }
-  img.avatar {
-    width: 45vw;
-  }
-  h1{
-    font-size: 3vh;
-    }
+	span.psw {
+	display: block;
+	float: none;
+	font-size: medium;
+	}
+	.modal-content {
+	background-color: #fefefe;
+	border: 2 px solid #888;
+	width: 70vw;
+	}
+	img.avatar {
+	width: 45vw;
+	}
+	h1{
+	font-size: 3vh;
+	}
 }
