@@ -28,56 +28,52 @@
 
 <!--LogIn-->
 <div id="logIn" class="modal" onclick="offLogIn(event,this)" {% if login_error %}style="display: block" {% endif %}>
-  <form class="popups" action="/login" method="POST">
-    <div class="modal-content animate">
-      <div class="headForm">
-        <span onclick="offLogIn(event,this)" class="close" title="Close Modal">&times;</span>
-        <img src="/img/CoderDojoLogo.svg" alt="logo" class="avatar">
-        <h1 id="formTitle">Inicia sesión en CoderDojo Majadahonda</h1>
-      </div>
-      {% if login_error %}<span>{{ login_error }}</span>{% endif %}
-      <div class="container">
-        <label for="uname"><b>Nombre de usuario</b></label>
-        <input type="text" placeholder="Escribe tu nombre de usuario" name="username" required>
+  <form class="modal-content animate" action="/login" method="POST">
+    <div class="formDivs">
+      <span onclick="offLogIn(event,this)" class="close" title="Close Modal">&times;</span>
+      <img src="/img/CoderDojoLogo.svg" alt="logo" class="avatar">
+      <h1 id="formTitle">Inicia sesión en CoderDojo Majadahonda</h1>
+    </div>
+    {% if login_error %}<span>{{ login_error }}</span>{% endif %}
+    <div class="formDivs">
+      <label for="uname"><b>Nombre de usuario</b></label>
+      <input type="text" placeholder="Escribe tu nombre de usuario" name="username" required>
 
-        <label for="psw"><b>Contraseña</b></label>
-        <input type="password" placeholder="Escribe tu contraseña" name="password" required>
+      <label for="psw"><b>Contraseña</b></label>
+      <input type="password" placeholder="Escribe tu contraseña" name="password" required>
 
-        <button id="formButton" type="submit">Login</button>
-        <span class="psw">No tienes una cuenta?
-          <a style="color: blue;text-decoration: underline" onclick="offLogIn(event,this);onSignUp()">Créate una!</a>
-        </span>
-      </div>
+      <button id="formButton" type="submit">Login</button>
+      <span class="psw">No tienes una cuenta?
+        <a style="color: blue;text-decoration: underline" onclick="offLogIn(event,this);onSignUp()">Créate una!</a>
+      </span>
     </div>
   </form>
 </div>
 
 <!--SignUp-->
 <div id="signUp" class="modal" onclick="offSignUp(event,this)" {% if signup_error %}style="display: block" {% endif %}>
-  <form class="popups" action="/signup" method="POST">
-    <div class="modal-content animate">
-      <div class="headForm">
-        <span onclick="offSignUp(event,this)" class="close" title="Close Modal">&times;</span>
-        <img src="/img/CoderDojoLogo.svg" alt="logo" class="avatar">
-        <h1 id="formTitle">Crea una cuenta en CoderDojo Majadahonda</h1>
-      </div>
-      {% if signup_error %}<span>{{ signup_error }}</span>{% endif %}
-      <div class="container">
-        <label for="uname"><b>Nombre de usuario</b></label>
-        <input type="text" placeholder="Escribe un nobre de usuario" name="username" required>
+  <form class="modal-content animate" action="/signup" method="POST">
+    <div class="formDivs">
+      <span onclick="offSignUp(event,this)" class="close" title="Close Modal">&times;</span>
+      <img src="/img/CoderDojoLogo.svg" alt="logo" class="avatar">
+      <h1 id="formTitle">Crea una cuenta en CoderDojo Majadahonda</h1>
+    </div>
+    {% if signup_error %}<span>{{ signup_error }}</span>{% endif %}
+    <div class="formDivs">
+      <label for="uname"><b>Nombre de usuario</b></label>
+      <input type="text" placeholder="Escribe un nobre de usuario" name="username" required>
 
-        <label for="psw"><b>Contraseña</b></label>
-        <input id="p" type="password" placeholder="Escribe una contraseña" name="password" onkeyup="check();" required>
+      <label for="psw"><b>Contraseña</b></label>
+      <input id="p" type="password" placeholder="Escribe una contraseña" name="password" onkeyup="check();" required>
 
-        <label for="psw"><b>Repetir contraseña</b></label>
-        <input id="rp" type="password" placeholder="Repite tu contraseña" onkeyup="check();" required>
+      <label for="psw"><b>Repetir contraseña</b></label>
+      <input id="rp" type="password" placeholder="Repite tu contraseña" onkeyup="check();" required>
 
-        <button id="formButton" type="submit">Login</button>
-        <span class="psw">Ya tienes cuenta? 
-          <a style="color: blue;text-decoration: underline"onclick="offSignUp(event,this);onLogIn()">Inicia sesión!</a>
-        </span>
-        <span id='message'></span>
-      </div>
+      <button id="formButton" type="submit">Login</button>
+      <span class="psw">Ya tienes cuenta?
+        <a style="color: blue;text-decoration: underline" onclick="offSignUp(event,this);onLogIn()">Inicia sesión!</a>
+      </span>
+      <span id='message'></span>
     </div>
   </form>
 </div>

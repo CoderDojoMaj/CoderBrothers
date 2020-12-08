@@ -34,20 +34,15 @@ button:hover {
 }
 
 /* Center the image and position the close button */
-.headForm {
-  padding-top: 1vh;
+.formDivs {
+  padding: 2vh;
   text-align: center;
   position: relative;
 }
 
 img.avatar {
-  width: 15%;
-
+  width: 15vw;
 }
-
-.container {
-  padding: 2vh;
-} 
 
 span.psw {
   float: right;
@@ -58,6 +53,7 @@ span.psw {
   display: none;
   position: fixed;
   justify-content: center;
+  align-items: center;
   z-index: 1;
   left: 0;
   top: 0;
@@ -66,13 +62,11 @@ span.psw {
   overflow: auto;
   background-color: rgb(0,0,0); 
   background-color: rgba(0,0,0,0.4);
-  padding-top: 60px;
 }
 
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 5% auto 15% auto;
   border: 2 px solid #888;
   width: 40vw;
 }
@@ -115,18 +109,14 @@ span.psw {
 }
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
   span.psw {
     display: block;
     float: none;
     font-size: medium;
   }
-  .cancelbtn {
-    width: 100%;
-  }
   .modal-content {
     background-color: #fefefe;
-    margin: 5% auto 15% auto;
     border: 2 px solid #888;
     width: 70vw;
   }
@@ -136,5 +126,4 @@ span.psw {
   h1{
     font-size: 3vh;
     }
-    
 }
