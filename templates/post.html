@@ -53,7 +53,7 @@
 	<hr>
 	<br>
 	{% if session.get('user') %}
-    <form method="post" action="/post/{{ post_uuid }}/comment">{{ session.get('user')[2] }}: <input type="text" name="content"> <button type="submit">Comentar</button></form> 
+	<form method="post" action="/post/{{ post_uuid }}/comment">{{ session.get('user')[2] }}: <input type="text" name="content"> <button type="submit">Comentar</button></form>
 	{% endif %}
 	<br>
 	{{ comment_section(comments) }}

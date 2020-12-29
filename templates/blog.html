@@ -13,13 +13,11 @@
 <div class="posts">
 	{% for post in posts %}
 	<div class="post">
-		<hr>
-		<a href="/post/{{ post['uuid'] }}">
-			Title: {{ post['title'] }} <br>
-			Author: {{ post['author'] }} <br>
-			Date: {{ post['date'] }}
+		<a class="inerPost" href="/post/{{ post['uuid'] }}">
+			<p class="titlepost">{{ post['title'] }} </p>
+			<p class="authorpost">Author: {{ post['author'] }}</p> 
+			<p class="datepost">Date: {{ post['date'] }}</p>
 		</a>
-		<hr>
 	</div>
 	{% endfor %}
 </div>
@@ -44,8 +42,7 @@
 
 			<button id="formButton" type="submit">Login</button>
 			<span class="psw">No tienes una cuenta?
-				<a style="color: blue;text-decoration: underline" onclick="offLogIn(event,this);onSignUp()">Créate
-					una!</a>
+				<a style="color: black;cursor: pointer;font-weight: bold;" onclick="offLogIn(event,this);onSignUp()">Créate una!</a>
 			</span>
 		</div>
 	</form>
@@ -73,8 +70,7 @@
 
 			<button id="formButton" type="submit">Login</button>
 			<span class="psw">Ya tienes cuenta?
-				<a style="color: blue;text-decoration: underline" onclick="offSignUp(event,this);onLogIn()">Inicia
-					sesión!</a>
+				<a style="color: black;cursor: pointer;font-weight: bold;" onclick="offSignUp(event,this);onLogIn()">Inicia sesión!</a>
 			</span>
 			<span id='message'></span>
 		</div>

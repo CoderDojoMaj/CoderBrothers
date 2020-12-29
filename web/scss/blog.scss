@@ -127,3 +127,37 @@ span.psw {
 	font-size: 3vh;
 	}
 }
+
+
+.posts{
+padding-top: 2.5vh;
+}
+
+.inerPost{
+	padding-left: 5vh;
+	padding-top: 1vh;
+	padding-bottom: 0.5vh;
+	display: inline-block;
+	text-decoration: solid;
+	border-bottom: #000 1px solid;
+	width: 100%;
+	
+}
+
+.inerPost:hover{
+	color: #4b4747;
+}
+
+.titlepost{
+	font-size:4vh;
+	color: #000;
+}
+.authorpost{
+	font-size:2vh;
+	color: #1f1d1d;
+
+}
+.datepost{
+	font-size:1.5vh;
+	color: #1f1d1d;
+}
