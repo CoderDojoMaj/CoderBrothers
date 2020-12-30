@@ -1,5 +1,17 @@
 {% extends "layout.html" %}
 
+{% block head %}
+<link rel="stylesheet" href="/css/blog.css">
+<script src="/js/blog.js"></script>
+<script src="/js/index.js"></script>
+<link rel="stylesheet" href="/css/post.css">
+{% endblock %}
+{% block header %}
+<div class="BlogHeader">
+	{% include 'BlogHeader.html' %}
+</div>
+{% endblock %}
+
 {% macro comment_section(comment_list) -%}
 {% for comment in comment_list %}
 {% set vote = comment.vote %}
@@ -32,9 +44,6 @@
 
 {% block custom_start %}CoderBrothers Blog | {% endblock %}
 {% block custom_ending %}{% endblock %}
-{% block head %}
-<link rel="stylesheet" href="/css/post.css">
-{% endblock %}
 {% block content %}
 <div class="post">
 	<div class="title_block">
