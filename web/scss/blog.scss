@@ -169,3 +169,39 @@ span.psw {
 	font-size: 1.5vh;
 	color: #1f1d1d;
 }
+
+#dropdown{
+	border-radius: 15px;
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	overflow: auto;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+#verMenu{
+	background-color: #3498DB;
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+}
+
+#dropdown:hover, #dropdown:focus {
+	background-color: #2980B9;
+  }
+
+.show {display: block;}
+
+.img-dropdown{
+	background: '/u/{{ session.get(\'user\')[1] }}/img';
+	::after {
+		content: "&#x25B2;";
+		.activated {
+			content: "&#x25BC;";
+		}
+	}
+}

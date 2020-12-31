@@ -20,6 +20,10 @@ function offSignUp(event, cliked) {
 	}
 }
 
+function showDropdown() {
+	document.getElementById("dropdown").classList.toggle("show");
+  }
+
 function check() {
 	let pass=document.getElementById('p');
 	let confpass=document.getElementById('rp');
