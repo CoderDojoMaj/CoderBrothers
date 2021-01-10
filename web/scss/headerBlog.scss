@@ -1,0 +1,48 @@
+.header {
+	width: 100%;
+	height: 6vh;
+	background-color: #101010;
+}
+
+.innerHeader {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+#logo {
+	height: 6vh;
+}
+
+.enlaceMovil {
+	padding-top: 5vh;
+	padding-left: 1vw;
+	text-decoration: none;
+	color: white;
+	font-size: 3vh;
+}
+
+//Style for the div containig mobile buttons
+#menu {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	overflow-x: hidden;
+	transition: 0.5s;
+	background-color: #101010;
+	display: none;
+	flex-direction: column;
+}
+
+//Button that shows the menu div
+.openMenu {
+	font-size: 6vmax;
+	background-color: #101010;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	font-weight: bold;
+	width: 15vw;
+}

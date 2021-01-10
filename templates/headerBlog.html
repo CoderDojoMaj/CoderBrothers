@@ -1,10 +1,11 @@
-<script src="js/index.js"></script>
+<script src="js/header.js"></script>
+<link rel="stylesheet" href="/css/headerBlog.css">
 <div class="header">
 	<div class="innerHeader">
 		<button class="openMenu" onclick="_open()">
 			≡
 		</button>
-		<div id="divLogo"><a href="/"><img src="/img/logo.svg" id="logo"></div></a>
+		<div id="divLogo"><a href="/"><img src="/img/logo.svg" id="logo"></a></div>
 		<div class="otherMenu">
 			<a class="enlace" href="/blog">Blog</a>
 			{% if session.get('user') %}
