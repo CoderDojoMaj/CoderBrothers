@@ -1,26 +1,47 @@
 .header {
 	width: 100%;
 	height: 6vh;
+	display: flex;
+	align-items: center;
 	background-color: #101010;
 }
 
-.innerHeader {
-	height: 100%;
-	display: flex;
-	align-items: center;
-}
-
 #logo {
-	height: 6vh;
+	margin-left: 2vh;
+	margin-top: 5px;
+	height: 5.5vh;
+	cursor: pointer;
 }
 
-.enlaceMovil {
+
+.mobileLink {
 	padding-top: 5vh;
 	padding-left: 1vw;
 	text-decoration: none;
 	color: white;
 	font-size: 3vh;
 }
+
+.link {
+	text-decoration: none;
+	color: white;
+	font-size: 2.5vh;
+}
+
+.buttons{
+	padding-left: 3vw;
+	padding-right: 4vw;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.openMenu {
+	display: none;
+}
+
 
 //Style for the div containig mobile buttons
 #menu {

@@ -4,6 +4,7 @@ function onLogIn() {
 
 function onSignUp() {
 	document.getElementById("signUp").style.display = "flex";
+	console.log(document.getElementById("signUp"))
 }
 
 function offLogIn(event, cliked) {
