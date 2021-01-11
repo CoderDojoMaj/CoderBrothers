@@ -36,7 +36,7 @@
 <!--Code for the LogIn and SignUp forms-->
 
 <!--LogIn-->
-<div id="logIn" class="modal" onclick="offLogIn(event,this)" {% if login_error %}style="display: block" {% endif %}>
+<div id="logIn" class="modal" onmousedown="offLogIn(event,this)" {% if login_error %}style="display: block" {% endif %}>
 	<form class="modal-content animate" action="/login" method="POST">
 		<div class="formDivs">
 			<span onclick="offLogIn(event,this)" class="close" title="Close Modal">&times;</span>
@@ -60,7 +60,7 @@
 </div>
 
 <!--SignUp-->
-<div id="signUp" class="modal" onclick="offSignUp(event,this)" {% if signup_error %}style="display: block" {% endif %}>
+<div id="signUp" class="modal" onmousedown="offSignUp(event,this)" {% if signup_error %}style="display: block" {% endif %}>
 	<form class="modal-content animate" action="/signup" method="POST">
 		<div class="formDivs">
 			<span onclick="offSignUp(event,this)" class="close" title="Close Modal">&times;</span>
