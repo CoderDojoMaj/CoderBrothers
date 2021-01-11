@@ -13,7 +13,7 @@ try:
 	from python.setup import setup, get_config, get_pub_key, get_priv_key
 	from python.decorators import login_required
 	from os import path, environ
-	import base64, io, rsa, time, os
+	import base64, io, rsa, time, os, json
 except ImportError as e:
 	import sys
 	print('\n'*10)
@@ -25,6 +25,7 @@ except ImportError as e:
 	exit(1)
 
 app = Flask('CoderBrothers')
+app.config['SESSION_COOKIE_SECURE'] = True
 
 logger = liblogger.get('server')
 if __name__ == "__main__":
@@ -50,11 +51,11 @@ def pubkey():
 	pub_key = get_pub_key()
 	return ','.join([hex(pub_key.n), hex(pub_key.e)])
 
-@app.route('/decrypt', methods=['POST']) # test endpoint
-def decrypt():
-	decr = crypto.decrypt_RSA_from_sendable_bytes(request.data).decode('utf8')
-	print(decr)
-	return ('', 200)
+# @app.route('/decrypt', methods=['POST']) # test endpoint
+# def decrypt():
+# 	decr = crypto.decrypt_RSA_from_sendable_bytes(request.data).decode('utf8')
+# 	print(decr)
+# 	return ('', 200)
 
 @app.route('/post/<uuid>')
 def post(uuid):
@@ -144,33 +145,30 @@ def create_post_POST(uuid):
 	getDB().createPost(request.form['title'], uuid, request.form['content'])
 	return redirect('/create_post')
 
-@app.route('/login', methods = ['GET', 'POST'])
+@app.route('/login', methods = ['POST'])
 def login():
-	if request.method == 'POST':
-		try:
-			if getDB().checkPassword(request.form['username'], request.form['password']):
-				user_uuid = getDB().getUserUUID(request.form['username'])
-				session['user'] = (getDB().addSession(user_uuid), user_uuid, getDB().getUserFromUUID(user_uuid)[0])
-				return redirect('/blog')
-			else:
-				return render_template('blog.html', posts=b.get_posts(), login_error='Invalid credentials')
-		except UserNotFoundError:
-			return render_template('blog.html', posts=b.get_posts(), login_error='User not found')
-	else:
-		return redirect('/blog')
-
-@app.route('/signup', methods = ['GET', 'POST'])
-def signup():
-	if request.method == 'POST':
-		try:
-			getDB().addUser(request.form['username'], request.form['password'], 0)
-			user_uuid = getDB().getUserUUID(request.form['username'])
+	data = json.loads(crypto.decrypt_RSA_from_sendable_bytes(request.data).decode('utf8'))
+	try:
+		if getDB().checkPassword(data['username'], data['password']):
+			user_uuid = getDB().getUserUUID(data['username'])
 			session['user'] = (getDB().addSession(user_uuid), user_uuid, getDB().getUserFromUUID(user_uuid)[0])
-			return redirect('/blog')
-		except UserDuplicateError:
-			return render_template('blog.html', posts=b.get_posts(), signup_error='Username not available')
-	else:
-		return redirect('/blog')
+			return json.dumps({"ok": True})
+		else:
+			return json.dumps({"error": "Invalid credentials"})
+	except UserNotFoundError:
+		return json.dumps({"error": "User not found"})
+
+@app.route('/signup', methods = ['POST'])
+def signup():
+	data = json.loads(crypto.decrypt_RSA_from_sendable_bytes(request.data).decode('utf8'))
+	try:
+		getDB().addUser(data['username'], data['password'], 0)
+		user_uuid = getDB().getUserUUID(data['username'])
+		session['user'] = (getDB().addSession(user_uuid), user_uuid, getDB().getUserFromUUID(user_uuid)[0])
+		return json.dumps({"ok": True})
+	except UserDuplicateError:
+		return json.dumps({"error": "Username not available"})
+	
 
 @app.route('/logout')
 def logout():
