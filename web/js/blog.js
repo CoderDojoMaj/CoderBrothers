@@ -33,6 +33,7 @@ function check() {
 	if (pass.value===""){
 		message.style.display='none'
 	}else{
+		message.style.display='inline'
 		if (pass.value === confpass.value) {
 			message.style.color = 'green';
 			message.innerText = 'Matching';

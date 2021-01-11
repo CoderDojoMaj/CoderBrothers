@@ -212,3 +212,35 @@ async function signup(username, password) {
 		body: RSADigestIntoSendableString(rsa.encrypt(JSON.stringify({username, password}))) // body data type must match "Content-Type" header
 	}).then(x => x.json())
 }
+
+function submitLogin(e, form) {
+	e.preventDefault()
+	// console.log('SUBMIT', e);
+	let data = new FormData(form)
+	let username = data.get('username')
+	let password = data.get('password')
+
+	login(username, password).then(resp => {
+		if (resp.error !== undefined) {
+			// ERROR
+		}else{
+			window.location.reload()
+		}
+	})
+}
+
+function submitSignup(e, form) {
+	e.preventDefault()
+	// console.log('SUBMIT', e);
+	let data = new FormData(form)
+	let username = data.get('username')
+	let password = data.get('password')
+
+	signup(username, password).then(resp => {
+		if (resp.error !== undefined) {
+			// ERROR
+		}else{
+			window.location.reload()
+		}
+	})
+}
