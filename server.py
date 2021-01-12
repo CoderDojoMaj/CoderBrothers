@@ -25,7 +25,8 @@ except ImportError as e:
 	exit(1)
 
 app = Flask('CoderBrothers')
-app.config['SESSION_COOKIE_SECURE'] = True
+app.config['SESSION_COOKIE_SAMESITE'] = "Strict"
+# app.config['SESSION_COOKIE_SECURE'] = True
 
 logger = liblogger.get('server')
 if __name__ == "__main__":

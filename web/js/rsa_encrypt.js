@@ -191,7 +191,12 @@ async function login(username, password) {
 		redirect: 'follow', // manual, *follow, error
 		referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
 		body: RSADigestIntoSendableString(rsa.encrypt(JSON.stringify({username, password}))) // body data type must match "Content-Type" header
-	}).then(x => x.json())
+	}).then(x => {
+		for (a of x.headers.entries()) {
+			console.log(a)
+		}
+		return x.json()
+	})
 }
 
 async function signup(username, password) {
@@ -210,7 +215,12 @@ async function signup(username, password) {
 		redirect: 'follow', // manual, *follow, error
 		referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
 		body: RSADigestIntoSendableString(rsa.encrypt(JSON.stringify({username, password}))) // body data type must match "Content-Type" header
-	}).then(x => x.json())
+	}).then(x => {
+		x.trailer.then(x => {
+			document.cookie = x.get('Set-Cookie')
+		})
+		x.json()
+	})
 }
 
 function submitLogin(e, form) {
@@ -221,6 +231,7 @@ function submitLogin(e, form) {
 	let password = data.get('password')
 
 	login(username, password).then(resp => {
+		console.log()
 		if (resp.error !== undefined) {
 			// ERROR
 		}else{
