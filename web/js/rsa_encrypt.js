@@ -216,10 +216,7 @@ async function signup(username, password) {
 		referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
 		body: RSADigestIntoSendableString(rsa.encrypt(JSON.stringify({username, password}))) // body data type must match "Content-Type" header
 	}).then(x => {
-		x.trailer.then(x => {
-			document.cookie = x.get('Set-Cookie')
-		})
-		x.json()
+		return x.json()
 	})
 }
 
