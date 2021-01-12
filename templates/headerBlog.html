@@ -1,5 +1,5 @@
-<script src="js/rsa_encrypt.js"></script>
-<script src="js/header.js"></script>
+<script src="/js/rsa_encrypt.js"></script>
+<script src="/js/header.js"></script>
 <link rel="stylesheet" href="/css/headerBlog.css">
 <div class="header">
 	<button class="openMenu" onclick="_open()">
@@ -9,7 +9,7 @@
 	<nav class="buttons">
 		<a class="link" href="/blog">Blog</a>
 		{% if session.get('user') %}
-			<a class="link">{{ session.get('user')[2] }}</a>
+			<a class="link">{{ session.get('user')[2] }} ({{ session.get('user')[3] }})</a>
 			<img src="/u/{{ session.get('user')[1] }}/img" style="max-height: 3vh;">
 			<a class="link" href="/logout">Log out</a>
 		{% else %}
@@ -36,7 +36,7 @@
 <!--Code for the LogIn and SignUp forms-->
 
 <!--LogIn-->
-<div id="logIn" class="modal" onmousedown="offLogIn(event,this)" {% if login_error %}style="display: block" {% endif %}>
+<div id="logIn" class="modal" onmousedown="offLogIn(event,this)">
 	<form class="modal-content animate" onsubmit="submitLogin(event, this)">
 		<div class="formDivs">
 			<span onclick="offLogIn(event,this)" class="close" title="Close Modal">&times;</span>
@@ -59,7 +59,7 @@
 </div>
 
 <!--SignUp-->
-<div id="signUp" class="modal" onmousedown="offSignUp(event,this)" {% if signup_error %}style="display: block" {% endif %}>
+<div id="signUp" class="modal" onmousedown="offSignUp(event,this)">
 	<form class="modal-content animate" onsubmit="submitSignup(event, this)">
 		<div class="formDivs">
 			<span onclick="offSignUp(event,this)" class="close" title="Close Modal">&times;</span>

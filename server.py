@@ -152,7 +152,7 @@ def login():
 	try:
 		if getDB().checkPassword(data['username'], data['password']):
 			user_uuid = getDB().getUserUUID(data['username'])
-			session['user'] = (getDB().addSession(user_uuid), user_uuid, getDB().getUserFromUUID(user_uuid)[0])
+			session['user'] = (getDB().addSession(user_uuid), user_uuid, getDB().getUserFromUUID(user_uuid)[0], getDB().getUserPerms(user_uuid))
 			return json.dumps({"ok": True})
 		else:
 			return json.dumps({"error": "Invalid credentials"})
@@ -165,7 +165,7 @@ def signup():
 	try:
 		getDB().addUser(data['username'], data['password'], 0)
 		user_uuid = getDB().getUserUUID(data['username'])
-		session['user'] = (getDB().addSession(user_uuid), user_uuid, getDB().getUserFromUUID(user_uuid)[0])
+		session['user'] = (getDB().addSession(user_uuid), user_uuid, getDB().getUserFromUUID(user_uuid)[0], getDB().getUserPerms(user_uuid))
 		return json.dumps({"ok": True})
 	except UserDuplicateError:
 		return json.dumps({"error": "Username not available"})
