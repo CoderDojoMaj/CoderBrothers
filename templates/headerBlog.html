@@ -12,7 +12,6 @@
 		{% if session.get('user') %}
 			<a class="link">{{ session.get('user')[2] }} ({{ session.get('user')[3] }})</a>
 			<img src="/u/{{ session.get('user')[1] }}/img" style="max-height: 3vh;">
-			<a class="link" href="/logout">Log out</a>
 		{% else %}
 			<a class="link" style="cursor: pointer;" onclick="onLogIn()">Log In</a>
 			<a class="link" style="cursor: pointer;" onclick="onSignUp()">Sign Up</a>
@@ -34,7 +33,11 @@
 	{% endif %}
 </div>
 
-<!--Code for the LogIn and SignUp forms-->
+<div id="">
+	<a class="link" href="/logout">Log out</a>
+</div>
+
+<!--Code for the LogIn and SignUp forms :) -->
 
 <!--LogIn-->
 <div id="logIn" class="modal" onmousedown="offLogIn(event,this)">
