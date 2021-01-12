@@ -1,5 +1,6 @@
 <script src="/js/rsa_encrypt.js"></script>
 <script src="/js/header.js"></script>
+<script src="/js/forms.js"></script>
 <link rel="stylesheet" href="/css/headerBlog.css">
 <div class="header">
 	<button class="openMenu" onclick="_open()">
@@ -43,6 +44,7 @@
 			<img src="/img/CoderDojoLogo.svg" alt="logo" class="avatar">
 			<h1 id="formTitle">Inicia sesión en CoderDojo Majadahonda</h1>
 		</div>
+		<span class="error" id="loginError"></span>
 		<div class="formDivs">
 			<label for="uname"><b>Nombre de usuario</b></label>
 			<input type="text" placeholder="Escribe tu nombre de usuario" name="username" required>
@@ -66,6 +68,7 @@
 			<img src="/img/CoderDojoLogo.svg" alt="logo" class="avatar">
 			<h1 id="formTitle">Crea una cuenta en CoderDojo Majadahonda</h1>
 		</div>
+		<span class="error" id="signupError"></span>
 		<div class="formDivs">
 			<label for="uname"><b>Nombre de usuario</b></label>
 			<input type="text" placeholder="Escribe un nobre de usuario" name="username" required>

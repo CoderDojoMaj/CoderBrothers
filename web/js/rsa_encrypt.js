@@ -233,7 +233,7 @@ function submitLogin(e, form) {
 	login(username, password).then(resp => {
 		console.log()
 		if (resp.error !== undefined) {
-			// ERROR
+			document.getElementById("loginError").innerText=resp.error;
 		}else{
 			window.location.reload()
 		}
@@ -249,7 +249,7 @@ function submitSignup(e, form) {
 
 	signup(username, password).then(resp => {
 		if (resp.error !== undefined) {
-			// ERROR
+			document.getElementById("signupError").innerText=resp.error;
 		}else{
 			window.location.reload()
 		}
