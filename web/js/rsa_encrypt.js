@@ -193,7 +193,7 @@ async function login(username, password) {
 		body: RSADigestIntoSendableString(rsa.encrypt(JSON.stringify({username, password}))) // body data type must match "Content-Type" header
 	}).then(x => {
 		for (a of x.headers.entries()) {
-			//console.log(a)
+			console.log(a)
 		}
 		return x.json()
 	})

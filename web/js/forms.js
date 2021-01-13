@@ -54,10 +54,10 @@ function check() {
 		message.style.display='inline'
 		if (pass.value === confpass.value) {
 			message.style.color = 'green';
-			message.innerText = 'Matching';
+			message.innerText = 'Passwords match';
 		} else {
 			message.style.color = 'red';
-			message.innerText = 'Not matching';
+			message.innerText = "Passwords don't match";
 		}
 	}
 }

@@ -119,7 +119,7 @@ input[type="password"] {
 }
 
 /* Set a style for all buttons */
-#formButton {
+.formButton {
 	background-color: #101010;
 	color: white;
 	padding: 14px 20px;
@@ -131,7 +131,7 @@ input[type="password"] {
 	border-right: grey 5px outset;
 }
 
-button:hover {
+.formButton:hover {
 	opacity: 0.8;
 }
 
