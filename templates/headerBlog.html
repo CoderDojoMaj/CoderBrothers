@@ -1,6 +1,7 @@
 <script src="/js/rsa_encrypt.js"></script>
 <script src="/js/header.js"></script>
 <script src="/js/forms.js"></script>
+<link rel="stylesheet" href="">
 <link rel="stylesheet" href="/css/headerBlog.css">
 <div class="header">
 	<button class="openMenu" onclick="_open()">
@@ -11,7 +12,13 @@
 		<a class="link" href="/blog">Blog</a>
 		{% if session.get('user') %}
 			<a class="link">{{ session.get('user')[2] }} ({{ session.get('user')[3] }})</a>
-			<img src="/u/{{ session.get('user')[1] }}/img" style="max-height: 3vh;">
+			<div class="dropdown">
+				<img src="/u/{{ session.get('user')[1] }}/img" onclick="showDropdown()" class="dropbtn">
+				<div id="dropdownContent" class="dropdown-content">
+					<a class="link" href="/create_post">Create Post</a>
+					<a class="link" href="/logout">Log out</a>
+				</div>
+		  	</div>
 		{% else %}
 			<a class="link" style="cursor: pointer;" onclick="onLogIn()">Log In</a>
 			<a class="link" style="cursor: pointer;" onclick="onSignUp()">Sign Up</a>
@@ -33,10 +40,6 @@
 	{% endif %}
 </div>
 
-<div id="">
-	<a class="link" href="/logout">Log out</a>
-</div>
-
 <!--Code for the LogIn and SignUp forms :) -->
 
 <!--LogIn-->
@@ -47,7 +50,7 @@
 			<img src="/img/CoderDojoLogo.svg" alt="logo" class="avatar">
 			<h1 id="formTitle">Inicia sesión en CoderDojo Majadahonda</h1>
 		</div>
-		<span class="error" id="loginError"></span>
+		<div class="error"><span id="loginError"></span></div>
 		<div class="formDivs">
 			<label for="uname"><b>Nombre de usuario</b></label>
 			<input type="text" placeholder="Escribe tu nombre de usuario" name="username" required>
@@ -71,7 +74,7 @@
 			<img src="/img/CoderDojoLogo.svg" alt="logo" class="avatar">
 			<h1 id="formTitle">Crea una cuenta en CoderDojo Majadahonda</h1>
 		</div>
-		<span class="error" id="signupError"></span>
+		<div class="error"><span id="signupError"></span></div>
 		<div class="formDivs">
 			<label for="uname"><b>Nombre de usuario</b></label>
 			<input type="text" placeholder="Escribe un nobre de usuario" name="username" required>
