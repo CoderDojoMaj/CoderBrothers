@@ -13,6 +13,7 @@ function offLogIn(event, cliked) {
 	let modal = document.getElementById("logIn")
 	if (event.target === cliked) {
 		modal.style.display = "none";
+		document.getElementById("loginError").innerText="";
 	}
 }
 
@@ -20,6 +21,7 @@ function offSignUp(event, cliked) {
 	let modal = document.getElementById("signUp")
 	if (event.target === cliked) {
 		modal.style.display = "none";
+		document.getElementById("signupError").innerText="";
 	}
 }
 

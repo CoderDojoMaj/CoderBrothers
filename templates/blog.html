@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 {% block title %}Blog{% endblock %}
 {% block head %}
-<script src="/js/rsa_encrypt.js"></script>
-<script src="/js/header.js"></script>
-<script src="/js/forms.js"></script>
-<link rel="stylesheet" href="/css/headerBlog.css">
-<link rel="stylesheet" href="/css/blog.css">
+		<script src="/js/rsa_encrypt.js"></script>
+		<script src="/js/header.js"></script>
+		<script src="/js/forms.js"></script>
+		<link rel="stylesheet" href="/css/headerBlog.css">
+		<link rel="stylesheet" href="/css/blog.css">
 {% endblock %}
 {% block header %}
 <div class="BlogHeader">
@@ -13,15 +13,15 @@
 </div>
 {% endblock %}
 {% block content %}
-<div class="posts">
+<div id="posts">
 	{% for post in posts %}
-	<div class="post">
-		<a class="innerPost" href="/post/{{ post['uuid'] }}">
-			<p class="titlepost">{{ post['title'] }} </p>
-			<p class="authorpost">Author: {{ post['author'] }}</p> 
-			<p class="datepost">Date: {{ post['date'] }}</p>
-		</a>
-	</div>
+		<div class="innerPosts">
+			<a class="post" href="/post/{{ post['uuid'] }}">
+				<p class="titlepost">{{ post['title'] }} </p>
+				<p class="authorpost">Author: {{ post['author'] }}</p> 
+				<p class="datepost">Date: {{ post['date'] }}</p>
+			</a>
+		</div>
 	{% endfor %}
 </div>
 

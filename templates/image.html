@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Test</title>
-		<style>
-			.hidden {
-				display: none;
-			}
-		</style>
-	</head>
+<head>
+	<link rel="stylesheet" href="/css/image.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Test</title>
+	<style>
+		.hidden {
+			display: none;
+		}
+	</style>
+</head>
 
-	<body>
-
+<body>
+	<div class="imgAdd">
 		<input type="file" id="image">
 		<img id="pic">
 		{% if session.get('user') %}
-		<form action="/update_img" method="post" id="form" class="hidden">
+
+		<form class="button" action="/update_img" method="post" id="form" class="hidden">
 			<input type="hidden" name="image" id="update_img_base64">
-			<input type="submit" value="Update image">
+			<input type="submit" class="upImg" value="Update image">
 		</form>
-		{% endif %}
-		<script src="js/image.js"></script>
-	</body>
+	</div>
+	{% endif %}
+	<form action="/blog">
+
+		<input class="bbuton" type="submit" value="Back">
+		</input>
+	</form>
+
+	<script src="js/image.js"></script>
+</body>
 
 </html>

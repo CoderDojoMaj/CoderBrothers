@@ -3,7 +3,7 @@
 	height: 6vh;
 	display: flex;
 	align-items: center;
-	background-color: #101010;
+	background-color: #252E38;
 }
 
 #logo {
@@ -50,7 +50,7 @@
 	top: 0;
 	overflow-x: hidden;
 	transition: 0.5s;
-	background-color: #101010;
+	background-color: #252E38;
 	display: none;
 	flex-direction: column;
 }
@@ -58,7 +58,7 @@
 //Button that shows the menu div
 .openMenu {
 	font-size: 6vmax;
-	background-color: #101010;
+	background-color: #252E38;
 	color: #fff;
 	border: none;
 	cursor: pointer;
@@ -69,7 +69,7 @@
 //syle for the dropdown
 
 .dropbtn {
-	background-color: #101010;
+	background-color: #252E38;
 	color: white;
 	max-height: 3vh;
 	border: none;
@@ -120,7 +120,7 @@ input[type="password"] {
 
 /* Set a style for all buttons */
 .formButton {
-	background-color: #101010;
+	background-color: #252E38;
 	color: white;
 	padding: 14px 20px;
 	margin: 8px 0;
@@ -203,6 +203,8 @@ span.psw {
 }
 
 .error{
+	display: flex;
+	flex-direction: column;
 	text-align: center;
 	margin-top: 2vh;
 	color: red;

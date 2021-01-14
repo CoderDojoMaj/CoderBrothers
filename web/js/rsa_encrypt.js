@@ -170,7 +170,7 @@ fetch(
 	rsa = new RSA(
 		pubkey
 	);
-	console.log("PUBKEY LOADED")
+	console.log("PUBKEY LOADED");
 })
 
 

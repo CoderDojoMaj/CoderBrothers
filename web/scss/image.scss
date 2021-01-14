@@ -1,0 +1,22 @@
+.bbutton {
+    background-image: url("/web/img/francia.jpg");
+}
+
+.button{
+    display:inline-block;
+    bottom:0;
+    right:0;
+}
+
+.imgAdd{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: #696969;
+    height: 60vh;
+    width: 100vh;
+    margin-left: 15vh;
+    margin-top: 2vh;
+    margin-right: 10vh;
+    margin-bottom: 2vh;
+}
