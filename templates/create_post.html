@@ -14,9 +14,11 @@
 <form action="/create_post" method="POST">
 	<div id="titlediv">
 		<label for="title"><b>Título</b></label>
-		<input name="title" id="title" type="text"></div>
+		<input name="title" id="title" type="text">
+	</div>
 	<div id="contentdiv">
-		<textarea name="content" id="content">Escribe aquí tu texto</textarea>
-		<input type="submit" value="Create"></div>
+		<textarea name="content" id="content" placeholder="Escribe aquí tu texto"></textarea>
+		<input type="submit" value="Create">
+	</div>
 </form>
 {% endblock %}

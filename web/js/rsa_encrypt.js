@@ -239,7 +239,7 @@ function submitLogin(e, form) {
 
 function submitSignup(e, form) {
 	e.preventDefault()
-	// console.log('SUBMIT', e);
+	console.log('SUBMIT', e);
 	let data = new FormData(form)
 	let username = data.get('username')
 	let password = data.get('password')

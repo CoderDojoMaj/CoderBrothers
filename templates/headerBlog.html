@@ -15,7 +15,9 @@
 			<div class="dropdown">
 				<img src="/u/{{ session.get('user')[1] }}/img" onclick="showDropdown()" class="dropbtn">
 				<div id="dropdownContent" class="dropdown-content">
+					{% if session.get('user')[3] > 0 %}
 					<a class="link" href="/create_post">Create Post</a>
+					{% endif %}
 					<a class="link" href="/logout">Log out</a>
 				</div>
 		  	</div>
@@ -85,7 +87,7 @@
 			<label for="psw"><b>Repetir contraseña</b></label>
 			<input id="rp" type="password" placeholder="Repite tu contraseña" onkeyup="check();" required>
 
-			<input type="button" id="logInButton" class="formButton" type="submit"  value="Login">
+			<input id="logInButton" class="formButton" type="submit" value="Signup">
 
 			<span class="psw">Ya tienes cuenta?
 				<a style="color: black;cursor: pointer;font-weight: bold;" onclick="offSignUp(event,this);onLogIn()">Inicia sesión!</a>
