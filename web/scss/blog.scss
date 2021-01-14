@@ -1,4 +1,19 @@
+.posts {
+	padding-top: 2.5vh;
+	width: 100%;
+}
 
+.inerPost {
+	padding-left: 5vh;
+	padding-right: 2vh;
+	padding-top: 1vh;
+	padding-bottom: 0.5vh;
+	max-width: 100vw;
+	display: inline-block;
+	text-decoration: solid;
+	border-bottom: #000 1px solid;
+	width: 100%;
+}
 
 .inerPost:hover {
 	color: #4b4747;
