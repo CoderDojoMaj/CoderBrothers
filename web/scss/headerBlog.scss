@@ -1,6 +1,6 @@
 .header {
 	width: 100%;
-	height: 6vh;
+	height: 5vh;
 	display: flex;
 	align-items: center;
 	background-color: #252E38;
@@ -9,62 +9,58 @@
 #logo {
 	margin-left: 2vh;
 	margin-top: 5px;
-	height: 5.5vh;
+	height: 4.5vh;
 	cursor: pointer;
-}
-
-.mobileLink {
-	padding-top: 5vh;
-	padding-left: 1vw;
-	text-decoration: none;
-	color: white;
-	font-size: 3vh;
-}
-
-.link {
-	text-decoration: none;
-	color: white;
-	font-size: 2.5vh;
 }
 
 .buttons {
 	padding-left: 3vw;
-	padding-right: 4vw;
+	padding-right: 2vw;
 	width: 100%;
+	height: 100%;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-between;
-}
-//The button that opens the mobile menu is not shown in desktop
-.openMenu {
-	display: none;
+	justify-content: flex-end;
+	align-items: center;
 }
 
-//Style for the div containig mobile buttons
-#menu {
-	height: 100%;
-	width: 0;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	overflow-x: hidden;
-	transition: 0.5s;
-	background-color: #252E38;
-	display: none;
-	flex-direction: column;
+.formButtons{
+	width: 5vw;
+	height: 3vh;
+	font-size: 0.7vw;
 }
 
-//Button that shows the menu div
-.openMenu {
-	font-size: 6vmax;
-	background-color: #252E38;
-	color: #fff;
+#formLogIn{
+	color: #FFF;
+	background-color: #363E48;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	border: none;
-	cursor: pointer;
-	font-weight: bold;
-	width: 15vw;
 }
+
+#formSignUp{
+	margin-left: 0.5vw;
+	color: #FFF;
+	background-color: #41BAC1;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	border: none;
+}
+
+#formOpeners{
+	padding-left: 7vw;
+}
+
+#searchBar{
+	border: none;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
+	width: 70%;
+	height: 70%;
+	font-size: 1vw;
+	border-radius: 10px;
+}
+
+
 
 //syle for the dropdown
 
@@ -108,8 +104,7 @@
 //Untill the @media, all this code is for the LogIn and SignUp forms
 
 /* Full-width input fields */
-input[type="text"],
-input[type="password"] {
+.formInput {
 	width: 100%;
 	padding: 12px 20px;
 	margin: 8px 0;
@@ -232,6 +227,7 @@ span.psw {
 .popups {
 	width: 40vw;
 }
+
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 700px) {
