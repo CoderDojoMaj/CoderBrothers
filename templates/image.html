@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
+	
 <head>
+	{% include 'header.html' %}
 	<link rel="stylesheet" href="/css/image.css">
+	<link rel="stylesheet" href="/css/header.css">
+	<link rel="stylesheet" href="/css/general.css">
+	<script src="js/header.js"></script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Test</title>
+	<title>Profile picture | CoderBrother</title>
 	<style>
 		.hidden {
 			display: none;
@@ -18,15 +22,16 @@
 		<input type="file" id="image">
 		<img id="pic">
 		{% if session.get('user') %}
-
+		<h1 class= "textt">CURRENT PROFILE PICTURE</h1>
+		<img class= "ppic" src="/u/{{ session.get('user')[1] }}/img">
 		<form class="button" action="/update_img" method="post" id="form" class="hidden">
 			<input type="hidden" name="image" id="update_img_base64">
 			<input type="submit" class="upImg" value="Update image">
 		</form>
 	</div>
 	{% endif %}
+	<div class="premade"></div>
 	<form action="/blog">
-
 		<input class="bbuton" type="submit" value="Back">
 		</input>
 	</form>
