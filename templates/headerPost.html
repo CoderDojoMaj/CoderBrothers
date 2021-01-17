@@ -1,10 +1,6 @@
 <div class="header">
-	<button class="openMenu" onclick="_open()">
-		≡
-	</button>
 	<div id="divLogo"><a href="/"><img src="/img/logo.svg" id="logo"></a></div>
 	<nav class="buttons">
-		<a class="link" href="/blog">Blog</a>
 		{% if session.get('user') %}
 			<a class="link">{{ session.get('user')[2] }} ({{ session.get('user')[3] }})</a>
 			<div class="dropdown">
@@ -18,24 +14,12 @@
 				</div>
 		  	</div>
 		{% else %}
-			<a class="link" style="cursor: pointer;" onclick="onLogIn()">Log In</a>
-			<a class="link" style="cursor: pointer;" onclick="onSignUp()">Sign Up</a>
+		<div id="formOpeners">
+			<input type="button" class="formButtons" id="formLogIn" value="LOG IN" onclick="onLogIn()">
+			<input type="button" class="formButtons" id="formSignUp" value="SIGN UP" onclick="onSignUp()">
+		</div>
 		{% endif %}
 	</nav>
-</div>
-
-
-<div id="menu">
-	<button class="openMenu" onclick="_close()">⨯</button>
-	<a class="mobileLink" href="/blog">Blog</a>
-	{% if session.get('user') %}
-	<a class="mobileLink">{{ session.get('user')[2] }}</a>
-	<img src="/u/{{ session.get('user')[1] }}/img" style="max-height: 3vh;">
-	<a class="mobileLink" href="/logout">Log out</a>
-	{% else %}
-	<a class="mobileLink" style="cursor: pointer;" onclick="onLogIn()">Log In</a>
-	<a class="mobileLink" style="cursor: pointer;" onclick="onSignUp()">Sign Up</a>
-	{% endif %}
 </div>
 
 <!--Code for the LogIn and SignUp forms :) -->
@@ -51,10 +35,10 @@
 		<div class="error"><span id="loginError"></span></div>
 		<div class="formDivs">
 			<label for="uname"><b>Nombre de usuario</b></label>
-			<input type="text" placeholder="Escribe tu nombre de usuario" name="username" required>
+			<input type="text" class="formInput" placeholder="Escribe tu nombre de usuario" name="username" required>
 
 			<label for="psw"><b>Contraseña</b></label>
-			<input type="password" placeholder="Escribe tu contraseña" name="password" required>
+			<input type="password" class="formInput" placeholder="Escribe tu contraseña" name="password" required>
 
 			<button class="formButton" type="submit">Login</button>
 			<span class="psw">No tienes una cuenta?
@@ -72,16 +56,16 @@
 			<img src="/img/CoderDojoLogo.svg" alt="logo" class="avatar">
 			<h1 id="formTitle">Crea una cuenta en CoderDojo Majadahonda</h1>
 		</div>
-		<div class="error"><span id="signupError"></span><span id='message'></span></div>
+		<div class="error"><span id="signupError"><br></span><span id='message'></span></div>
 		<div class="formDivs">
 			<label for="uname"><b>Nombre de usuario</b></label>
-			<input type="text" placeholder="Escribe un nobre de usuario" name="username" required>
+			<input type="text" class="formInput" placeholder="Escribe un nobre de usuario" name="username" required>
 
 			<label for="psw"><b>Contraseña</b></label>
-			<input id="p" type="password" placeholder="Escribe una contraseña" name="password" onkeyup="check();" required>
+			<input id="p" type="password" class="formInput" placeholder="Escribe una contraseña" name="password" onkeyup="check();" required>
 
 			<label for="psw"><b>Repetir contraseña</b></label>
-			<input id="rp" type="password" placeholder="Repite tu contraseña" onkeyup="check();" required>
+			<input id="rp" type="password" class="formInput" placeholder="Repite tu contraseña" onkeyup="check();" required>
 
 			<input id="logInButton" class="formButton" type="submit" value="Sign Up">
 

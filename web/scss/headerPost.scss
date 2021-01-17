@@ -1,0 +1,241 @@
+.header {
+	width: 100%;
+	height: 5vh;
+	display: flex;
+	align-items: center;
+	background-color: #221c35;
+}
+
+#logo {
+	margin-left: 2vh;
+	margin-top: 5px;
+	height: 4.5vh;
+	cursor: pointer;
+}
+
+.buttons {
+	padding-left: 3vw;
+	padding-right: 2vw;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.formButtons {
+	width: 5vw;
+	height: 3vh;
+	font-size: 0.7vw;
+}
+
+#formLogIn {
+	color: #fff;
+	background-color: #41bac1;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	border: none;
+}
+
+#formSignUp {
+	margin-left: 0.5vw;
+	color: #fff;
+	background-color: #f93549;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	border: none;
+}
+
+#formOpeners {
+	padding-left: 2vw;
+}
+
+//syle for the dropdown
+
+.dropbtn {
+	background-color: #252e38;
+	color: white;
+	max-height: 3vh;
+	border: none;
+	cursor: pointer;
+}
+
+.dropdown {
+	float: right;
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #ffffff;
+	border-style: solid;
+	min-width: 160px;
+	overflow: auto;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	right: 0;
+	z-index: 1;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown a:hover {
+	background-color: #ddd;
+}
+
+.show {
+	display: block;
+}
+
+//Untill the @media, all this code is for the LogIn and SignUp forms
+
+/* Full-width input fields */
+.formInput {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+.formButton {
+	background-color: #252e38;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	border-bottom: grey 5px outset;
+	border-right: grey 5px outset;
+}
+
+.formButton:hover {
+	opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+	width: auto;
+	padding: 10px 10px;
+	background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.formDivs {
+	padding: 2vh;
+	text-align: center;
+	position: relative;
+}
+
+img.avatar {
+	width: 15vw;
+}
+
+span.psw {
+	float: right;
+}
+
+/* The Modal (background) */
+.modal {
+	display: none;
+	position: fixed;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content/Box */
+.modal-content {
+	background-color: #fefefe;
+	border: 2 px solid #888;
+	width: 40vw;
+}
+
+/* The Close Button (x) */
+.close {
+	position: absolute;
+	right: 20px;
+	top: 0;
+	color: #000;
+	font-size: 35px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: red;
+	cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+	-webkit-animation: animatezoom 0.6s;
+	animation: animatezoom 0.6s;
+}
+
+.error {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	margin-top: 2vh;
+	color: red;
+}
+
+@keyframes animatezoom {
+	from {
+		transform: scale(0);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+@keyframes closezoom {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(0);
+	}
+}
+//giving form tag same width as the form so it woulden't clip over the sides
+
+.popups {
+	width: 40vw;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 700px) {
+	span.psw {
+		display: block;
+		float: none;
+		font-size: medium;
+	}
+	.modal-content {
+		background-color: #fefefe;
+		border: 2 px solid #888;
+		width: 70vw;
+	}
+	img.avatar {
+		width: 45vw;
+	}
+	h1 {
+		font-size: 3vh;
+	}
+}
