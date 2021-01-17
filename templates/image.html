@@ -19,22 +19,28 @@
 
 <body>
 	<div class="imgAdd">
-		<input type="file" id="image">
+		<form action="/blog">
+		<input class="bbuton" src="/img/back.png" type="image" value="Back">
+		</input>
+		</form><input class="selectPic" type="file" id="image">
 		<img id="pic">
 		{% if session.get('user') %}
-		<h1 class= "textt">CURRENT PROFILE PICTURE</h1>
+		<h2 class= "textt">CURRENT PROFILE PICTURE</h2>
 		<img class= "ppic" src="/u/{{ session.get('user')[1] }}/img">
-		<form class="button" action="/update_img" method="post" id="form" class="hidden">
+		<h3 class= "texti">INSERT IMAGE FROM DEVICE</h3>
+		<form class="button" class="upImg"action="/update_img" method="post" id="form" class="hidden">
 			<input type="hidden" name="image" id="update_img_base64">
-			<input type="submit" class="upImg" value="Update image">
+			<input type="submit"  value="Update image">
 		</form>
 	</div>
 	{% endif %}
-	<div class="premade"></div>
-	<form action="/blog">
-		<input class="bbuton" type="submit" value="Back">
-		</input>
-	</form>
+	<div class="premade">
+		<h3 class="textp">OR CHOOSE FROM THESE</h3>
+		<div class="scroll">
+			<input class="bbuton" src="/img/back.png" type="image" value="Back"></input>
+		</div>
+	</div>
+
 
 	<script src="js/image.js"></script>
 </body>
