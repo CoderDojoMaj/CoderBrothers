@@ -22,11 +22,18 @@
 .titlepost {
 	font-size: 4vh;
 	color: #000;
+	display: block;
+	width: 90vw;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
+
 .authorpost {
 	font-size: 2vh;
 	color: #1f1d1d;
 }
+
 .datepost {
 	font-size: 1.5vh;
 	color: #1f1d1d;
