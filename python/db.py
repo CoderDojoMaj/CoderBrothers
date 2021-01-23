@@ -71,6 +71,13 @@ class DB:
 		except mysql.Error:
 			self.l.error('Duplicate username "%s"', name)
 			raise UserDuplicateError('Duplicate username "%s"' % name)
+
+	def changePassword(self, uuid, new_password):
+		try:
+			self.run('UPDATE users SET passwd = %s WHERE uuid = %s', crypto.encrypt(new_password), uuid).close()
+		except mysql.Error:
+			self.l.error('Unexpected error setting the password')
+			
 	
 	def deleteUsers(self):
 		self.l.warning('DELETING USERS')
