@@ -159,6 +159,17 @@ class DB:
 		cursor.close()
 		
 		return posts
+
+	def getPostsPaged(self, page):
+		post_per_page = 10
+		cursor = self.run('SELECT posts.uuid, posts.title, users.name AS author, posts.timestamp FROM posts INNER JOIN(users) ON posts.author = users.uuid ORDER BY posts.timestamp DESC LIMIT %s, %s', post_per_page * page, post_per_page)
+		posts = []
+		for (uuid, title, author, timestamp) in cursor:
+			post = {'uuid': uuid, 'title': title, 'author': author, 'date': timestamp}
+			posts.append(post)
+		cursor.close()
+		
+		return posts
 	
 	def getPost(self, uuid):
 		cursor = self.run('SELECT posts.title, users.name AS author, posts.timestamp, posts.content FROM posts INNER JOIN(users) ON posts.author = users.uuid WHERE posts.uuid = %s', uuid)

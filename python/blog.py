@@ -14,6 +14,14 @@ def get_posts():
         posts.append(post)
     return posts
 
+def get_posts_paged(page):
+    posts = []
+    for post in getDB().getPostsPaged(page):
+        date = post['date']
+        post['date'] = utils.formatPostDate(date)
+        posts.append(post)
+    return posts
+
 
 def getPostTemplate(uuid):
     post = getDB().getPost(uuid)
