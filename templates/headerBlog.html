@@ -2,15 +2,16 @@
 	<div id="divLogo"><a href="/"><img src="/img/logo.svg" id="logo"></a></div>
 	<nav class="buttons">
 		{% if session.get('user') %}
-			<a class="link">{{ session.get('user')[2] }} ({{ session.get('user')[3] }})</a>
+			<input type="text" id="searchBar" placeholder="Buscar un post . . .">
+			<!--<a>{{ session.get('user')[2] }} ({{ session.get('user')[3] }})</a>-->
 			<div class="dropdown">
 				<img src="/u/{{ session.get('user')[1] }}/img" onclick="showDropdown()" class="dropbtn">
 				<div id="dropdownContent" class="dropdown-content">
 					{% if session.get('user')[3] > 0 %}
-					<a class="link" href="/create_post">Create Post</a>
+					<a href="/create_post">Create Post</a>
 					{% endif %}
-					<a class="link" href="/img">Change Profile Picture</a>
-					<a class="link" href="/logout">Log out</a>
+					<a href="/img">Change Profile Picture</a>
+					<a href="/logout">Log out</a>
 				</div>
 		  	</div>
 		{% else %}

@@ -22,6 +22,12 @@ margins for imgAdd are loaded, thanks to the "display: flex; flex:1;" CSS instru
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
+#dbb {
+    display: flex;
+    height: 100%;
+    width: fit-content;
+}
+
 #thingsLeft {
     display: flex;
     flex: 1;
@@ -54,24 +60,18 @@ margins for imgAdd are loaded, thanks to the "display: flex; flex:1;" CSS instru
     flex-direction: row;
 }
 
+.premade {
+    margin-left: 3vw;
+    background: linear-gradient(180deg, #262D33 -3.38%, #1D1E20 78.58%);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
 .bbuton {
     width: auto;
     height: 6vh;
     border: #000 1px solid;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     background-color: #999999;
-}
-
-#dbb {
-    display: flex;
-    height: 100%;
-    width: fit-content;
-}
-
-.premade {
-    margin-left: 3vw;
-    background: linear-gradient(180deg, #262D33 -3.38%, #1D1E20 78.58%);
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .pic {
