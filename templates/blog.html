@@ -13,6 +13,13 @@
 </div>
 {% endblock %}
 {% block content %}
+{% if session.get('user') %}
+{% if session.get('user')[3] > 0 %}
+<div><p>AAAAAA</p></div>
+
+{% endif%}
+{% endif%}
+
 <div id="posts">
 	{% for post in posts %}
 		<div class="innerPosts">
