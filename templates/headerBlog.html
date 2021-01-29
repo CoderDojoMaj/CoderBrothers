@@ -1,8 +1,8 @@
 <div class="header">
 	<div id="divLogo"><a href="/"><img src="/img/logo.svg" id="logo"></a></div>
 	<nav class="buttons">
+		<input type="text" id="searchBar" placeholder="Buscar un post . . .">
 		{% if session.get('user') %}
-			<input type="text" id="searchBar" placeholder="Buscar un post . . .">
 			<!--<a>{{ session.get('user')[2] }} ({{ session.get('user')[3] }})</a>-->
 			<div class="dropdown">
 				<img src="/u/{{ session.get('user')[1] }}/img" onclick="showDropdown()" class="dropbtn">
@@ -15,7 +15,6 @@
 				</div>
 		  	</div>
 		{% else %}
-		<input type="text" id="searchBar" placeholder="Buscar un post . . .">
 		<div id="formOpeners">
 			<input type="button" class="formButtons" id="formLogIn" value="LOG IN" onclick="onLogIn()">
 			<input type="button" class="formButtons" id="formSignUp" value="SIGN UP" onclick="onSignUp()">

@@ -14,9 +14,17 @@ def get_posts():
         posts.append(post)
     return posts
 
-def get_posts_paged(page):
+def get_posts_paged(page, posts_per_page):
     posts = []
-    for post in getDB().getPostsPaged(page):
+    for post in getDB().getPostsPaged(page, posts_per_page):
+        date = post['date']
+        post['date'] = utils.formatPostDate(date)
+        posts.append(post)
+    return posts
+
+def search_posts_paged(search, page, posts_per_page):
+    posts = []
+    for post in getDB().searchPostsPaged(search, page, posts_per_page):
         date = post['date']
         post['date'] = utils.formatPostDate(date)
         posts.append(post)

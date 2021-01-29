@@ -134,6 +134,22 @@ def load_file_for_post(uuid, file):
 def blog():
 	return render_template('blog.html', posts=b.get_posts())
 
+@app.route('/posts')
+def posts():
+	page = request.args.get('page')
+	postsPerPage = request.args.get('posts_per_page')
+	search = request.args.get('search')
+	if page is None:
+		return abort(400, 'page field in get request isn\'t present')
+	if postsPerPage is None:
+		return abort(400, 'posts_per_page field in get request isn\'t present')
+	posts = None
+	if search is None:
+		posts = b.get_posts_paged(int(page), int(postsPerPage))
+	else:
+		posts = b.search_posts_paged(search, int(page), int(postsPerPage))
+	return render_template('posts.html', posts=posts)
+
 @app.route('/create_post', methods = ['GET'])
 @login_required(perms_level=1)
 def create_post_GET(uuid):

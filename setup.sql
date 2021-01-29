@@ -19,8 +19,12 @@ CREATE TABLE coderbrothers.posts(
    content TEXT NOT NULL,
    timestamp TIMESTAMP NOT NULL,
    PRIMARY KEY ( uuid ),
-   FOREIGN KEY ( author ) REFERENCES coderbrothers.users(uuid) 
+   FOREIGN KEY ( author ) REFERENCES coderbrothers.users(uuid),
+   -- FULLTEXT KEY ( title, content )
 );
+
+ALTER TABLE posts ADD FULLTEXT(title);
+ALTER TABLE posts ADD FULLTEXT(content);
 
 CREATE TABLE coderbrothers.comments(
    uuid CHAR(36) NOT NULL UNIQUE,

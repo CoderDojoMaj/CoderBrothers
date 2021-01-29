@@ -1,0 +1,9 @@
+{% for post in posts %}
+	<div class="innerPosts">
+		<a class="post" href="/post/{{ post['uuid'] }}">
+			<p class="titlepost">{{ post['title'] }} </p>
+			<p class="authorpost">Author: {{ post['author'] }}</p> 
+			<p class="datepost">Date: {{ post['date'] }}</p>
+		</a>
+	</div>
+{% endfor %}
