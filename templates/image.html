@@ -1,48 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-	
-<head>
+{% extends "layout.html" %}
+{% block title %}Change Image{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/css/image.css">
+<link rel="stylesheet" href="/css/header.css">
+<script src="js/header.js"></script>
+{% endblock %}
+{% block header %}
+<div class="BlogHeader">
 	{% include 'header.html' %}
-	<link rel="stylesheet" href="/css/image.css">
-	<link rel="stylesheet" href="/css/header.css">
-	<link rel="stylesheet" href="/css/general.css">
-	<script src="js/header.js"></script>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Profile picture | CoderBrother</title>
-	<style>
-		.hidden {
-			display: none;
-		}
-	</style>
-</head>
-
-<body>
-	<div class="imgAdd">
+</div>
+{% endblock %}
+{% block content %}
+{% if session.get('user') %}
+<div class="imgAdd">
+	<div id="dbb">
 		<form action="/blog">
-		<input class="bbuton" src="/img/back.png" type="image" value="Back">
-		</input>
-		</form><input class="selectPic" type="file" id="image">
-		<img id="pic">
-		{% if session.get('user') %}
-		<h2 class= "textt">CURRENT PROFILE PICTURE</h2>
-		<img class= "ppic" src="/u/{{ session.get('user')[1] }}/img">
-		<h3 class= "texti">INSERT IMAGE FROM DEVICE</h3>
-		<form class="button" class="upImg"action="/update_img" method="post" id="form" class="hidden">
-			<input type="hidden" name="image" id="update_img_base64">
-			<input type="submit"  value="Update image">
+			<input class="bbuton" src="/img/back.png" type="image" value="Back">
 		</form>
 	</div>
-	{% endif %}
-	<div class="premade">
-		<h3 class="textp">OR CHOOSE FROM THESE</h3>
-		<div class="scroll">
-			<input class="bbuton" src="/img/back.png" type="image" value="Back"></input>
+	<div id="thingsLeft">
+		<p class="textt">CURRENT PROFILE PICTURE</p>
+		<img class="pic" src="/u/{{ session.get('user')[1] }}/img">
+		<p class="textt">NEW PROFILE PICTURE</p>
+		<img class="pic" id="pic">
+	</div>
+	<div id="thingsRight">
+		<div id="thingsTop">
+			<p class="texti">INSERT IMAGE FROM DEVICE</p>
+			<p class="zt">Upload a picture from your device.<br>All images will be limited to 130 pixels, so we recommend a square picture that is at least those measurements.</p>
+			<input class="selectPic" type="file" id="image">
+		</div>
+		<div id="thingsBottom">
+				<input id="cancelButton" type="button" value="Cancel"></input>
+			<form action="/update_img" method="post" id="form">
+				<input type="hidden" name="image" id="update_img_base64">
+				<input id="updateButton" type="submit" value="Update image">
+			</form>
 		</div>
 	</div>
 
+</div>
+<div class="premade">
+	<p class="textt" id="RTitle">OR CHOOSE FROM THESE</p>
+	<div class="scroll">
+		<input class="bbuton" src="/img/back.png" type="image" value="Back"></input>
+	</div>
+</div>
+{% endif %}
 
-	<script src="js/image.js"></script>
-</body>
 
-</html>
+<script src="js/image.js"></script>
+{% endblock%}

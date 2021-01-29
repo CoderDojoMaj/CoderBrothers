@@ -1,97 +1,141 @@
-.bbuton {
-    width:5%;
-    height:5%;
-    top: 2%;
-    left: 2%;
-    position: absolute;
-    border-bottom: #000 1px solid;
-    border-right: #000 1px solid;
-  
-}
+/*Since we modified the HTML to include the header and footer, we needed to change the CSS to make everything look nice.
+The imgAdd and premade divs were on top of the rest of the page since we used position absolute.
 
-.button{
-    display:inline-block;
-    bottom:0;
-    right:0;
-}
+The new Layout uses the content tag to give everything margins from the header and footer.
+There are 2 divs, imgAdd, which is the big div. It contains 3 divs:
+    -dbb, which houses the go back button
+    -thingsLeft, which goes to the right of dbb, and contains the 2 img tags and their titles
+    -thingsRight, wich goes to the right of thingsLeft, it also contains 2 divs that separate the
+    insert image button(thingsTop) and the cancel and update image buttons(thingsBottom). 
+The div to the right of imgAdd is premade, which will hold some premade profile pictures.
 
-.imgAdd{
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    background-color: #282E34;
-    position: fixed;
-    height: 85%;
-    width: 65%;
-    margin-top: 2%;
-    margin-left: 5%;
+thingsLeft and thingsRight share 50% of the space they have, after dbb takes up what it needs and the 
+margins for imgAdd are loaded, thanks to the "display: flex; flex:1;" CSS instructions.
+*/
+
+.imgAdd {
+    padding: 1vw;
+    display: flex; //Without this the default display is block and the elements don't stay in the div
+    background: linear-gradient(180deg, #262D33 -3.38%, #1D1E20 78.58%);
+    height: 75vh; //If you change this height you change the height of both imgAdd and premade
+    width: 65vw;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
-.textt{
-    position: absolute;
-    top: 2%;
-    left: 10%;
+
+#dbb {
+    display: flex;
+    height: 100%;
+    width: fit-content;
+}
+
+#thingsLeft {
+    display: flex;
+    flex: 1;
+    padding: 1.5vw;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#thingsRight {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#thingsTop {
+    padding-left: 3vw;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#thingsBottom {
+    padding-left: 3vw;
+    height: 25%;
+    display: flex;
+    flex-direction: row;
+}
+
+.premade {
+    margin-left: 3vw;
+    background: linear-gradient(180deg, #262D33 -3.38%, #1D1E20 78.58%);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.bbuton {
+    width: auto;
+    height: 6vh;
+    border: #000 1px solid;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background-color: #999999;
+}
+
+.pic {
+    background-color: white;
+    border: #000 2px solid;
+    height: 130px;
+    width: 130px;
+}
+
+.textt {
+    font-size: 1.5vw;
     color: white;
+}
 
-    
+.texti {
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    font-size: 1.2vw;
+    color: white;
 }
-.premade{
-    position: absolute;
-    margin-top: 2%;
-    right: 5%;
-    background-color: #282E34; 
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); 
-    height: 85%;
-    width: 23%;
-}
-.upImg{
-    background-color: grey;
-    border-bottom: #000 1px solid;
-    border-right: #000 1px solid;
-    height:22%;
-    width: 22%;
 
+.ttext{
+    margin: 0px 0px 15px 0px;
+    color: #7B7C7C;
+    width: fit-content;
+    height: fit-content;
+    max-width: 20vw;
+    font-size: 0.8vw;
 }
-.ppic{
-    border-bottom: #000 2px solid;
-    border-right: #000 2px solid;
-    position: absolute;
-    top: 10%;
-    left: 8%;
-    width: 22%;
-    height: 32%
+
+#RTitle{
+    padding: 1vw;
 }
-.selectPic{
-    top: 50%;
-    left: 10%;
-    position: absolute;
-}
-#pic{
-    border-bottom: #000 2px solid;
-    border-right: #000 2px solid;
-    position: absolute;
-    top:57%;
-    left:8%;
-    width: 22%;
-    height: 32%
-}
-.texti{
-    position: absolute;
-    top:46%;
-    left:8%;  
-    color:white;
-}
-.textp{
-    position: absolute;
-    top:2%;
-    left:5%;  
-    color:white;
-}
-.scroll{
-    position: absolute;
-    top: 15%;
-    right: 2%;
-    left: 2%;
+
+.scroll {
     background-color: lightblue;
     overflow-y: scroll;
-  }
+    height: fit-content;
+}
+
+#cancelButton{
+    color: #fff;
+	background-color:#f93549;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border: none;
+    width: 7vw;
+	height: 3.5vh;
+    font-size: 1vw;
+}
+
+#updateButton{
+    margin-left: 1.5vw;
+	color: #fff;
+	background-color: #41bac1;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border: none;
+    width: 8vw;
+	height: 3.5vh;
+	font-size: 1vw;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 3vw;
+}

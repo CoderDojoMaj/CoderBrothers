@@ -1,27 +1,26 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+<head>
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/vnd.microsoft.icon" href="/img/favicon.ico">
+	<title>{% block custom_start %}{% endblock %}{% block title %}{% endblock %}{% block custom_ending %} | CoderBrothers{% endblock %}</title>
+	<link rel="stylesheet" href="/css/general.css">
+	<link rel="stylesheet" href="/css/footer.css">{% block head %}{% endblock %}
+</head>
+<body>
+	{% block header %}
+	<div class="header">
+		{% include 'header.html' %}
+	</div>
+	{% endblock %}
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{% block custom_start %}{% endblock %}{% block title %}{% endblock %}{% block custom_ending %} | CoderBrothers{% endblock %}</title>
-		<link rel="stylesheet" href="/css/general.css">
-		<link rel="stylesheet" href="/css/footer.css">
-		{% block head %}{% endblock %}
-	</head>
-
-	<body>
-		{% block header %}
-		<div class="header">
-			{% include 'header.html' %}
-		</div>
-		{% endblock %}
-
-		<div class="content">
-			{% block content %}{% endblock %}
-		</div>
-		<div class="footer">
-			{% include 'footer.html' %}
-		</div>
-	</body>
+	<div class="content">
+		{% block content %}{% endblock %}
+	</div>
+	<div class="footer">
+		{% include 'footer.html' %}
+	</div>
+</body>
 </html>
