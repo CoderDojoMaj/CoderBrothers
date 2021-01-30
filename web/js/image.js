@@ -44,3 +44,9 @@ document.getElementById('image').onchange = ()=>{
 		document.getElementById('form').classList.remove('hidden')
 	})
 }
+
+const img = document.getElementById("image");
+
+img.addEventListener('change',() =>{
+	document.getElementById("updateButton").disabled = false;
+})

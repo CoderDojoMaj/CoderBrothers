@@ -27,16 +27,17 @@
 	<div id="thingsRight">
 		<div id="thingsTop">
 			<p class="texti">INSERT IMAGE FROM DEVICE</p>
-			<p class="zt">Upload a picture from your device.<br>All images will be limited to 130 pixels, so we recommend a square picture that is at least those measurements.</p>
-			<input class="selectPic" type="file" id="image">
+			<p style="color: #696969;"><!--Nice!-->Upload a picture from your device.<br>All images will be limited to 130 pixels, so we recommend a square picture that is at least those measurements.</p>
+			<input class="selectPic" type="file" id="image" data-multiple-caption="{count} files selected">
+			<label id="chooseFile" for="image">Choose a file</label>
 		</div>
 		<div id="thingsBottom">
 				<input id="cancelButton" type="button" value="Cancel"></input>
 			<form action="/update_img" method="post" id="form">
 				<input type="hidden" name="image" id="update_img_base64">
-				<input id="updateButton" type="submit" value="Update image">
+				<input id="updateButton" type="submit" value="Update image" disabled>
 			</form>
-		</div>
+			</div>
 	</div>
 
 </div>
@@ -49,5 +50,5 @@
 {% endif %}
 
 
-<script src="js/image.js"></script>
+<script src="./js/image.js"></script>
 {% endblock%}
