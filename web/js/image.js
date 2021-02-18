@@ -5,7 +5,7 @@ function loadPictureAsURL(input_el,callback) {
 	let file = input_el.files[0];
 	let reader = new FileReader();
 
-	reader.onloadend = function () {
+	reader.onloadend = ()=> {
 		let picURL = reader.result;
 		resizeImage(picURL, IMG_WIDTH, IMG_HEIGHT, function (picURL) {
 			document.getElementById('pic').src = picURL
@@ -37,16 +37,23 @@ function resizeImage(URL, width, height, callback) {
 	}
 }
 
-document.getElementById('image').onchange = ()=>{
-	loadPictureAsURL(document.getElementById('image'), (url)=>{
+var img= document.getElementById('image');
+
+img.onchange=()=>{
+	document.getElementById("updateButton").disabled = false;
+	loadPictureAsURL(img, (url)=>{
 		console.log(url.substr(22))
 		document.getElementById('update_img_base64').value = url.substr(22)
 		document.getElementById('form').classList.remove('hidden')
 	})
 }
 
-const img = document.getElementById("image");
+document.getElementById('cancelButton').addEventListener("click", ()=>{
+	document.getElementById('update_img_base64').value = '';
+	document.getElementById("updateButton").disabled = true;
+	document.getElementById("pic").removeAttribute('src');
+});
 
-img.addEventListener('change',() =>{
-	document.getElementById("updateButton").disabled = false;
-})
+document.querySelector('.diplayPic').addEventListener("click", ()=>{
+	
+});

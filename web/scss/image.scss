@@ -14,6 +14,8 @@ margins for imgAdd are loaded, thanks to the "display: flex; flex:1;" CSS instru
 */
 
 .imgAdd {
+    position: initial;
+    position: static;
     padding: 1vw;
     display: flex; //Without this the default display is block and the elements don't stay in the div
     background: linear-gradient(180deg, #262D33 -3.38%, #1D1E20 78.58%);
@@ -61,6 +63,7 @@ margins for imgAdd are loaded, thanks to the "display: flex; flex:1;" CSS instru
 }
 
 .premade {
+    height: 75vh;
     margin-left: 3vw;
     background: linear-gradient(180deg, #262D33 -3.38%, #1D1E20 78.58%);
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -107,10 +110,15 @@ margins for imgAdd are loaded, thanks to the "display: flex; flex:1;" CSS instru
 }
 
 .scroll {
+    width: 28vw;
+    height: 96%;
     background-color: lightblue;
     overflow-y: scroll;
-    height: fit-content;
-    height
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: unset;
 }
 
 #cancelButton{
@@ -165,4 +173,12 @@ margins for imgAdd are loaded, thanks to the "display: flex; flex:1;" CSS instru
 	height: 3.5vh;
     font-size: 1vw;
     cursor: pointer;
+}
+
+.diplayPic{
+    margin: 1vh;
+    width: auto;
+    height: 10vh;
+    border: #000 1px solid;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }

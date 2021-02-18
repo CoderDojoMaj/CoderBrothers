@@ -1,11 +1,12 @@
 //Opens the LogIn and SignUp forms
 function onLogIn() {
 	document.getElementById("logIn").style.display = "flex";
+	document.getElementById("LogInName").focus();
 }
 
 function onSignUp() {
 	document.getElementById("signUp").style.display = "flex";
-	console.log(document.getElementById("signUp"))
+	document.getElementById("SignUpName").focus();
 }
 
 //Closes the LogIn and SignUp forms
