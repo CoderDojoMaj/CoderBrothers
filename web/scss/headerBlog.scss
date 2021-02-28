@@ -1,6 +1,6 @@
 .header {
 	width: 100%;
-	height: 5vh;
+	height: 6vh;
 	display: flex;
 	align-items: center;
 	background-color: #221c35;
@@ -9,7 +9,7 @@
 #logo {
 	margin-left: 2vh;
 	margin-top: 5px;
-	height: 4.5vh;
+	height: 5.5vh;
 	cursor: pointer;
 }
 
@@ -52,12 +52,29 @@
 
 #searchBar {
 	border: none;
-	padding-left: 2.5%;
-	padding-right: 2.5%;
 	width: 20%;
-	height: 70%;
-	font-size: 1vw;
+	height: 65%;
 	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: white;
+}
+
+#SImage {
+	height: 80%;
+	width: auto;
+	padding-left: 3px;
+}
+
+#searchInput{
+	border: none;
+	font-size: 1vw;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	color: #000000;
+	text-decoration: none;
 }
 
 //syle for the dropdown
@@ -225,28 +242,73 @@ span.psw {
 		transform: scale(0);
 	}
 }
+
+
 //giving form tag same width as the form so it woulden't clip over the sides
 
 .popups {
 	width: 40vw;
+	height: 70%;
 }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 700px) {
-	span.psw {
-		display: block;
-		float: none;
-		font-size: medium;
+#searchInputM{
+	display: none;
+}
+
+//Changes the syle if beeing used by a phone
+@media screen and (max-width: 768px) {
+	.header{
+		height: 7vh;
 	}
-	.modal-content {
-		background-color: #fefefe;
-		border: 2 px solid #888;
-		width: 70vw;
+
+	#logo{
+		height: 6.5vh;
 	}
-	img.avatar {
-		width: 45vw;
+
+	#searchBar{
+		display: none;
 	}
-	h1 {
-		font-size: 3vh;
+
+	#searchInputM{
+		display: none;
 	}
+
+	#formOpeners{
+		padding-left: 0px;
+	}
+
+	#searchBarM{
+		display: flex;
+		align-items: center;
+		height: 100%;
+		width: auto;
+		margin-right: 2vw;
+	}
+
+	#MSimage {
+		height: 55%;
+		width: auto;
+		cursor: pointer;
+	}
+
+	.formButtons {
+		width: 15vw;
+		height: 3vh;
+		font-size: 3vw;
+	}
+
+	.buttons {
+		padding-left: 3vw;
+		padding-right: 2vw;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+}
+
+@media screen and (max-width: 514px) {
+	
 }

@@ -15,6 +15,8 @@ function offLogIn(event, cliked) {
 	if (event.target === cliked) {
 		modal.style.display = "none";
 		document.getElementById("loginError").innerText="";
+		document.getElementById('LogInName').value="";
+		document.getElementById('LogInPass').value="";
 	}
 }
 
@@ -23,6 +25,10 @@ function offSignUp(event, cliked) {
 	if (event.target === cliked) {
 		modal.style.display = "none";
 		document.getElementById("signupError").innerText="";
+		document.getElementById("message").innerText="";
+		document.getElementById('SignUpName').value="";
+		document.getElementById('SignUpPass').value="";
+		document.getElementById('SignUpRPass').value="";
 	}
 }
 
@@ -47,8 +53,8 @@ if (!event.target.matches('.dropbtn')) {
 
 //Function used in SignUp form to chek if the too paswors are correct
 function check() {
-	let pass=document.getElementById('p');
-	let confpass=document.getElementById('rp');
+	let pass=document.getElementById('SignUpPass');
+	let confpass=document.getElementById('SignUpRPass');
 	let message=document.getElementById('message');
 
 	if (pass.value===""){

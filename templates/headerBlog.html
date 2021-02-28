@@ -1,7 +1,19 @@
 <div class="header">
 	<div id="divLogo"><a href="/"><img src="/img/logo.svg" id="logo"></a></div>
 	<nav class="buttons">
-		<input type="text" id="searchBar" placeholder="Buscar un post . . .">
+		
+		<div id="searchBar">
+			<img src="/img/search.jpg" id="SImage">
+				<input type="text" id="searchInput" placeholder="Buscar un post . . .">
+		</div>
+		<div id="searchBarM">
+			<img src="/img/Msearch.svg" id="MSimage">
+			<div>
+				<input type="text" id="searchInputM" placeholder="Buscar un post . . .">
+			</div>
+		</div>
+		
+
 		{% if session.get('user') %}
 			<!--<a>{{ session.get('user')[2] }} ({{ session.get('user')[3] }})</a>-->
 			<div class="dropdown">
@@ -39,7 +51,7 @@
 			<input type="text" class="formInput" id="LogInName" placeholder="Escribe tu nombre de usuario" name="username" required>
 
 			<label for="psw"><b>Contraseña</b></label>
-			<input type="password" class="formInput" placeholder="Escribe tu contraseña" name="password" required>
+			<input type="password" class="formInput" id="LogInPass" placeholder="Escribe tu contraseña" name="password" required>
 
 			<button class="formButton" type="submit">Login</button>
 			<span class="psw">No tienes una cuenta?
@@ -63,12 +75,12 @@
 			<input type="text" class="formInput" id="SignUpName" placeholder="Escribe un nobre de usuario" name="username" required>
 
 			<label for="psw"><b>Contraseña</b></label>
-			<input id="p" type="password" class="formInput" placeholder="Escribe una contraseña" name="password" onkeyup="check();" required>
+			<input type="password" class="formInput" id="SignUpPass" placeholder="Escribe una contraseña" name="password" onkeyup="check();" required>
 
 			<label for="psw"><b>Repetir contraseña</b></label>
-			<input id="rp" type="password" class="formInput" placeholder="Repite tu contraseña" onkeyup="check();" required>
+			<input type="password" class="formInput" id="SignUpRPass" placeholder="Repite tu contraseña" onkeyup="check();" required>
 
-			<input id="logInButton" class="formButton" type="submit" value="Sign Up">
+			<input id="logInButton" class="formButton"  type="submit" value="Sign Up">
 
 			<span class="psw">Ya tienes cuenta?
 				<a style="color: black;cursor: pointer;font-weight: bold;" onclick="offSignUp(event,this);onLogIn()">Inicia sesión!</a>

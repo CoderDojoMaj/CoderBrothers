@@ -39,6 +39,8 @@ def getPostTemplate(uuid):
 	{%% block title %%} %s {%% endblock %%}
 	{%% block author %%} %s {%% endblock %%}
 	{%% block date %%} %s {%% endblock %%}
-	{%% block markdown %%} %s {%% endblock %%}''' % (post['title'], post['author'], post['date'], post['content'])
+	{%% block markdown %%}
+    
+%s {%% endblock %%}''' % (post['title'], post['author'], post['date'], post['content']) # The newline has to be there for a code element not to appear
     # l.info(template)
     return template
