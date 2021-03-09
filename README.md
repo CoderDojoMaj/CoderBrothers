@@ -91,3 +91,29 @@ And then just run it with
 ```
 ### On Windows, `start.bat` can be run to do everything
 (Not sure) Double click the file and it should open a command prompt with the flask developmeent server
+
+# Using Docker
+## Install
+For ease of use you can run the project in Docker.
+## Install Docker
+
+- **Windows:** [Docker Desktop on Windows](https://docs.docker.com/docker-for-windows/install/)
+
+- **MacOS:** [Docker Desktop on Mac](https://docs.docker.com/docker-for-mac/install/)
+
+- **Linux:** [Choose your distro](https://docs.docker.com/engine/install/#server)
+    
+    - Or install using the convenience script (CentOS/ Debian/ Fedora/ Raspbian/ Ubuntu):
+
+        ```bash
+        curl -fsSL https://get.docker.com -o get-docker.sh
+        sudo sh get-docker.sh
+        ```
+## Run
+Once Docker is installed, go to the folder where you cloned the repository and run the following command:
+
+```bash
+docker compose up
+```
+### Server is now runing
+Go to http://localhost:8080 to see the page.
