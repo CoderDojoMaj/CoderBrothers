@@ -109,11 +109,20 @@ For ease of use you can run the project in Docker.
         curl -fsSL https://get.docker.com -o get-docker.sh
         sudo sh get-docker.sh
         ```
+    - Docker compose does not install with the docker engine on linux. You can install it with the following commands:
+        ```bash
+        sudo curl -L "https://github.com/docker/compose/releases/download/1.28.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+        ```
+    - In case you still can't docker-compose try adding it to your PATH:
+        ```bash
+        sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+        ```
 ## Run
 Once Docker is installed, go to the folder where you cloned the repository and run the following command:
 
 ```bash
-docker compose up
+docker-compose up
 ```
 ### Server is now runing
 Go to http://localhost:8080 to see the page.

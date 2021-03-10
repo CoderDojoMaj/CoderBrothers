@@ -2,4 +2,4 @@ FROM mysql:latest
 
 WORKDIR /app
 
-COPY ./*.sql /docker-entrypoint-initdb.d
+COPY ./*.sql /docker-entrypoint-initdb.d/
