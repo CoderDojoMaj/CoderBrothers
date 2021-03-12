@@ -207,6 +207,7 @@ def update_img(uuid):
 def u_img(uuid):
 	img = getDB().getUserImage(uuid)
 	response = send_file(io.BytesIO(bytes(img)), mimetype='image/png')
+	response.headers.add_header('Cache-Control','no-cache')
 	return response
 
 @app.route('/')
