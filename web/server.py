@@ -219,7 +219,9 @@ def index():
 def css(file):
 	scsscompiler.compile(file)
 	logger.info(f'Loading css {file}')
-	return send_from_directory('web/css/', file)
+	response = send_from_directory('web/css/', file)
+	response.headers.add_header('Cache-Control','no-cache')
+	return response
 
 @app.route('/<path:page>')
 def page(page):

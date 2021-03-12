@@ -49,9 +49,27 @@
 		<input class="diplayPic" src="/img/Profp3.png" type="image"></input>
 		<input class="diplayPic" src="/img/Profp4.png" type="image"></input>
 	</div>
+
+	<p class="textt" id="RTitle">OR MAKE YOUR OWN</p>
+	<div style="margin: auto; width: max-content;">
+		<div style="display: inline-block;position: relative; top: -16%;">
+			<button id="prev_hair" style="display: block;margin-bottom: 100px;">←</button>
+			<button id="prev_body" style="display: block;">←</button>
+		</div>
+		<img style="display: inline-block; width: 256px;" id="custom_image" src="/img/profile_pics/faces/Buffed_blu_soldier.jpg">
+		<div style="display: inline-block;position: relative; top: -16%;">
+			<button id="next_hair" style="display: block;margin-bottom: 100px;">→</button>
+			<button id="next_body" style="display: block;">→</button>
+		</div>
+	</div>
+	<button id="set_cutom_image" style="margin: auto; display: block">Set!</button>
+	<form action="/update_img" method="post" class="hidden">
+		<input type="hidden" name="image" id="update_img_base64_custom">
+		<input id="updateButtonCustom" type="submit" value="Update image">
+	</form>
 </div>
 {% endif %}
 
-
+<script src="/js/profile_pic_gen.js"></script>
 <script src="./js/image.js"></script>
 {% endblock%}

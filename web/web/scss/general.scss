@@ -2,5 +2,15 @@
 	margin: 0;
 	padding: 0;
 	font-family: Arial, Helvetica, sans-serif;
-	scroll-behavior: smooth;     
+	scroll-behavior: smooth;
+}
+
+img {
+	image-rendering: pixelated;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: crisp-edges;
+}
+
+.hidden {
+	display: none;
 }
