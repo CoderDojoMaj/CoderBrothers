@@ -50,6 +50,8 @@
 	padding-left: 2vw;
 }
 
+//styles for the desktop search bar
+
 #searchBar {
 	border: none;
 	width: 20%;
@@ -67,7 +69,7 @@
 	padding-left: 3px;
 }
 
-#searchInput{
+#searchInput {
 	border: none;
 	font-size: 1vw;
 	width: 100%;
@@ -77,6 +79,27 @@
 	text-decoration: none;
 }
 
+//Styles for the mobile search bar
+#Sdropdown {
+	height: 5vh;
+	margin-top: 12vh;
+	display: none;
+	position: absolute;
+	background-color: #221c35;
+	border-style: solid;
+	width: 100%;
+	overflow: auto;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	right: 0;
+	z-index: 1;
+}
+
+.searchInput{
+	padding-left: 2vh;
+	width: 100% !important;
+	font-size: 2vh !important;
+	display: block;
+}
 //syle for the dropdown
 
 .dropbtn {
@@ -115,10 +138,6 @@
 
 .dropdown a:hover {
 	background-color: #ddd;
-}
-
-.show {
-	display: block;
 }
 
 //Untill the @media, all this code is for the LogIn and SignUp forms
@@ -243,7 +262,6 @@ span.psw {
 	}
 }
 
-
 //giving form tag same width as the form so it woulden't clip over the sides
 
 .popups {
@@ -251,33 +269,33 @@ span.psw {
 	height: 70%;
 }
 
-#searchInputM{
+#searchInputM {
 	display: none;
 }
 
 //Changes the syle if beeing used by a phone
 @media screen and (max-width: 768px) {
-	.header{
+	.header {
 		height: 7vh;
 	}
 
-	#logo{
+	#logo {
 		height: 6.5vh;
 	}
 
-	#searchBar{
+	#searchBar {
 		display: none;
 	}
 
-	#searchInputM{
+	#searchInputM {
 		display: none;
 	}
 
-	#formOpeners{
+	#formOpeners {
 		padding-left: 0px;
 	}
 
-	#searchBarM{
+	#mobileSB {
 		display: flex;
 		align-items: center;
 		height: 100%;
@@ -310,5 +328,4 @@ span.psw {
 }
 
 @media screen and (max-width: 514px) {
-	
 }

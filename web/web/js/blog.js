@@ -38,3 +38,9 @@ document.getElementById('searchBar').onkeypress = function (ev) {
 		loadNextPage(POSTS_PER_PAGE)
 	}
 }
+
+//JS for the search dropdown on mobile
+
+function mobileSB() {
+	document.getElementById("Sdropdown").classList.toggle("show");
+}
