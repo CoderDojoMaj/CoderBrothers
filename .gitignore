@@ -152,6 +152,7 @@ dmypy.json
 
 config.json
 web/certificates/*
+certificates
 .vscode
 web/web/post/*
 web/web/css/*
