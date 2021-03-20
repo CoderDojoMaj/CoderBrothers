@@ -46,7 +46,11 @@
 {% block custom_start %}CoderBrothers Blog | {% endblock %}
 {% block custom_ending %}{% endblock %}
 {% block content %}
-<div class="post">
+<div  class="post">
+	<form id="exit" action="/blog">
+		<input class="bbuton" src="/img/back.png" type="image" value="Back">
+		<span><a href="/blog" id="bbText">Volver al blog</a></span>
+	</form>
 	<div class="title_block">
 		<h1 id="post_title">{{self.title()}}</h1>
 		{% if self.author() %}
