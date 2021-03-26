@@ -7,10 +7,16 @@
 }
 
 #logo {
-	margin-left: 2vh;
-	margin-top: 5px;
-	height: 5.5vh;
+	height: inherit;
 	cursor: pointer;
+}
+
+#logoLink{
+	display: flex;
+	align-items: center;
+	height: 5.5vh;
+	margin-left: 2vh;
+	width: fit-content;
 }
 
 .buttons {
@@ -26,9 +32,10 @@
 }
 
 .formButtons {
-	width: 5vw;
+	width: fit-content;
 	height: 3vh;
-	font-size: 0.7vw;
+	padding-left: 1vh;
+	padding-right: 1vh;
 }
 
 #formLogIn {
@@ -54,7 +61,6 @@
 
 #searchBar {
 	border: none;
-	width: 20%;
 	height: 65%;
 	border-radius: 10px;
 	display: flex;
@@ -71,18 +77,15 @@
 
 #searchInput {
 	border: none;
-	font-size: 1vw;
-	width: 100%;
+	font-size: 1.7vh;
 	height: 100%;
 	border-radius: 10px;
-	color: #000000;
-	text-decoration: none;
 }
 
 //Styles for the mobile search bar
 #Sdropdown {
 	height: 5vh;
-	margin-top: 12vh;
+	margin-top: 11vh;
 	display: none;
 	position: absolute;
 	background-color: #221c35;
@@ -96,8 +99,8 @@
 
 .searchInput{
 	padding-left: 2vh;
-	width: 100% !important;
-	font-size: 2vh !important;
+	width: -webkit-fill-available;
+	font-size: 2vh;
 	display: block;
 }
 //syle for the dropdown
@@ -275,19 +278,7 @@ span.psw {
 
 //Changes the syle if beeing used by a phone
 @media screen and (max-width: 768px) {
-	.header {
-		height: 7vh;
-	}
-
-	#logo {
-		height: 6.5vh;
-	}
-
 	#searchBar {
-		display: none;
-	}
-
-	#searchInputM {
 		display: none;
 	}
 
@@ -309,12 +300,6 @@ span.psw {
 		cursor: pointer;
 	}
 
-	.formButtons {
-		width: 15vw;
-		height: 3vh;
-		font-size: 3vw;
-	}
-
 	.buttons {
 		padding-left: 3vw;
 		padding-right: 2vw;
@@ -325,7 +310,17 @@ span.psw {
 		flex-wrap: wrap;
 		align-items: center;
 	}
-}
 
-@media screen and (max-width: 514px) {
+	//Styles for LogIn and SignUp forms
+	.modal-content{
+		width: 95%;
+	}
+
+	img.avatar{
+		width: 20vh;
+	}
+
+	span.psw{
+		float: none;
+	}
 }
