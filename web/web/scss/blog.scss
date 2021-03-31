@@ -6,21 +6,29 @@
 	text-decoration: none;
 }
 
-.innerPosts {
+.individualPost {
+	display: flex;
+	justify-content: center;
 	padding-left: 3vh;
 	padding-bottom: 2vh;
 	padding-top: 0.5vh;
 	border-bottom: #000 1px solid;
 }
 
+.optionsMenu{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	justify-content: space-evenly;
+	height: auto;
+	width: 100%;
+}
+
 .titlepost {
 	font-size: 4vh;
 	color: #000;
-	display: block;
 	width: 90vw;
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
 }
 
 .authorpost {
