@@ -3,6 +3,7 @@
 {% block title %}Create Post{% endblock %}
 {% block head %}
 <link rel="stylesheet" href="/css/create_post.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {% endblock %}
 {% block header %}
 <div class="BlogHeader">
@@ -19,12 +20,19 @@
 			</div>
 			<div id="titleDiv">
 				<input name="title" id="title" type="text">
-				<input class="buttonTop" id="previwB" type="button" value="Preview Markdown">
-				<input class="buttonTop" id="publishB" type="submit" value="Publish Post">
+				<div class="buttonTop" id="previwB">
+					<i class="material-icons visibility">&#xe8f4;</i>
+					<input class="Inputs" type="button" value="Preview Markdown">
+				</div>
+				<div class="buttonTop" id="publishB" onclick="helo()">
+					<i class="material-icons send">&#xe163;</i>
+					<input class="Inputs" type="submit" value="Publish Post">
+				</div>
 			</div>
 		</div>
 		<div id="toolsBottom">
 			<p id="autor">Post escrito por: {{ session.get('user')[2] }}</p>
+			<div id="spacer"></div>
 		</div>
 	</div>
 	<div id="contentDiv">

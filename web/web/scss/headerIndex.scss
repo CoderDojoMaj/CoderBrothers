@@ -46,12 +46,12 @@
 	height: 90%;
 }
 
-.enlace:hover{
-	border-bottom: 0.5vh solid #4AC1E0;
+.enlace:hover {
+	border-bottom: 0.5vh solid #4ac1e0;
 	//border-bottom-width: 10px solid #4AC1E0;
 }
 
-.buttons{
+.buttons {
 	padding-left: 3vw;
 	padding-right: 3vw;
 	width: 100%;
@@ -64,7 +64,7 @@
 }
 
 @media screen and (max-width: 1136px) {
-	.buttons{
+	.buttons {
 		display: none;
 	}
 
@@ -79,13 +79,13 @@
 		font-size: 5vh;
 		background-color: inherit;
 	}
-	
-	#TopMenu{
+
+	#TopMenu {
 		width: 100%;
 		height: 6vh;
 	}
 
-	#separator{
+	#separator {
 		width: 90%;
 		border: 2px solid #fff;
 		margin-top: 1.5vh;
