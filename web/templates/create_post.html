@@ -10,15 +10,25 @@
 </div>
 {% endblock %}
 {% block content %}
-<h4>Autor: <b>{{ session.get('user')[2] }}</b></h4>
+
 <form action="/create_post" method="POST">
-	<div id="titlediv">
-		<label for="title"><b>Título</b></label>
-		<input name="title" id="title" type="text">
+	<div id="tools">
+		<div id="toolsTop">
+			<div>
+				<p>Title</p>
+			</div>
+			<div id="titleDiv">
+				<input name="title" id="title" type="text">
+				<input class="buttonTop" id="previwB" value="Preview Markdown">
+				<input class="buttonTop" id="publishB" type="submit" value="Publish Post">
+			</div>
+		</div>
+		<div id="toolsBottom">
+			<p id="autor">Post escrito por: {{ session.get('user')[2] }}</p>
+		</div>
 	</div>
-	<div id="contentdiv">
-		<textarea name="content" id="content" placeholder="Escribe aquí tu texto"></textarea>
-		<input type="submit" value="Create">
+	<div id="contentDiv">
+		<div name="content" id="content" contenteditable></div>
 	</div>
 </form>
 {% endblock %}

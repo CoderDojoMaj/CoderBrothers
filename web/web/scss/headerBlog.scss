@@ -11,7 +11,7 @@
 	cursor: pointer;
 }
 
-#logoLink{
+#logoLink {
 	display: flex;
 	align-items: center;
 	height: 5.5vh;
@@ -97,7 +97,7 @@
 	z-index: 1;
 }
 
-.searchInput{
+.searchInput {
 	padding-left: 2vh;
 	width: -webkit-fill-available;
 	font-size: 2vh;
@@ -312,15 +312,15 @@ span.psw {
 	}
 
 	//Styles for LogIn and SignUp forms
-	.modal-content{
+	.modal-content {
 		width: 95%;
 	}
 
-	img.avatar{
+	img.avatar {
 		width: 20vh;
 	}
 
-	span.psw{
+	span.psw {
 		float: none;
 	}
 }
