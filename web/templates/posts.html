@@ -8,8 +8,14 @@
 	{% if session.get('user') %}
 	{% if session.get('user')[3] > 0 %}
 	<div class="optionsMenu">
-		<p style="cursor: pointer;">Editar</p>
-		<p style="cursor: pointer;">Borrar</p>
+		<div class="optionsDiv">
+			<i class="material-icons edit">&#xe3c9;</i>
+			<a style="cursor: pointer;" type="button" name="_method">Editar</a>
+		</div>
+		<div class="optionsDiv">
+			<i class="material-icons delete">&#xe872;</i>
+			<p style="cursor: pointer;" a>Borrar</p>
+		</div>
 	</div>
 	{% endif%}
 	{% endif%}

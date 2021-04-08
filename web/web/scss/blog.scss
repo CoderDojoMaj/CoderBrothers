@@ -59,6 +59,13 @@
 	cursor: pointer;
 }
 
+.optionsDiv {
+	display: flex;
+	flex-direction: row;
+	cursor: pointer;
+	align-items: center;
+}
+
 #dropdown:hover,
 #dropdown:focus {
 	background-color: #2980b9;
