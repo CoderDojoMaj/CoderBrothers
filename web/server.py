@@ -129,6 +129,28 @@ def load_file_for_post(uuid, file):
 	else:
 		return abort(404, 'Post files not found')
 
+@app.route('/post/<post_uuid>/edit', methods = ['GET'])
+@login_required(perms_level=1)
+def edit_post_page(_, post_uuid):
+	logger.info(f'Loading post {post_uuid}')
+	try:
+		post = getDB().getPost(post_uuid)
+		return render_template('create_post.html', title = post['title'], content = post['content'], editPost = post_uuid)
+	except PostNotFoundError:
+		abort(404, f'/post/{post_uuid}/edit')
+
+@app.route('/post/<post_uuid>/edit', methods = ['POST'])
+@login_required(perms_level=1)
+def edit_post(_, post_uuid):
+	getDB().editPost(post_uuid, request.form['title'], request.form['content'])
+	return redirect('/post/' + post_uuid)
+
+@app.route('/post/<post_uuid>/delete', methods = ['POST'])
+@login_required(perms_level=1)
+def delete_post(_, post_uuid):
+	getDB().deletePost(post_uuid)
+	return redirect('/blog')
+
 
 @app.route('/blog')
 def blog():
@@ -159,8 +181,8 @@ def create_post_GET(uuid):
 @app.route('/create_post', methods = ['POST'])
 @login_required(perms_level=1)
 def create_post_POST(uuid):
-	getDB().createPost(request.form['title'], uuid, request.form['content'])
-	return redirect('/create_post')
+	post_uuid = getDB().createPost(request.form['title'], uuid, request.form['content'])
+	return redirect('/post/' + post_uuid)
 
 @app.route('/login', methods = ['POST'])
 def login():

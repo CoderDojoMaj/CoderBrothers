@@ -55,6 +55,14 @@
 		{% if self.date() %}
 		<h3 id="date">{% block date %}{% endblock %}</h3>
 		{% endif %}
+		{% if session.get('user') %}
+			{% if session.get('user')[3] > 0 %}
+				<a href="/post/{{ post_uuid }}/edit"><button>EDIT</button></a>
+				<form action="/post/{{ post_uuid }}/delete" method="post">
+					<button type="submit">DELETE</button>
+				</form>
+			{% endif %}
+		{% endif %}
 	</div>
 	{% filter markdown %}
 	{% block markdown %}{% endblock %}

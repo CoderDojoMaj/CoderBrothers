@@ -163,6 +163,16 @@ class DB:
 			self.l.error('User %s is not present' % uuid)
 			raise UserNotFoundError('User %s is not present' % uuid)
 
+	def setUserPerms(self, uuid, level):
+		cursor = self.run('UPDATE users SET perms = %s WHERE uuid = %s', level, uuid)
+		# res = cursor.fetchall()
+		cursor.close()
+		# if len(res) == 1:
+		# 	return res[0][0]
+		# else:
+		# 	self.l.error('User %s is not present' % uuid)
+		# 	raise UserNotFoundError('User %s is not present' % uuid)
+
 	def getUserImage(self, uuid):
 		cursor = self.run(
 			'SELECT img FROM users WHERE uuid = %s', uuid, raw=True)
@@ -181,6 +191,17 @@ class DB:
 	def createPost(self, title, authorid, content):
 		self.run('INSERT INTO posts(uuid, title, author, content, timestamp) values(UUID(), %s, %s, %s, NOW())',
 				 title, authorid, content).close()
+		cursor = self.run('SELECT @last_post_uuid')
+		res = cursor.fetchall()
+		cursor.close()
+		return res[0][0]
+		
+
+	def editPost(self, post_id, title, content):
+		self.run('UPDATE posts SET title = %s, content = %s WHERE uuid = %s', title, content, post_id).close()
+
+	def deletePost(self, post_id):
+		self.run('DELETE FROM posts WHERE uuid = %s', post_id).close()
 
 	def getPosts(self):
 		cursor = self.run(

@@ -54,4 +54,9 @@ CREATE TABLE coderbrothers.votes(
    FOREIGN KEY ( commentuuid ) REFERENCES coderbrothers.comments(uuid)
 );
 
+CREATE TRIGGER coderbrothers.ai_posts
+AFTER INSERT ON coderbrothers.posts
+FOR EACH ROW
+SET @last_post_uuid = NEW.uuid;
+
 GRANT ALL PRIVILEGES ON coderbrothers.* TO 'coderbrothers'@'localhost' WITH GRANT OPTION;
