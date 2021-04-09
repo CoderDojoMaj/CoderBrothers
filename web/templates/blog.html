@@ -6,6 +6,7 @@
 		<script src="/js/forms.js"></script>
 		<link rel="stylesheet" href="/css/headerBlog.css">
 		<link rel="stylesheet" href="/css/blog.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {% endblock %}
 {% block header %}
 <div class="BlogHeader">
@@ -13,12 +14,6 @@
 </div>
 {% endblock %}
 {% block content %}
-{% if session.get('user') %}
-{% if session.get('user')[3] > 0 %}
-<div><p>AAAAAA</p></div>
-
-{% endif%}
-{% endif%}
 
 <div id="posts">
 	

@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 {% block head %}
-		<script src="/js/rsa_encrypt.js"></script>
-		<script src="/js/header.js"></script>
-		<script src="/js/forms.js"></script>
-		<link rel="stylesheet" href="/css/headerPost.css">
-		<link rel="stylesheet" href="/css/post.css">
+<script src="/js/rsa_encrypt.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/forms.js"></script>
+<link rel="stylesheet" href="/css/headerPost.css">
+<link rel="stylesheet" href="/css/post.css">
 {% endblock %}
 
 {% block header %}
@@ -14,39 +14,43 @@
 {% endblock %}
 
 {% macro comment_section(comment_list) -%}
-	{% for comment in comment_list %}
-		{% set vote = comment.vote %}
-		<div class="comment"><img src="/u/{{ comment.useruuid }}/img"> {{ comment.username }}: {{ comment.content }}</div>
-		<div class="comment_bottom"> {{ comment.points }}
-			{% if session.get('user') %}
-			<form class="form-upvote vote" action="/post/{{ post_uuid }}/vote/{{ comment.uuid }}" method="post">
-				<input type="hidden" name="vote" value="UPVOTE">
-				<button class="upvote{% if vote == 'UPVOTE' %} selected{% endif %}" type="submit">▲</button>
-			</form>
-			<form class="form-downvote vote" action="/post/{{ post_uuid }}/vote/{{ comment.uuid }}" method="post">
-				<input type="hidden" name="vote" value="DOWNVOTE">
-				<button class="downvote{% if vote == 'DOWNVOTE' %} selected{% endif %}" type="submit">▼</button>
-			</form><span>{{ comment.timestamp }}</span> <button class="replybutton" uuid="{{ comment.uuid }}">Reply</button>
-			{% else %}
-			[Log in to vote]
-			{% endif %}
-		</div>
-		{% if session.get('user') %}
-			<form action="/post/{{ post_uuid }}/reply/{{ comment.uuid }}" method="post"
-				class="replyform uuid-{{ comment.uuid }} hidden"><input type="text" name="content"></form>
-		{% endif %}
-		{% if comment.replies|length > 0 %}
-			<div class="reply">
-				{{ comment_section(comment.replies) }}
-			</div>
-		{% endif %}
-	{% endfor %}
+{% for comment in comment_list %}
+{% set vote = comment.vote %}
+<div class="comment"><img src="/u/{{ comment.useruuid }}/img"> {{ comment.username }}: {{ comment.content }}</div>
+<div class="comment_bottom"> {{ comment.points }}
+	{% if session.get('user') %}
+	<form class="form-upvote vote" action="/post/{{ post_uuid }}/vote/{{ comment.uuid }}" method="post">
+		<input type="hidden" name="vote" value="UPVOTE">
+		<button class="upvote{% if vote == 'UPVOTE' %} selected{% endif %}" type="submit">▲</button>
+	</form>
+	<form class="form-downvote vote" action="/post/{{ post_uuid }}/vote/{{ comment.uuid }}" method="post">
+		<input type="hidden" name="vote" value="DOWNVOTE">
+		<button class="downvote{% if vote == 'DOWNVOTE' %} selected{% endif %}" type="submit">▼</button>
+	</form><span>{{ comment.timestamp }}</span> <button class="replybutton" uuid="{{ comment.uuid }}">Reply</button>
+	{% else %}
+	[Log in to vote]
+	{% endif %}
+</div>
+{% if session.get('user') %}
+<form action="/post/{{ post_uuid }}/reply/{{ comment.uuid }}" method="post"
+	class="replyform uuid-{{ comment.uuid }} hidden"><input type="text" name="content"></form>
+{% endif %}
+{% if comment.replies|length > 0 %}
+<div class="reply">
+	{{ comment_section(comment.replies) }}
+</div>
+{% endif %}
+{% endfor %}
 {%- endmacro %}
 
 {% block custom_start %}CoderBrothers Blog | {% endblock %}
 {% block custom_ending %}{% endblock %}
 {% block content %}
 <div class="post">
+	<form id="exit" action="/blog">
+		<input class="bbuton" src="/img/back.png" type="image" value="Back">
+		<span><a href="/blog" id="bbText">Volver al blog</a></span>
+	</form>
 	<div class="title_block">
 		<h1 id="post_title">{{self.title()}}</h1>
 		{% if self.author() %}
@@ -71,7 +75,8 @@
 	<hr>
 	<br>
 	{% if session.get('user') %}
-	<form method="post" action="/post/{{ post_uuid }}/comment">{{ session.get('user')[2] }}: <input type="text" name="content"> <button type="submit">Comentar</button></form>
+	<form method="post" action="/post/{{ post_uuid }}/comment">{{ session.get('user')[2] }}: <input type="text"
+			name="content"> <button type="submit">Comentar</button></form>
 	{% endif %}
 	<br>
 	{{ comment_section(comments) }}

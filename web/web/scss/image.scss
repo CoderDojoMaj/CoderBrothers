@@ -14,17 +14,15 @@ margins for imgAdd are loaded, thanks to the "display: flex; flex:1;" CSS instru
 */
 
 .imgAdd {
-    position: initial;
-    position: static;
-    padding: 1vw;
     display: flex; //Without this the default display is block and the elements don't stay in the div
-    background: linear-gradient(180deg, #262D33 -3.38%, #1D1E20 78.58%);
+    background: linear-gradient(180deg, #262d33 -3.38%, #1d1e20 78.58%);
     height: 75vh; //If you change this height you change the height of both imgAdd and premade
-    width: 65vw;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 #dbb {
+    padding-left: 1vh;
+    padding-top: 1vh;
     display: flex;
     height: 100%;
     width: fit-content;
@@ -65,7 +63,7 @@ margins for imgAdd are loaded, thanks to the "display: flex; flex:1;" CSS instru
 .premade {
     height: 75vh;
     margin-left: 3vw;
-    background: linear-gradient(180deg, #262D33 -3.38%, #1D1E20 78.58%);
+    background: linear-gradient(180deg, #262d33 -3.38%, #1d1e20 78.58%);
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -96,16 +94,16 @@ margins for imgAdd are loaded, thanks to the "display: flex; flex:1;" CSS instru
     color: white;
 }
 
-.ttext{
+.ttext {
     margin: 0px 0px 15px 0px;
-    color: #7B7C7C;
+    color: #7b7c7c;
     width: fit-content;
     height: fit-content;
     max-width: 20vw;
     font-size: 0.8vw;
 }
 
-#RTitle{
+#RTitle {
     padding: 1vw;
 }
 
@@ -121,25 +119,25 @@ margins for imgAdd are loaded, thanks to the "display: flex; flex:1;" CSS instru
     align-items: unset;
 }
 
-#cancelButton{
+#cancelButton {
     color: #fff;
-	background-color:#f93549;
-	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background-color: #f93549;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     border: none;
     width: 7vw;
-	height: 3.5vh;
+    height: 3.5vh;
     font-size: 1vw;
     cursor: pointer;
 }
 
-#updateButton{
+#updateButton {
     margin-left: 1.5vw;
-	color: #fff;
-	background-color: #41bac1;
-	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    background-color: #41bac1;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     border: none;
     width: 8vw;
-	height: 3.5vh;
+    height: 3.5vh;
     font-size: 1vw;
     cursor: pointer;
 }
@@ -151,31 +149,31 @@ margins for imgAdd are loaded, thanks to the "display: flex; flex:1;" CSS instru
     margin: 3vw;
 }
 
-#image{
+#image {
     width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
 }
 
-#chooseFile{
+#chooseFile {
     margin-top: 1vh;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #ffffff;
-	background-color:#655DC6;
-	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background-color: #655dc6;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     border: none;
     width: 7vw;
-	height: 3.5vh;
+    height: 3.5vh;
     font-size: 1vw;
     cursor: pointer;
 }
 
-.diplayPic{
+.diplayPic {
     margin: 1vh;
     width: auto;
     height: 10vh;

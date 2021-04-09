@@ -90,7 +90,6 @@ And then just run it with
 ./start.sh
 ```
 ### On Windows, `start.bat` can be run to do everything
-(Not sure) Double click the file and it should open a command prompt with the flask developmeent server
 
 # Using Docker
 ## Install

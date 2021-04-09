@@ -1,19 +1,115 @@
+#tools {
+	height: fit-content;
+	padding: 2vh 0vh 1vh 2vh;
+}
+
 #title {
-	font-family: Arial;
-	font-size: large;
-
+	width: 84%;
+	border-radius: 15px;
+	border: 2px solid #000;
+	padding: 3px;
 }
-#titlediv {
 
-	position:relative;
-	left: 0;
-	top: 20%;
-	width: 100%;
-   
-	color:black;
+::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: red;
+	opacity: 1; /* Firefox */
 }
-#contentdiv {
-	height: 80%;
-	width: 100%;
-	height: auto; 
+
+#titleDiv {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#toolsBottom {
+	margin-top: 1vh;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#autor {
+	font-size: 1.5vh;
+}
+
+#content {
+	width: 700px;
+	min-height: 1000px;
+	border: 1px solid #000;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background-color: #fff;
+	margin: 2vh 0vh 2vh 0vh;
+	padding: 8px;
+}
+
+#contentDiv {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #f5f5f5;
+}
+//Styling for the BackButton taken form post.scss
+.bbuton {
+	width: auto;
+	height: 3vh;
+}
+
+#bbText {
+	line-height: 30px;
+	width: auto;
+	height: 3vh;
+	font-size: 2vh;
+	padding-right: 5px;
+	padding-left: 5px;
+	text-decoration: none;
+	color: #000;
+}
+
+#exit {
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	background-color: #999999;
+	border: #000 1px solid;
+}
+
+.buttonTop {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: fit-content;
+	height: 3vh;
+	padding-left: 1vh;
+	padding-right: 1vh;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	margin-left: 1vh;
+}
+
+#previwB {
+	background-color: #4ac1e0;
+}
+
+#publishB {
+	background-color: #ff671d;
+}
+
+.Inputs {
+	background-color: inherit;
+	border: none;
+	color: inherit;
+	font-size: inherit;
+	margin-left: 3px;
+}
+
+#spacer {
+	border: 1.4px solid #000;
+	height: 1.6vh;
+	margin: 0px 7px 0px 7px;
 }

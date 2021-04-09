@@ -1,31 +1,30 @@
-<div class="header">
-	<div id="divLogo"><a href="/"><img src="/img/logo.svg" id="logo"></a></div>
+<div class="header"><a id="logoLink" href="/"><img src="/img/logo.svg" id="logo"></a>
 	<nav class="buttons">
-		
+
 		<div id="searchBar">
-			<img src="/img/search.jpg" id="SImage">
-				<input type="text" id="searchInput" placeholder="Buscar un post . . .">
+			<i id="SImage" class="material-icons search">&#xe8b6;</i>
+			<input type="text" id="searchInput" placeholder="Buscar un post . . .">
 		</div>
 		<div id="mobileSB">
-			<img src="/img/Msearch.svg" id="MSimage" onclick="mobileSB()">
+			<i id="MSimage" onclick="mobileSB()" id="SImage" class="material-icons search">&#xe8b6;</i>
 			<div id="Sdropdown" class="Sdropdown">
 				<input type="text" id="searchInput" class="searchInput" placeholder="Buscar un post . . .">
 			</div>
 		</div>
-		
+
 
 		{% if session.get('user') %}
-			<!--<a>{{ session.get('user')[2] }} ({{ session.get('user')[3] }})</a>-->
-			<div class="dropdown">
-				<img src="/u/{{ session.get('user')[1] }}/img" onclick="showDropdown()" class="dropbtn">
-				<div id="dropdownContent" class="dropdown-content">
-					{% if session.get('user')[3] > 0 %}
-					<a href="/create_post">Create Post</a>
-					{% endif %}
-					<a href="/img">Change Profile Picture</a>
-					<a href="/logout">Log out</a>
-				</div>
-		  	</div>
+		<!--<a>{{ session.get('user')[2] }} ({{ session.get('user')[3] }})</a>-->
+		<div class="dropdown">
+			<img src="/u/{{ session.get('user')[1] }}/img" onclick="showDropdown()" class="dropbtn">
+			<div id="dropdownContent" class="dropdown-content">
+				{% if session.get('user')[3] > 0 %}
+				<a href="/create_post">Create Post</a>
+				{% endif %}
+				<a href="/img">Change Profile Picture</a>
+				<a href="/logout">Log out</a>
+			</div>
+		</div>
 		{% else %}
 		<div id="formOpeners">
 			<input type="button" class="formButtons" id="formLogIn" value="LOG IN" onclick="onLogIn()">
@@ -48,14 +47,17 @@
 		<div class="error"><span id="loginError"></span></div>
 		<div class="formDivs">
 			<label for="uname"><b>Nombre de usuario</b></label>
-			<input type="text" class="formInput" id="LogInName" placeholder="Escribe tu nombre de usuario" name="username" required>
+			<input type="text" class="formInput" id="LogInName" placeholder="Escribe tu nombre de usuario"
+				name="username" required>
 
 			<label for="psw"><b>Contraseña</b></label>
-			<input type="password" class="formInput" id="LogInPass" placeholder="Escribe tu contraseña" name="password" required>
+			<input type="password" class="formInput" id="LogInPass" placeholder="Escribe tu contraseña" name="password"
+				required>
 
 			<button class="formButton" type="submit">Login</button>
 			<span class="psw">No tienes una cuenta?
-				<a style="color: black;cursor: pointer;font-weight: bold;" onclick="offLogIn(event,this);onSignUp()">Créate una!</a>
+				<a style="color: black;cursor: pointer;font-weight: bold;"
+					onclick="offLogIn(event,this);onSignUp()">Créate una!</a>
 			</span>
 		</div>
 	</form>
@@ -72,18 +74,22 @@
 		<div class="error"><span id="signupError"><br></span><span id='message'></span></div>
 		<div class="formDivs">
 			<label for="uname"><b>Nombre de usuario</b></label>
-			<input type="text" class="formInput" id="SignUpName" placeholder="Escribe un nobre de usuario" name="username" required>
+			<input type="text" class="formInput" id="SignUpName" placeholder="Escribe un nobre de usuario"
+				name="username" required>
 
 			<label for="psw"><b>Contraseña</b></label>
-			<input type="password" class="formInput" id="SignUpPass" placeholder="Escribe una contraseña" name="password" onkeyup="check();" required>
+			<input type="password" class="formInput" id="SignUpPass" placeholder="Escribe una contraseña"
+				name="password" onkeyup="check();" required>
 
 			<label for="psw"><b>Repetir contraseña</b></label>
-			<input type="password" class="formInput" id="SignUpRPass" placeholder="Repite tu contraseña" onkeyup="check();" required>
+			<input type="password" class="formInput" id="SignUpRPass" placeholder="Repite tu contraseña"
+				onkeyup="check();" required>
 
-			<input id="logInButton" class="formButton"  type="submit" value="Sign Up">
+			<input id="logInButton" class="formButton" type="submit" value="Sign Up">
 
 			<span class="psw">Ya tienes cuenta?
-				<a style="color: black;cursor: pointer;font-weight: bold;" onclick="offSignUp(event,this);onLogIn()">Inicia sesión!</a>
+				<a style="color: black;cursor: pointer;font-weight: bold;"
+					onclick="offSignUp(event,this);onLogIn()">Inicia sesión!</a>
 			</span>
 		</div>
 	</form>

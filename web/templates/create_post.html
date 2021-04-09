@@ -3,6 +3,7 @@
 {% block title %}Create Post{% endblock %}
 {% block head %}
 <link rel="stylesheet" href="/css/create_post.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {% endblock %}
 {% block header %}
 <div class="BlogHeader">
@@ -10,19 +11,36 @@
 </div>
 {% endblock %}
 {% block content %}
-<h4>Autor: <b>{{ session.get('user')[2] }}</b></h4>
+
 {% if editPost %}
 <form action="/post/{{ editPost }}/edit" method="POST">
 {% else %}
 <form action="/create_post" method="POST">
 {% endif %}
-	<div id="titlediv">
-		<label for="title"><b>Título</b></label>
-		<input name="title" id="title" type="text" value="{{ title }}">
+	<div id="tools">
+		<div id="toolsTop">
+			<div>
+				<p>Title</p>
+			</div>
+			<div id="titleDiv">
+				<input name="title" id="title" type="text" value="{{ title }}">
+				<div class="buttonTop" id="previwB">
+					<i class="material-icons visibility">&#xe8f4;</i>
+					<input class="Inputs" type="button" value="Preview Markdown">
+				</div>
+				<div class="buttonTop" id="publishB" onclick="helo()">
+					<i class="material-icons send">&#xe163;</i>
+					<input class="Inputs" type="submit" value="Publish Post">
+				</div>
+			</div>
+		</div>
+		<div id="toolsBottom">
+			<p id="autor">Post escrito por: {{ session.get('user')[2] }}</p>
+			<div id="spacer"></div>
+		</div>
 	</div>
-	<div id="contentdiv">
-		<textarea name="content" id="content" placeholder="Escribe aquí tu texto">{{ content }}</textarea>
-		<input type="submit" value="{% if editPost %}Save{% else %}Create{% endif %}">
+	<div id="contentDiv">
+		<div name="content" id="content" contenteditable>{{ content }}</div>
 	</div>
 </form>
 {% endblock %}

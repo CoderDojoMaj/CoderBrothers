@@ -1,6 +1,5 @@
 .fotos {
-
-	height: 376px; 
+	height: 376px;
 	max-height: 376px;
 	width: 100%;
 	position: relative;
@@ -8,10 +7,10 @@
 	background-attachment: fixed;
 	background-position: bottom;
 	background-repeat: no-repeat;
-	background-size: cover; 
+	background-size: cover;
 }
 
-#dojoHeader{
+#dojoHeader {
 	width: 75%;
 	display: flex;
 	justify-self: center;
@@ -19,7 +18,7 @@
 }
 
 .caption {
-	position:relative;
+	position: relative;
 	left: 0;
 	top: 20%;
 	width: 100%;
@@ -42,17 +41,26 @@ h3 {
 	color: #111;
 }
 
-	#quickfix2{display:none;}
-	#quickfix{display:-webkit-inline-flex;}
+#quickfix2 {
+	display: none;
+}
+#quickfix {
+	display: -webkit-inline-flex;
+}
 
+@media only screen and (min-device-width: 1000px) {
+	/*Adaptado para movil*/
 
-
-@media only screen and (min-device-width: 1000px) { /*Adaptado para movil*/
-
-	.Quienes, .QueEs, .Contacto {
+	.Quienes,
+	.QueEs,
+	.Contacto {
 		background-attachment: scroll;
 	}
 
-	#quickfix{display: none;}
-	#quickfix2{display: inline;}
-} 
+	#quickfix {
+		display: none;
+	}
+	#quickfix2 {
+		display: inline;
+	}
+}
